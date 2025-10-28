@@ -1,0 +1,4 @@
+#Usar este ficheiro para ignorar ficheiros ou diretórios que não são precisos no repositório do projeto
+
+#Diretórios cache do Python, estes não contém código útil para o projeto
+__pycache__/
