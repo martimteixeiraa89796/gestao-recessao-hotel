@@ -1,0 +1,12 @@
+===================================
+Projeto Gestão de Recessão de Hotel
+===================================
+
+Projeto de Universidade utilizando ferramenta git.
+Aplicação de gestão de recessão de hotel escrita em Python.
+
+========================================================================================
+Não apagar ramos utilizados ou criados (branches), eles vão ser usados para avaliação.
+========================================================================================
+
+Para clonar repositório: git clone https://github.com/martimteixeiraa89796/gestao-recessao-hotel.git
