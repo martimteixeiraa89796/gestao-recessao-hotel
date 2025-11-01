@@ -6,7 +6,7 @@ sqliteConnection = sqlite3.connect('basedados.db')
 cursor = sqliteConnection.cursor()  # O Cursor server para interagir com a base de dados.
 
 # Esta string é onde vai ser escrido o SQL para a criação da base de dados.
-# É necessário criar tabelas, mas terão de estar vazias pois o nosso programa é o que vai adicionar dados à mesma.
+# É necessário criar tabelas, mas terão de estar vazias pois o nosso programa é o que vai adicionar dados às mesmas.
 query = """
     Escrever SQL para criação da base de dados aqui
 """
