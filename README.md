@@ -9,5 +9,12 @@ Aplicação de gestão de recessão de hotel escrita em Python.
 git clone https://github.com/martimteixeiraa89796/gestao-recessao-hotel.git
 ```
 
+## Ramos
+
+- **main:** Ramo para código estável.
+- **dev:** Ramo para código em desenvolviemnto.
+- **basedados:** Ramo para desenvolvimento relacionado a BDs.
+- **test:** Ramo para testes, não deveria ser feito merges com ele.
+
 > [!IMPORTANT]
 > Não apagar ramos utilizados ou criados (branches), eles vão ser usados para avaliação
