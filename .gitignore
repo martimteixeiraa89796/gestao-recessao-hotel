@@ -2,3 +2,6 @@
 
 #Diretórios cache do Python, estes não contém código útil para o projeto
 __pycache__/
+
+#Excluir ficheiro de base de dados pois é um binário e não código útil (Utilizado apenas para guardar dados)
+*.db
