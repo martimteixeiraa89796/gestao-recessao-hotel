@@ -1,0 +1,2 @@
+Podem usar este ficheiro para testes de commit.
+Não alterar mais nada nem fazer merge neste ramo. Foi complicado de resolver erros que cometi.
