@@ -19,6 +19,23 @@ git clone https://github.com/martimteixeiraa89796/gestao-recessao-hotel.git
 > [!IMPORTANT]
 > Não apagar ramos utilizados ou criados (branches), eles vão ser usados para avaliação.
 
+## Fazer Pull do repositório
+
+Primeiro fazer checkout no ramo que queremos:
+
+``` git
+git checkout <inserir ramo aqui>
+```
+
+Depois fazer pull do ramo:
+
+``` git
+git pull
+```
+
+> [!Note]
+> Isto faz um merge automático do remote com o local, por isso podem surgir casos de conflito que terão de ser resolvidos como nos merges normais.
+
 ## Fazer Push do repositório
 
 Primeiro fazer checkout no ramo que queremos:
