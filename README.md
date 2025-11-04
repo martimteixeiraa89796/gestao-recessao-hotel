@@ -63,7 +63,7 @@ git merge <inserir ramo aqui>
 
 ## Documentação do Servidor
 
-## Fazer *Pull* do repositório (Atualizar/*Download*)
+### Fazer *Pull* do repositório (Atualizar/*Download*)
 
 Primeiro fazer ***checkout*** no ramo que queremos:
 
@@ -80,7 +80,7 @@ git pull
 > [!Note]
 > Isto faz um ***merge*** automático do ***remote*** com o ***local***, por isso podem surgir casos de conflito que terão de ser resolvidos como nos ***merges*** normais.
 
-## Fazer *Push* do repositório (*Upload*)
+### Fazer *Push* do repositório (*Upload*)
 
 Primeiro fazer ***checkout*** no ramo que queremos:
 
