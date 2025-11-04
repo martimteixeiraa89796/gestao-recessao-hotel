@@ -3,15 +3,13 @@
 Projeto de Universidade utilizando ferramenta Git.
 Aplicação de gestão de recessão de hotel.
 
----
-
-## Descrição do Projeto
+## Documentação do Projeto
 
 Este trata-se de uma aplicação de linha de commandos (CLI ou Command-Line Interface) para gerir a recessão de um hotel.
 
 De momentos é uma *front end* escrita em Python com uma futura base de dados em SQLite.
 
-## Testar/Usar aplicação
+### Testar/Usar aplicação
 
 1. Instalar [Python](https://www.python.org/);
 2. Abrir linha de comandos no diretório do repositório;
@@ -21,7 +19,9 @@ O VSCode pode ser utilizado como alternativa ao passo 2 e 3, mas deve instalar a
 
 ---
 
-## Clonar repositório
+## Documentação do repositório
+
+### Clonar repositório
 
 Executar comando abaixo num diretório na máquina local, à sua escolha.
 Só precisa de ser executado uma vez para criar uma cópia do repositório.
@@ -30,7 +30,7 @@ Só precisa de ser executado uma vez para criar uma cópia do repositório.
 git clone https://github.com/martimteixeiraa89796/gestao-recessao-hotel.git
 ```
 
-## Ramos
+### Ramos
 
 - **main:** Ramo para código final/estável.
 - **dev:** Ramo para código em desenvolviemnto.
@@ -40,26 +40,7 @@ git clone https://github.com/martimteixeiraa89796/gestao-recessao-hotel.git
 > [!IMPORTANT]
 > Não apagar ramos utilizados, eles vão ser usados para avaliação.
 
----
-
-## Fazer *Pull* do repositório (Atualizar/*Download*)
-
-Primeiro fazer ***checkout*** no ramo que queremos:
-
-``` git
-git checkout <inserir ramo aqui>
-```
-
-Depois fazer ***pull*** do ramo:
-
-``` git
-git pull
-```
-
-> [!Note]
-> Isto faz um ***merge*** automático do ***remote*** com o ***local***, por isso podem surgir casos de conflito que terão de ser resolvidos como nos ***merges*** normais.
-
-## Merging
+### Merging Ramos
 
 Fazemos ***merges*** para atualizar um ramo com alterações de outros ramos.
 
@@ -77,6 +58,27 @@ git merge <inserir ramo aqui>
 
 > [!Note]
 > Podem surgir conflitos. Para os resolver devemos ver qual das diferenças queremos que permaneçam no ***merge***.
+
+---
+
+## Documentação do Servidor
+
+## Fazer *Pull* do repositório (Atualizar/*Download*)
+
+Primeiro fazer ***checkout*** no ramo que queremos:
+
+``` git
+git checkout <inserir ramo aqui>
+```
+
+Depois fazer ***pull*** do ramo:
+
+``` git
+git pull
+```
+
+> [!Note]
+> Isto faz um ***merge*** automático do ***remote*** com o ***local***, por isso podem surgir casos de conflito que terão de ser resolvidos como nos ***merges*** normais.
 
 ## Fazer *Push* do repositório (*Upload*)
 
