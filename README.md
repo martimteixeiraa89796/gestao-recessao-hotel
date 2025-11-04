@@ -15,7 +15,8 @@ De momentos é uma *front end* escrita em Python com uma futura base de dados em
 2. Abrir linha de comandos no diretório do repositório;
 3. Iniciar aplicação com o comando: `python main.py`;
 
-O VSCode pode ser utilizado como alternativa ao passo 2 e 3, mas deve instalar a [extensão para Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+> [!Note]
+> O VSCode pode ser utilizado como alternativa ao passo 2 e 3, mas deve instalar a [extensão para Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
 ---
 
