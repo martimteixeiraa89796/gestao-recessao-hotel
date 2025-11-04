@@ -3,6 +3,9 @@
 Projeto de Universidade utilizando ferramenta Git.
 Aplicação de gestão de recessão de hotel escrita em Python.
 
+> [!Note]
+> Este README não reflete o estado atual do projeto. Consulte o ramo **dev** para o estado atualizado do projeto.
+
 ## Clonar repositório
 
 Executar este comando num diretório na máquina local, à nossa escolha.
