@@ -73,3 +73,12 @@ def criar_tabela_Tipo_Reserva():
         constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
         )
     """
+
+def criar_tabela_Funcoes():
+    query = """
+        create table Funcoes(
+        Num_Funcao int not null,
+        Nome_Funcao varchar(50),
+        constraint PK_Funcoes primary key (Num_Funcao)
+        )
+    """
