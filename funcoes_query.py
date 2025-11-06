@@ -19,3 +19,11 @@ def função(exemplo, exemplo2, exemplo3):  #<--- Colocar argumentos para altera
     return query #Retorna a query finalizada para depois ser executada
     #A query seria guardada numa variável para depois ser executada noutro lado
     
+def criar_tabela_tipo_cama():
+    query ="""
+        create table Tipo_Cama(
+        Num_Tipo_Cama int not null,
+        Nome_Tipo_Cama varchar(100),
+        constraint PK_Tipo_Cama primary key (Num_Tipo_Cama)
+        )
+    """
