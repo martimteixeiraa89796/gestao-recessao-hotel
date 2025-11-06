@@ -18,4 +18,18 @@ def função(exemplo, exemplo2, exemplo3):  #<--- Colocar argumentos para altera
 
     return query #Retorna a query finalizada para depois ser executada
     #A query seria guardada numa variável para depois ser executada noutro lado
-    
+
+def criar_tabela_tipo_quarto():
+    """Cria a tabela Tipo_quarto"""
+    query = """
+        CREATE TABLE IF NOT EXISTS Tipo_quarto(
+        Num_Tipo_quarto INT,
+        Num_Tipo_quarto varchar(50),
+        Constraint PK_quarto Primary key (Num_Tipo_Quarto)
+        )
+    """
+
+
+
+
+
