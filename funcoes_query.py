@@ -36,7 +36,7 @@ def criar_tabela_tipo_quarto():
         CREATE TABLE IF NOT EXISTS Tipo_quarto(
         Num_Tipo_quarto INT,
         Num_Tipo_quarto varchar(50),
-        Constraint PK_quarto Primary key (Num_Tipo_Quarto)
+        Constraint PK_tipo_quarto Primary key (Num_Tipo_Quarto)
         )
     """
 def criar_tabela_Quarto():
