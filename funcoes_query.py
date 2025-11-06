@@ -73,6 +73,7 @@ def criar_tabela_Tipo_Reserva():
         constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
         )
     """
+<<<<<<< HEAD
 def criar_tabela_Camas():
     query = """
     CREATE TABLE IF NOT EXISTS tipo_Camas():
@@ -84,3 +85,37 @@ def criar_tabela_Camas():
         REFERENCES Tipo_Cama(Num_Tipo_Cama)
     )
 """
+=======
+
+def criar_tabela_Funcoes():
+    query = """
+        create table Funcoes(
+        Num_Funcao int not null,
+        Nome_Funcao varchar(50),
+        constraint PK_Funcoes primary key (Num_Funcao)
+        )
+    """
+
+def criar_tabela_Funcionario():
+    query = """
+        create table Funcionario(
+        Num_Funcionario int not null,
+        Nome_Funcionario varchar(50),
+        Num_funcao int,
+        constraint PK_Funcionario primary key (Num_Funcionario)
+        constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)
+        references Funcoes(Num_Funcao)
+        )
+    """
+def criar_tabela_Horario():
+    query = """
+        create table Horario(
+        Num_funcionario int,
+        Comeca datetime,
+        Acaba datetime,
+        Folga varchar(15),
+        constraint FK_Funcionario_Horario foreign key (Num_Funcionario)
+        reference Funcionario (Num_Funcionario)
+        )
+    """
+>>>>>>> 09fcaf35a9774db6767da4fed6c04ee467d63661
