@@ -82,3 +82,14 @@ def criar_tabela_Funcoes():
         constraint PK_Funcoes primary key (Num_Funcao)
         )
     """
+
+def criar_tabela_Funcionario():
+    query = """
+        create table Funcionario(
+        Num_Funcionario int not null,
+        Nome_Funcionario varchar(50),
+        Num_funcao int,
+        constraint PK_Funcionario primary key (Num_Funcionario)
+        constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)
+        )
+    """
