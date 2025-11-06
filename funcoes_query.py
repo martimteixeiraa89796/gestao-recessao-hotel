@@ -117,3 +117,18 @@ def criar_tabela_Horario():
         )
     """
 
+def criar_tabela_Reserva():
+    query = """
+        create table Reserva(
+        Num_Reserva int not null,
+        Num_Tipo_Reserva int,
+        Check-in datetime,
+        Check-out datetime,
+        Num_Funcionario int,
+        constraint PK_Reserva primary key (Num_Reserva)
+        constraint FK_Tipo_Reserva_Reserva foreign key (Num_Tipo_Reserva)
+        reference Tipo_Reserva(Num_Tipo_Reserva)
+        constraint FK_Funcionario_Reserva foreign key (Num_Funcionario)
+        reference Funcionario(Num_funcionario)
+        )
+    """
