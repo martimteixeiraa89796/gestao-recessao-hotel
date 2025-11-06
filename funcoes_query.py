@@ -73,3 +73,14 @@ def criar_tabela_Tipo_Reserva():
         constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
         )
     """
+def criar_tabela_Camas():
+    query = """
+    CREATE TABLE IF NOT EXISTS tipo_Camas():
+    Num_Quarto INT NOT NULL,
+    Num_Tipo_Cama INT NOT NULL,
+    CONSTRAINT FK_Camas_Quarto FOREIGN KEY(Num_Quarto),
+        REFERENCES Quartos(Num_Quarto),
+    CONSTRAINT FK_Camas_Tipo_Cama FOREIGN KEY(Num_Tipo_Quarto)
+        REFERENCES Tipo_Cama(Num_Tipo_Cama)
+    )
+"""
