@@ -132,3 +132,19 @@ def criar_tabela_Reserva():
         reference Funcionario(Num_funcionario)
         )
     """
+
+def criar_tabela_Hospedes():
+    query = """
+        create table Hospedes(
+        Num_Reserva int,
+        NIF int,
+        Reservado_Em_Nome varchar(20),
+        Num_Quarto int,
+        constraint FK_Reserva_Hospedes foreign key (Num_Reserva)
+        reference Reserva (Num_Reserva)
+        constraint FK_Cliente_Hospedes foreign key (NIF)
+        reference Cliente (NIF)
+        constraint FK_Quarto_Hospedes foreign key (Num_Quarto)
+        reference Quarto (Num_Quarto)
+        )
+    """
