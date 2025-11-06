@@ -46,7 +46,7 @@ def criar_tabela_Quarto():
             Num_Quarto INT AUTO_INCREMENT,
             Num_Tipo_Quarto INT NOT NULL,
             Preco Decimal(10,2) NOT NULL,
-            Ocupado VARCHAR(3) CHECK(Ocupado IN ('sim','Nao')),
+            Ocupado VARCHAR(15),
             CONSTRAINT PK_quarto Primary key (Num_Quarto),
             CONSTRAINT FK_Quarto_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)
                 REFERENCES Tipo_Quarto(Num_Tipo_Quarto)
