@@ -31,24 +31,25 @@ def criar_tabela_tipo_cama():
 
 
 def criar_tabela_tipo_quarto():
-    """Cria a tabela Tipo_quarto"""
+    """Cria a tabela Tipo_Quarto"""
     query = """
-        CREATE TABLE IF NOT EXISTS Tipo_quarto(
-        Num_Tipo_quarto INT,
-        Num_Tipo_quarto varchar(50),
-        Constraint PK_tipo_quarto Primary key (Num_Tipo_Quarto)
-        )
+        CREATE TABLE IF NOT EXISTS Tipo_Quarto (
+            Num_Tipo_Quarto INT NOT NULL,
+            Nome_Tipo_Quarto VARCHAR(50) NOT NULL,
+            CONSTRAINT PK_Tipo_Quarto PRIMARY KEY (Num_Tipo_Quarto)
+        );
     """
 def criar_tabela_Quarto():
     """Criar tabela Quarto"""
     query ="""
-        Create table IF NOT EXISTS Quarto(
-        Num_Tipo_Quarto INT,
-        Preco Decimal(10,2)
-        Ocupado VARCHAR(3) CHECK(ocupado IN ('sim' 'Nao'))
-         Constraint PK_quarto Primary key (Num_Quarto)
-         Constrait FK_Quarto_Tipo_Quarto FOREIGNT KEY (Num_Tipo_Quarto)
-         REFERENCES TB_Tipo_Quarto(Num_Tipo_Quarto)
+        CREATE TABLE IF NOT EXISTS Quarto (
+            Num_Quarto INT AUTO_INCREMENT,
+            Num_Tipo_Quarto INT NOT NULL,
+            Preco Decimal(10,2) NOT NULL,
+            Ocupado VARCHAR(3) CHECK(Ocupado IN ('sim','Nao')),
+            CONSTRAINT PK_quarto Primary key (Num_Quarto),
+            CONSTRAINT FK_Quarto_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)
+                REFERENCES Tipo_Quarto(Num_Tipo_Quarto)
     );  
     """
 
