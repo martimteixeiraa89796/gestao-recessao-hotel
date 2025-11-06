@@ -54,7 +54,6 @@ def criar_tabela_Quarto():
     """
 
 
-
 def criar_tabela_Cliente():
     query = """
         create table Cliente(
@@ -73,7 +72,7 @@ def criar_tabela_Tipo_Reserva():
         constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
         )
     """
-<<<<<<< HEAD
+    
 def criar_tabela_Camas():
     query = """
     CREATE TABLE IF NOT EXISTS tipo_Camas():
@@ -85,7 +84,6 @@ def criar_tabela_Camas():
         REFERENCES Tipo_Cama(Num_Tipo_Cama)
     )
 """
-=======
 
 def criar_tabela_Funcoes():
     query = """
@@ -118,4 +116,4 @@ def criar_tabela_Horario():
         reference Funcionario (Num_Funcionario)
         )
     """
->>>>>>> 09fcaf35a9774db6767da4fed6c04ee467d63661
+
