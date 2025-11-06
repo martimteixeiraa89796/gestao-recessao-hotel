@@ -54,3 +54,12 @@ def criar_tabela_Quarto():
 
 
 
+def criar_tabela_Cliente():
+    query = """
+        create table Cliente(
+        NIF int not null,
+        Nome_Cliente varchar(50),
+        Telefone varchar(15),
+        constraint PK_Cliente primary key(NIF)
+        )
+    """
