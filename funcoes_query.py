@@ -63,3 +63,12 @@ def criar_tabela_Cliente():
         constraint PK_Cliente primary key(NIF)
         )
     """
+
+def criar_tabela_Tipo_Reserva():
+    query = """
+        create table Tipo_Reserva(
+        Num_Tipo_Reserva int not nul,
+        Nome_Tipo_Reserva varchar(50),
+        constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
+        )
+    """
