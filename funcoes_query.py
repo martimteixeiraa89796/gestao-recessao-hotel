@@ -91,5 +91,17 @@ def criar_tabela_Funcionario():
         Num_funcao int,
         constraint PK_Funcionario primary key (Num_Funcionario)
         constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)
+        references Funcoes(Num_Funcao)
+        )
+    """
+def criar_tabela_Horario():
+    query = """
+        create table Horario(
+        Num_funcionario int,
+        Comeca datetime,
+        Acaba datetime,
+        Folga varchar(15),
+        constraint FK_Funcionario_Horario foreign key (Num_Funcionario)
+        reference Funcionario (Num_Funcionario)
         )
     """
