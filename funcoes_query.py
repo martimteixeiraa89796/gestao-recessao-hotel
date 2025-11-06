@@ -39,7 +39,18 @@ def criar_tabela_tipo_quarto():
         Constraint PK_quarto Primary key (Num_Tipo_Quarto)
         )
     """
-
+def criar_tabela_Quarto():
+    """Criar tabela Quarto"""
+    query ="""
+        Create table IF NOT EXISTS Quarto(
+        Num_Tipo_Quarto INT,
+        Preco Decimal(10,2)
+        Ocupado VARCHAR(3) CHECK(ocupado IN ('sim' 'Nao'))
+         Constraint PK_quarto Primary key (Num_Quarto)
+         Constrait FK_Quarto_Tipo_Quarto FOREIGNT KEY (Num_Tipo_Quarto)
+         REFERENCES TB_Tipo_Quarto(Num_Tipo_Quarto)
+    );  
+    """
 
 
 
