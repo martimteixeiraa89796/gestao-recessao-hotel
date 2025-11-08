@@ -26,7 +26,7 @@ def criar_tabela_tipo_cama():
         Num_Tipo_Cama int not null,
         Nome_Tipo_Cama varchar(100),
         constraint PK_Tipo_Cama primary key (Num_Tipo_Cama)
-        )
+        );
     """
 
 
@@ -61,28 +61,28 @@ def criar_tabela_Cliente():
         Nome_Cliente varchar(50),
         Telefone varchar(15),
         constraint PK_Cliente primary key(NIF)
-        )
+        );
     """
 
 def criar_tabela_Tipo_Reserva():
     query = """
         create table Tipo_Reserva(
-        Num_Tipo_Reserva int not nul,
+        Num_Tipo_Reserva int not null,
         Nome_Tipo_Reserva varchar(50),
         constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
-        )
+        );
     """
     
 def criar_tabela_Camas():
     query = """
-    CREATE TABLE IF NOT EXISTS tipo_Camas():
+    CREATE TABLE IF NOT EXISTS tipo_Camas(
     Num_Quarto INT NOT NULL,
     Num_Tipo_Cama INT NOT NULL,
-    CONSTRAINT FK_Camas_Quarto FOREIGN KEY(Num_Quarto),
+    CONSTRAINT FK_Camas_Quarto FOREIGN KEY(Num_Quarto)
         REFERENCES Quartos(Num_Quarto),
     CONSTRAINT FK_Camas_Tipo_Cama FOREIGN KEY(Num_Tipo_Quarto)
         REFERENCES Tipo_Cama(Num_Tipo_Cama)
-    )
+    );
 """
 
 def criar_tabela_Funcoes():
@@ -91,7 +91,7 @@ def criar_tabela_Funcoes():
         Num_Funcao int not null,
         Nome_Funcao varchar(50),
         constraint PK_Funcoes primary key (Num_Funcao)
-        )
+        );
     """
 
 def criar_tabela_Funcionario():
@@ -100,10 +100,10 @@ def criar_tabela_Funcionario():
         Num_Funcionario int not null,
         Nome_Funcionario varchar(50),
         Num_funcao int,
-        constraint PK_Funcionario primary key (Num_Funcionario)
+        constraint PK_Funcionario primary key (Num_Funcionario),
         constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)
         references Funcoes(Num_Funcao)
-        )
+        );
     """
 def criar_tabela_Horario():
     query = """
@@ -113,8 +113,8 @@ def criar_tabela_Horario():
         Acaba datetime,
         Folga varchar(15),
         constraint FK_Funcionario_Horario foreign key (Num_Funcionario)
-        reference Funcionario (Num_Funcionario)
-        )
+        references Funcionario (Num_Funcionario)
+        );
     """
 
 def criar_tabela_Reserva():
@@ -122,15 +122,15 @@ def criar_tabela_Reserva():
         create table Reserva(
         Num_Reserva int not null,
         Num_Tipo_Reserva int,
-        Check-in datetime,
-        Check-out datetime,
+        Check_in datetime,
+        Check_out datetime,
         Num_Funcionario int,
-        constraint PK_Reserva primary key (Num_Reserva)
+        constraint PK_Reserva primary key (Num_Reserva),
         constraint FK_Tipo_Reserva_Reserva foreign key (Num_Tipo_Reserva)
-        reference Tipo_Reserva(Num_Tipo_Reserva)
+        references Tipo_Reserva(Num_Tipo_Reserva),
         constraint FK_Funcionario_Reserva foreign key (Num_Funcionario)
-        reference Funcionario(Num_funcionario)
-        )
+        references Funcionario(Num_funcionario)
+        );
     """
 
 def criar_tabela_Hospedes():
@@ -141,10 +141,10 @@ def criar_tabela_Hospedes():
         Reservado_Em_Nome varchar(20),
         Num_Quarto int,
         constraint FK_Reserva_Hospedes foreign key (Num_Reserva)
-        reference Reserva (Num_Reserva)
+        references Reserva (Num_Reserva),
         constraint FK_Cliente_Hospedes foreign key (NIF)
-        reference Cliente (NIF)
+        references Cliente (NIF),
         constraint FK_Quarto_Hospedes foreign key (Num_Quarto)
-        reference Quarto (Num_Quarto)
-        )
+        references Quarto (Num_Quarto)
+        );
     """
