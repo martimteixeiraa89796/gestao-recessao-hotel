@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="pt" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ferramentas_BD module &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=103ffe9a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=beaedd51"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="next" title="funcoes_sqlite_create module" href="funcoes_sqlite_create.html" />
+    <link rel="prev" title="gestao-recessao-hotel documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-ferramentas_BD">
+<span id="ferramentas-bd-module"></span><h1>ferramentas_BD module<a class="headerlink" href="#module-ferramentas_BD" title="Link to this heading">¶</a></h1>
+<section id="modulo-de-interacao-com-bases-de-dados-sqlite">
+<h2>Módulo de interação com bases de dados SQLite<a class="headerlink" href="#modulo-de-interacao-com-bases-de-dados-sqlite" title="Link to this heading">¶</a></h2>
+<p>Este módulo faz a ligação com os ficheiros <strong>.bd</strong> que contém a base de dados da aplicação.
+É utilizado como ponte entre as <em>queries</em> SQL e a sua execução na base de dados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Authors<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Martim Teixeira</p>
+</dd>
+<dt class="field-even">Date<span class="colon">:</span></dt>
+<dd class="field-even"><p>12 de novembro de 2025</p>
+</dd>
+<dt class="field-odd">Version<span class="colon">:</span></dt>
+<dd class="field-odd"><p>1.0</p>
+</dd>
+</dl>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ferramentas_BD.</span></span><span class="sig-name descname"><span class="pre">FerramentasBD</span></span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<section id="classe-com-ferramentas-para-interagir-com-base-de-dados-sqlite">
+<h2>Classe com ferramentas para interagir com base de dados SQLite.<a class="headerlink" href="#classe-com-ferramentas-para-interagir-com-base-de-dados-sqlite" title="Link to this heading">¶</a></h2>
+<p>Serve para centralizar todos os processos relacionados ao ponto em cima.
+Desta forma, só se escreve a lógica uma única vez e executa-se quando quisermos.</p>
+<p>Esta classe contém métodos e funções que:
+- Inicia conecção com base de dados;
+- Fecha conecção com base de dados;
+- Executa <em>queries</em> SQL na base de dados (com opção de imprimir tabelas);</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basedados</span> <span class="o">=</span> <span class="n">FerramentasBD</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD.conectarBD">
+<span class="sig-name descname"><span class="pre">conectarBD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ficheiro</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD.conectarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD.conectarBD" title="Link to this definition">¶</a></dt>
+<dd><p>Inicia a conecção com base de dados.</p>
+<p>Para iniciar a base de dados, primeiro é necessário conectar à mesma.
+Se a base de dados não existir, ela será criada automaticamente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ficheiro</strong> (<em>string</em>) – Nome do ficheiro <strong>.bd</strong> da base de dados a ser utilizado</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basedados</span><span class="o">.</span><span class="n">conectar</span><span class="p">(</span><span class="s2">&quot;bd&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD.desconectarBD">
+<span class="sig-name descname"><span class="pre">desconectarBD</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD.desconectarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD.desconectarBD" title="Link to this definition">¶</a></dt>
+<dd><p>Desconecta base de dados.</p>
+<p>É necessário fechar a base de dados para que, caso a aplicação falhe, os dados não serem perdidos.
+Este método também limpa a variável <strong>sqlconnector</strong> da memória.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basedados</span><span class="o">.</span><span class="n">desconectarBD</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD.executarBD">
+<span class="sig-name descname"><span class="pre">executarBD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imprimir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD.executarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD.executarBD" title="Link to this definition">¶</a></dt>
+<dd><p>Executa queries na base de dados.</p>
+<p>Cria-se um cursor para se poder interagir com a base de dados.
+Se a query enviar um resultado, o mesmo fica guardado, caso contrário fica <strong>None</strong>.
+Faz-se um commit das ações das queries (Não confundir com commits do Git)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>string</em>) – A query para ser executada na base de dados</p></li>
+<li><p><strong>imprimir</strong> (<em>boolean</em>) – Se deve ou não imprimir tabelas</p></li>
+</ul>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basedados</span><span class="o">.</span><span class="n">executar</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Tabela;&quot;</span><span class="p">,</span> <span class="n">imprimir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD.imprimir_tabela">
+<span class="sig-name descname"><span class="pre">imprimir_tabela</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dados</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD.imprimir_tabela"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD.imprimir_tabela" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Aplicação de Gestão de Recessão de Hotel</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Ir" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navegação</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ferramentas_BD module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modulo-de-interacao-com-bases-de-dados-sqlite">Módulo de interação com bases de dados SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ferramentas_BD.FerramentasBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ferramentas_BD.FerramentasBD.conectarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.conectarBD()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ferramentas_BD.FerramentasBD.desconectarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.desconectarBD()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ferramentas_BD.FerramentasBD.executarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.executarBD()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ferramentas_BD.FerramentasBD.imprimir_tabela"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.imprimir_tabela()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="capítulo anterior">gestao-recessao-hotel documentation</a></li>
+      <li>Next: <a href="funcoes_sqlite_create.html" title="próximo capítulo">funcoes_sqlite_create module</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, David Zeferino, Martim Teixeira, Afonso Bento, Romano Balan.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/ferramentas_BD.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
