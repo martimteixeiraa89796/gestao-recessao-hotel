@@ -1,16 +1,31 @@
+"""
+Módulo de interação com bases de dados SQLite
+---------------------------------------------
+
+Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dados da aplicação.
+É utilizado como ponte entre as *queries* SQL e a sua execução na base de dados.
+
+:Authors: Martim Teixeira
+:Date: 12 de novembro de 2025
+:Version: 1.0
+"""
+
 import sqlite3  #Módulo já vem instalado com Python
 
 class FerramentasBD():
     """
-    # FerramentasBD
-    Classe com ferramentas para interagir com base de dados sqlite. É necessário inicia-la para poder ser usada.
-    
-    **Não colocar SQL queries dentro desta classe! Esta classe faz somente a ponte para a base de dados**
+    Classe com ferramentas para interagir com base de dados SQLite.
+    ===============================================================
 
-    ## Métodos:
-    - **conectarBD:** Inicia a conecção com base de dados.
-    - **desconectarBD:** Desconecta base de dados.
-    - **executarBD:** Executa queries na base de dados.
+    Serve para centralizar todos os processos relacionados ao ponto em cima.
+    Desta forma, só se escreve a lógica uma única vez e executa-se quando quisermos.
+
+    Esta classe contém métodos e funções que:
+    - Inicia conecção com base de dados;
+    - Fecha conecção com base de dados;
+    - Executa *queries* SQL na base de dados (com opção de imprimir tabelas);
+
+    >>> basedados = FerramentasBD()
     """
     
     def __init__(self):
@@ -22,14 +37,15 @@ class FerramentasBD():
 
     def conectarBD(self, ficheiro):
         """
-        # conectarBD
         Inicia a conecção com base de dados.
-        - Para iniciar a base de dados, primeiro é necessário conectar à mesma.
-        - Se a base de dados não existir, ela será criada automaticamente.
 
-        ## Argumentos:
-        - **ficheiro:** Nome do ficheiro da base de dados a ser utilizado
-          - **Nota:** Ficheiros são automaticamente criados com extensão .bd
+        Para iniciar a base de dados, primeiro é necessário conectar à mesma.
+        Se a base de dados não existir, ela será criada automaticamente.
+
+        :param ficheiro: Nome do ficheiro **.bd** da base de dados a ser utilizado
+        :type ficheiro: string
+
+        >>> basedados.conectar("bd")
         """
 
         try:
@@ -41,10 +57,12 @@ class FerramentasBD():
 
     def desconectarBD(self):
         """
-        # desconectarBD
         Desconecta base de dados.
-        - É necessário fechar a base de dados para que, caso a aplicação falhe, os dados não serem perdidos.
-        - Este método também limpa a variável **sqlconnector** da memória.
+        
+        É necessário fechar a base de dados para que, caso a aplicação falhe, os dados não serem perdidos.
+        Este método também limpa a variável **sqlconnector** da memória.
+
+        >>> basedados.desconectarBD()
         """
 
         if self.sqlconnector:
@@ -61,14 +79,18 @@ class FerramentasBD():
 
     def executarBD(self, query, imprimir=False):
         """
-        # executarBD
         Executa queries na base de dados.
-        - Cria-se um cursor para se poder interagir com a base de dados.
-        - Se a query enviar um resultado, o mesmo fica guardado, caso contrário fica **None**.
-        - Faz-se um commit das ações das queries (Não confundir com commits do Git)
+        
+        Cria-se um cursor para se poder interagir com a base de dados.
+        Se a query enviar um resultado, o mesmo fica guardado, caso contrário fica **None**.
+        Faz-se um commit das ações das queries (Não confundir com commits do Git)
 
-        ## Argumentos:
-        - **query:** A query para ser executada
+        :param query: A query para ser executada na base de dados
+        :type query: string
+        :param imprimir: Se deve ou não imprimir tabelas
+        :type imprimir: boolean
+
+        >>> basedados.executar("SELECT * FROM Tabela;", imprimir=True)
         """
         
         if self.sqlconnector:

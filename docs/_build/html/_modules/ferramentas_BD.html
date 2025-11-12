@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="pt" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ferramentas_BD &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=103ffe9a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=beaedd51"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Pesquisar" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Código fonte de ferramentas_BD</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de interação com bases de dados SQLite</span>
+<span class="sd">---------------------------------------------</span>
+
+<span class="sd">Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dados da aplicação.</span>
+<span class="sd">É utilizado como ponte entre as *queries* SQL e a sua execução na base de dados.</span>
+
+<span class="sd">:Authors: Martim Teixeira</span>
+<span class="sd">:Date: 12 de novembro de 2025</span>
+<span class="sd">:Version: 1.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>  <span class="c1">#Módulo já vem instalado com Python</span>
+
+<div class="viewcode-block" id="FerramentasBD">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.FerramentasBD">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FerramentasBD</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe com ferramentas para interagir com base de dados SQLite.</span>
+<span class="sd">    ===============================================================</span>
+
+<span class="sd">    Serve para centralizar todos os processos relacionados ao ponto em cima.</span>
+<span class="sd">    Desta forma, só se escreve a lógica uma única vez e executa-se quando quisermos.</span>
+
+<span class="sd">    Esta classe contém métodos e funções que:</span>
+<span class="sd">    - Inicia conecção com base de dados;</span>
+<span class="sd">    - Fecha conecção com base de dados;</span>
+<span class="sd">    - Executa *queries* SQL na base de dados (com opção de imprimir tabelas);</span>
+
+<span class="sd">    &gt;&gt;&gt; basedados = FerramentasBD()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1">#Conector para se fazer conecção com base de dados, global para a classe toda</span>
+        <span class="c1">#Isto é necessário não só para não se repetir código com cada query,</span>
+        <span class="c1">#mas também para que os métodos desta classe o possam usar.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="FerramentasBD.conectarBD">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.FerramentasBD.conectarBD">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">conectarBD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ficheiro</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inicia a conecção com base de dados.</span>
+
+<span class="sd">        Para iniciar a base de dados, primeiro é necessário conectar à mesma.</span>
+<span class="sd">        Se a base de dados não existir, ela será criada automaticamente.</span>
+
+<span class="sd">        :param ficheiro: Nome do ficheiro **.bd** da base de dados a ser utilizado</span>
+<span class="sd">        :type ficheiro: string</span>
+
+<span class="sd">        &gt;&gt;&gt; basedados.conectar(&quot;bd&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">ficheiro</span><span class="p">)</span><span class="si">}</span><span class="s1">.db&#39;</span><span class="p">)</span>
+        
+        <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao tentar conectar à base de dados.&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="FerramentasBD.desconectarBD">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.FerramentasBD.desconectarBD">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">desconectarBD</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Desconecta base de dados.</span>
+<span class="sd">        </span>
+<span class="sd">        É necessário fechar a base de dados para que, caso a aplicação falhe, os dados não serem perdidos.</span>
+<span class="sd">        Este método também limpa a variável **sqlconnector** da memória.</span>
+
+<span class="sd">        &gt;&gt;&gt; basedados.desconectarBD()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span> <span class="o">=</span> <span class="kc">None</span>
+            
+            <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao tentar desconectar base de dados.&quot;</span><span class="p">)</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base de dados não está conectada.&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="FerramentasBD.executarBD">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.FerramentasBD.executarBD">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">executarBD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">imprimir</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Executa queries na base de dados.</span>
+<span class="sd">        </span>
+<span class="sd">        Cria-se um cursor para se poder interagir com a base de dados.</span>
+<span class="sd">        Se a query enviar um resultado, o mesmo fica guardado, caso contrário fica **None**.</span>
+<span class="sd">        Faz-se um commit das ações das queries (Não confundir com commits do Git)</span>
+
+<span class="sd">        :param query: A query para ser executada na base de dados</span>
+<span class="sd">        :type query: string</span>
+<span class="sd">        :param imprimir: Se deve ou não imprimir tabelas</span>
+<span class="sd">        :type imprimir: boolean</span>
+
+<span class="sd">        &gt;&gt;&gt; basedados.executar(&quot;SELECT * FROM Tabela;&quot;, imprimir=True)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>  <span class="c1">#Criar cursor para interagir com base de dados</span>
+            
+            <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao tentar criar cursor.&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">cursor</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>  <span class="c1">#Fazer commit das ações</span>
+
+                    <span class="k">if</span> <span class="n">imprimir</span><span class="p">:</span>
+                        <span class="n">resultado</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">imprimir_tabela</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+                    
+                    <span class="n">resultado</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>  <span class="c1">#Retirar todas as linhas e guardar na variável</span>
+                    <span class="k">return</span> <span class="n">resultado</span>
+                    
+                <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao executar commandos SQL.&quot;</span><span class="p">)</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Não é possível executar SQL porque cursor não existe.&quot;</span><span class="p">)</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base de dados não está conectada.&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="FerramentasBD.imprimir_tabela">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.FerramentasBD.imprimir_tabela">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">imprimir_tabela</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">dados</span><span class="p">):</span>
+        <span class="n">headers_listados</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">comprimento_listado</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1">#Listar headers</span>
+        <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+            <span class="n">headers_listados</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1">#Calcular comprimento para cada coluna</span>
+        <span class="k">for</span> <span class="n">coluna</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">headers_listados</span><span class="p">)):</span> <span class="c1">#Iterar pelas colunas horizontalmente</span>
+            <span class="n">comprimento_celula</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">headers_listados</span><span class="p">[</span><span class="n">coluna</span><span class="p">]))</span>
+            
+            <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">dados</span><span class="p">:</span> <span class="c1">#Iterar pelas linhas verticalmente</span>
+                <span class="n">novo_comprimento</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="n">coluna</span><span class="p">]))</span> <span class="c1">#Celula</span>
+
+                <span class="k">if</span> <span class="n">comprimento_celula</span> <span class="o">&lt;</span> <span class="n">novo_comprimento</span><span class="p">:</span>
+                    <span class="n">comprimento_celula</span> <span class="o">=</span> <span class="n">novo_comprimento</span>
+
+            <span class="n">comprimento_listado</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">comprimento_celula</span><span class="p">)</span>
+
+        <span class="c1">#Contruir tabela</span>
+        <span class="n">tabela</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tabela</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">headers_listados</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">dados</span><span class="p">:</span>
+            <span class="n">tabela</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span>
+
+        <span class="c1">#Formatar tabela</span>
+        <span class="n">tabela_formatada</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">tabela</span><span class="p">:</span>
+            <span class="n">nova_linha</span> <span class="o">=</span> <span class="s2">&quot;| &quot;</span>
+            <span class="k">for</span> <span class="n">coluna</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">linha</span><span class="p">)):</span>
+                <span class="n">formatado</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="n">coluna</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="p">(</span><span class="n">comprimento_listado</span><span class="p">[</span><span class="n">coluna</span><span class="p">]</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="n">coluna</span><span class="p">])))</span>
+                <span class="n">nova_linha</span> <span class="o">+=</span> <span class="n">formatado</span> <span class="o">+</span> <span class="s2">&quot; | &quot;</span>
+            <span class="n">tabela_formatada</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nova_linha</span><span class="p">)</span>
+
+        <span class="c1">#imprimir tabela</span>
+        <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">tabela_formatada</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Aplicação de Gestão de Recessão de Hotel</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Ir" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navegação</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ferramentas_BD.html">ferramentas_BD module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html">main module</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Código do módulo</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, David Zeferino, Martim Teixeira, Afonso Bento, Romano Balan.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
