@@ -59,7 +59,7 @@ class FerramentasBD():
             print("Base de dados não está conectada.")
 
 
-    def executarBD(self, query):
+    def executarBD(self, query, imprimir=False):
         """
         # executarBD
         Executa queries na base de dados.
@@ -83,6 +83,9 @@ class FerramentasBD():
                     cursor.execute(str(query))
                     self.sqlconnector.commit()  #Fazer commit das ações
 
+                    if imprimir:
+                        resultado = self.imprimir_tabela(cursor.description, cursor.fetchall())
+                    
                     resultado = cursor.fetchall()  #Retirar todas as linhas e guardar na variável
                     return resultado
                     
@@ -94,3 +97,45 @@ class FerramentasBD():
             
         else:
             print("Base de dados não está conectada.")
+
+
+    def imprimir_tabela(self, headers, dados):
+        headers_listados = []
+        comprimento_listado = []
+
+        #Listar headers
+        for linha in headers:
+            headers_listados.append(linha[0])
+
+        #Calcular comprimento para cada coluna
+        for coluna in range(len(headers_listados)): #Iterar pelas colunas horizontalmente
+            comprimento_celula = len(str(headers_listados[coluna]))
+            
+            for linha in dados: #Iterar pelas linhas verticalmente
+                novo_comprimento = len(str(linha[coluna])) #Celula
+
+                if comprimento_celula < novo_comprimento:
+                    comprimento_celula = novo_comprimento
+
+            comprimento_listado.append(comprimento_celula)
+
+        #Contruir tabela
+        tabela = []
+        tabela.append(headers_listados)
+        
+        for linha in dados:
+            tabela.append(linha)
+
+        #Formatar tabela
+        tabela_formatada = []
+
+        for linha in tabela:
+            nova_linha = "| "
+            for coluna in range(len(linha)):
+                formatado = str(linha[coluna]) + " "*(comprimento_listado[coluna]-len(str(linha[coluna])))
+                nova_linha += formatado + " | "
+            tabela_formatada.append(nova_linha)
+
+        #imprimir tabela
+        for linha in tabela_formatada:
+            print(linha)
