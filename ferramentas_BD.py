@@ -124,7 +124,7 @@ class FerramentasBD():
                     self.sqlconnector.commit()  #Fazer commit das ações
 
                     if imprimir:
-                        resultado = self.imprimir_tabela(cursor.description, cursor.fetchall())
+                        self.imprimir_tabela(cursor.description, cursor.fetchall())
                     
                     resultado = cursor.fetchall()  #Retirar todas as linhas e guardar na variável
                     return resultado
