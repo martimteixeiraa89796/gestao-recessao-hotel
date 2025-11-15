@@ -282,7 +282,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -298,6 +300,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-para-fazer-selects">Módulo com funções para fazer <em>selects</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.select_geral"><code class="docutils literal notranslate"><span class="pre">select_geral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.select_geral_escolha"><code class="docutils literal notranslate"><span class="pre">select_geral_escolha()</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -309,6 +321,41 @@ document.write(`
                   
   <section id="module-funcoes_sqlite_select">
 <span id="funcoes-sqlite-select-module"></span><h1>funcoes_sqlite_select module<a class="headerlink" href="#module-funcoes_sqlite_select" title="Link to this heading">#</a></h1>
+<section id="modulo-com-funcoes-para-fazer-selects">
+<h2>Módulo com funções para fazer <em>selects</em><a class="headerlink" href="#modulo-com-funcoes-para-fazer-selects" title="Link to this heading">#</a></h2>
+<p>Este módulo contém funções que criam o código SQL para ser utilizado em <em>queries select</em>.</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_select.select_geral">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">select_geral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#select_geral"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.select_geral" title="Link to this definition">#</a></dt>
+<dd><p>Retorna código SQL para <em>queries select</em> de uma tabela.</p>
+<p>Esta função é usada para criar as <em>queries</em> para visualizar todos os dados de uma das tabelas disponíveis na base de dados.
+Serve para ter uma ideia dos dados existentes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tabela</strong> (<em>string</em>) – A tabela que se pretende consultar</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Código SQL para a <em>query</em></p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+<p>Exemplo de um <em>select</em> de uma tabela:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">select_geral</span><span class="p">(</span><span class="s2">&quot;Tb_Cliente&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_select.select_geral_escolha">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">select_geral_escolha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#select_geral_escolha"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.select_geral_escolha" title="Link to this definition">#</a></dt>
+<dd><p>Forma interativa de fazer <em>select</em> de uma tabela.</p>
+<p>É pedido ao utilizador uma tabela para ser feito um <em>select</em>.
+A tabela escolhida é depois enviada para a função <strong>select_geral</strong>.</p>
+</dd></dl>
+
 </section>
 
 
@@ -346,6 +393,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-para-fazer-selects">Módulo com funções para fazer <em>selects</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.select_geral"><code class="docutils literal notranslate"><span class="pre">select_geral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.select_geral_escolha"><code class="docutils literal notranslate"><span class="pre">select_geral_escolha()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
