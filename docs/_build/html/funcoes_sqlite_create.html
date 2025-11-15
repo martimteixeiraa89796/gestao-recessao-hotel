@@ -305,6 +305,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-de-criacao-de-tabelas">Módulo com funções de criação de tabelas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_Camas"><code class="docutils literal notranslate"><span class="pre">criar_tabela_Camas()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_Cliente"><code class="docutils literal notranslate"><span class="pre">criar_tabela_Cliente()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_Funcionario"><code class="docutils literal notranslate"><span class="pre">criar_tabela_Funcionario()</span></code></a></li>
@@ -316,7 +317,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_Tipo_Reserva"><code class="docutils literal notranslate"><span class="pre">criar_tabela_Tipo_Reserva()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_tipo_cama"><code class="docutils literal notranslate"><span class="pre">criar_tabela_tipo_cama()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_tipo_quarto"><code class="docutils literal notranslate"><span class="pre">criar_tabela_tipo_quarto()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.funcao"><code class="docutils literal notranslate"><span class="pre">função()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -330,67 +330,163 @@ document.write(`
                   
   <section id="module-funcoes_sqlite_create">
 <span id="funcoes-sqlite-create-module"></span><h1>funcoes_sqlite_create module<a class="headerlink" href="#module-funcoes_sqlite_create" title="Link to this heading">#</a></h1>
+<section id="modulo-com-funcoes-de-criacao-de-tabelas">
+<h2>Módulo com funções de criação de tabelas<a class="headerlink" href="#modulo-com-funcoes-de-criacao-de-tabelas" title="Link to this heading">#</a></h2>
+<p>Este módulo contém funções que são usadas para criar as várias tabelas existentes na base de dados da aplicação.
+As funções retornam a query SQL para ser usada na execução na base de dados.</p>
+</section>
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Camas">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Camas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Camas"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Camas" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com relação entre tipos de camas e respetivo quarto</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Cliente">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Cliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Cliente"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Cliente" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com dados sobre os clientes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Funcionario">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Funcionario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Funcionario"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Funcionario" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com dados sobre funcionários</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Funcoes">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Funcoes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Funcoes"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Funcoes" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com funções do funcionários</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Horario">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Horario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Horario"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Horario" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com o horário de cada funcionário</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Hospedes">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Hospedes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Hospedes"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Hospedes" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com dados sobre os hospedes referentes a uma reserva</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Quarto">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Quarto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Quarto"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Quarto" title="Link to this definition">#</a></dt>
-<dd><p>Criar tabela Quarto</p>
+<dd><p>Cria tabela com os quartos disponíveis no hotel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Reserva">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Reserva</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Reserva"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Reserva" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com dados sobre reservas feitas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_Tipo_Reserva">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_Tipo_Reserva</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_Tipo_Reserva"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_Tipo_Reserva" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com tipo de reserva</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_tipo_cama">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_tipo_cama</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_tipo_cama"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_tipo_cama" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Cria tabela com tipos de cama</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_create.criar_tabela_tipo_quarto">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">criar_tabela_tipo_quarto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#criar_tabela_tipo_quarto"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.criar_tabela_tipo_quarto" title="Link to this definition">#</a></dt>
-<dd><p>Cria a tabela Tipo_Quarto</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="funcoes_sqlite_create.funcao">
-<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_create.</span></span><span class="sig-name descname"><span class="pre">função</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exemplo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exemplo2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exemplo3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_create.html#função"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_create.funcao" title="Link to this definition">#</a></dt>
-<dd><p>Função de exemplo</p>
+<dd><p>Cria tabela com tipos de quartos</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -440,6 +536,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-de-criacao-de-tabelas">Módulo com funções de criação de tabelas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_Camas"><code class="docutils literal notranslate"><span class="pre">criar_tabela_Camas()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_Cliente"><code class="docutils literal notranslate"><span class="pre">criar_tabela_Cliente()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_Funcionario"><code class="docutils literal notranslate"><span class="pre">criar_tabela_Funcionario()</span></code></a></li>
@@ -451,7 +548,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_Tipo_Reserva"><code class="docutils literal notranslate"><span class="pre">criar_tabela_Tipo_Reserva()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_tipo_cama"><code class="docutils literal notranslate"><span class="pre">criar_tabela_tipo_cama()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.criar_tabela_tipo_quarto"><code class="docutils literal notranslate"><span class="pre">criar_tabela_tipo_quarto()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_create.funcao"><code class="docutils literal notranslate"><span class="pre">função()</span></code></a></li>
 </ul>
   </nav></div>
 

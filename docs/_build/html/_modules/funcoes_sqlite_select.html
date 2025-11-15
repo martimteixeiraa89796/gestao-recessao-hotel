@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visão geral: código do módulo &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
+    <title>funcoes_sqlite_select &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
   
   
   
@@ -40,7 +40,7 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/translations.js?v=beaedd51"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/funcoes_sqlite_select';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Pesquisar" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -258,11 +258,93 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h1>Todos os módulos onde este código está disponível</h1>
-<ul><li><a href="ferramentas_BD.html">ferramentas_BD</a></li>
-<li><a href="funcoes_sqlite_create.html">funcoes_sqlite_create</a></li>
-<li><a href="funcoes_sqlite_select.html">funcoes_sqlite_select</a></li>
-</ul>
+  <h1>Código fonte de funcoes_sqlite_select</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo com funções para fazer *selects*</span>
+<span class="sd">=======================================</span>
+
+<span class="sd">Este módulo contém funções que criam o código SQL para ser utilizado em *queries select*.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="select_geral">
+<a class="viewcode-back" href="../funcoes_sqlite_select.html#funcoes_sqlite_select.select_geral">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_geral</span><span class="p">(</span><span class="n">tabela</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retorna código SQL para *queries select* de uma tabela.</span>
+
+<span class="sd">    Esta função é usada para criar as *queries* para visualizar todos os dados de uma das tabelas disponíveis na base de dados.</span>
+<span class="sd">    Serve para ter uma ideia dos dados existentes.</span>
+
+<span class="sd">    :param tabela: A tabela que se pretende consultar</span>
+<span class="sd">    :type tabela: string</span>
+
+<span class="sd">    :return: Código SQL para a *query*</span>
+<span class="sd">    :rtype: string</span>
+
+<span class="sd">    Exemplo de um *select* de uma tabela:</span>
+
+<span class="sd">    &gt;&gt;&gt; select_geral(&quot;Tb_Cliente&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        SELECT * FROM </span><span class="si">{</span><span class="n">tabela</span><span class="si">}</span><span class="s2">;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
+
+
+
+<div class="viewcode-block" id="select_geral_escolha">
+<a class="viewcode-back" href="../funcoes_sqlite_select.html#funcoes_sqlite_select.select_geral_escolha">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_geral_escolha</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Forma interativa de fazer *select* de uma tabela.</span>
+
+<span class="sd">    É pedido ao utilizador uma tabela para ser feito um *select*.</span>
+<span class="sd">    A tabela escolhida é depois enviada para a função **select_geral**.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Tabelas disponíveis:</span>
+<span class="s2">            1.  Cliente</span>
+<span class="s2">            2.  Hospedes</span>
+<span class="s2">            3.  Reserva</span>
+<span class="s2">            4.  Tipo de Reserva</span>
+<span class="s2">            5.  Quarto</span>
+<span class="s2">            6.  Tipos de Quarto</span>
+<span class="s2">            7.  Camas</span>
+<span class="s2">            8.  Tipos de Cama</span>
+<span class="s2">            9.  Funcionários</span>
+<span class="s2">            10. Funções</span>
+<span class="s2">            11. Horário</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="n">tabelas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tb_Cliente&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Hospede&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Reserva&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Tipo_Reserva&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Quarto&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Tipo_Quarto&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Cama&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Tipo_Cama&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Funcionario&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Funcoes&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Tb_Horario&quot;</span>
+               <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">escolha</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha uma tabela: &quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">escolha</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tabelas</span><span class="p">):</span>
+            <span class="k">break</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabela não disponível.&quot;</span><span class="p">)</span>
+
+    <span class="n">select_geral</span><span class="p">(</span><span class="n">tabelas</span><span class="p">[</span><span class="n">escolha</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
+
+</pre></div>
 
                 </article>
               

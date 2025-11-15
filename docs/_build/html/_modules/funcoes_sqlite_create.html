@@ -259,60 +259,70 @@ document.write(`
                 <article class="bd-article">
                   
   <h1>Código fonte de funcoes_sqlite_create</h1><div class="highlight"><pre>
-<span></span><span class="c1">#Este ficheiro é onde vai ser colocado funções com comandos de SQL</span>
-<span class="c1">#O objetivo é que estas sejam chamadas dentro de um ficheiro python</span>
-<span class="c1">#onde depois a classe que está dentro de ferramentas_BD.py</span>
-<span class="c1">#vai depois ser iniciada e utilizada.</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo com funções de criação de tabelas</span>
+<span class="sd">========================================</span>
 
-<span class="c1">#Isto é somente para separar a query e a lógica do código.</span>
+<span class="sd">Este módulo contém funções que são usadas para criar as várias tabelas existentes na base de dados da aplicação.</span>
+<span class="sd">As funções retornam a query SQL para ser usada na execução na base de dados.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-
-
-<span class="c1">#Exemplo de função e estrutura</span>
-<div class="viewcode-block" id="função">
-<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.função">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">função</span><span class="p">(</span><span class="n">exemplo</span><span class="p">,</span> <span class="n">exemplo2</span><span class="p">,</span> <span class="n">exemplo3</span><span class="p">):</span>  <span class="c1">#&lt;--- Colocar argumentos para alterar partes da query antes de ser mandada para ser executada</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Função de exemplo&quot;&quot;&quot;</span>
-    
-    <span class="c1">#Query é construída com as variáveis de cima</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        SELECT * FROM </span><span class="si">{</span><span class="n">exemplo</span><span class="si">}</span><span class="s2">;</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span> <span class="c1">#Retorna a query finalizada para depois ser executada</span></div>
-
-    <span class="c1">#A query seria guardada numa variável para depois ser executada noutro lado</span>
 
     
 <div class="viewcode-block" id="criar_tabela_tipo_cama">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_tipo_cama">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_tipo_cama</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com tipos de cama</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        create table Tipo_Cama(</span>
 <span class="s2">        Num_Tipo_Cama int not null,</span>
 <span class="s2">        Nome_Tipo_Cama varchar(100),</span>
 <span class="s2">        constraint PK_Tipo_Cama primary key (Num_Tipo_Cama)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
 
 
 
 <div class="viewcode-block" id="criar_tabela_tipo_quarto">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_tipo_quarto">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_tipo_quarto</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cria a tabela Tipo_Quarto&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com tipos de quartos</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        CREATE TABLE IF NOT EXISTS Tipo_Quarto (</span>
 <span class="s2">            Num_Tipo_Quarto INT NOT NULL,</span>
 <span class="s2">            Nome_Tipo_Quarto VARCHAR(50) NOT NULL,</span>
 <span class="s2">            CONSTRAINT PK_Tipo_Quarto PRIMARY KEY (Num_Tipo_Quarto)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
+
+
 
 <div class="viewcode-block" id="criar_tabela_Quarto">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Quarto">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Quarto</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Criar tabela Quarto&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com os quartos disponíveis no hotel</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        CREATE TABLE IF NOT EXISTS Quarto (</span>
 <span class="s2">            Num_Quarto INT AUTO_INCREMENT,</span>
@@ -323,13 +333,22 @@ document.write(`
 <span class="s2">            CONSTRAINT FK_Quarto_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)</span>
 <span class="s2">                REFERENCES Tipo_Quarto(Num_Tipo_Quarto)</span>
 <span class="s2">    );  </span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
 
 
 
 <div class="viewcode-block" id="criar_tabela_Cliente">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Cliente">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Cliente</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com dados sobre os clientes</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        create table Cliente(</span>
 <span class="s2">        NIF int not null,</span>
@@ -337,24 +356,44 @@ document.write(`
 <span class="s2">        Telefone varchar(15),</span>
 <span class="s2">        constraint PK_Cliente primary key(NIF)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
+
 
 
 <div class="viewcode-block" id="criar_tabela_Tipo_Reserva">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Tipo_Reserva">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Tipo_Reserva</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com tipo de reserva</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        create table Tipo_Reserva(</span>
 <span class="s2">        Num_Tipo_Reserva int not null,</span>
 <span class="s2">        Nome_Tipo_Reserva varchar(50),</span>
 <span class="s2">        constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
+
 
     
 <div class="viewcode-block" id="criar_tabela_Camas">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Camas">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Camas</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com relação entre tipos de camas e respetivo quarto</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    CREATE TABLE IF NOT EXISTS tipo_Camas(</span>
 <span class="s2">    Num_Quarto INT NOT NULL,</span>
@@ -364,24 +403,44 @@ document.write(`
 <span class="s2">    CONSTRAINT FK_Camas_Tipo_Cama FOREIGN KEY(Num_Tipo_Quarto)</span>
 <span class="s2">        REFERENCES Tipo_Cama(Num_Tipo_Cama)</span>
 <span class="s2">    );</span>
-<span class="s2">&quot;&quot;&quot;</span></div>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
+
 
 
 <div class="viewcode-block" id="criar_tabela_Funcoes">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Funcoes">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Funcoes</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com funções do funcionários</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        create table Funcoes(</span>
 <span class="s2">        Num_Funcao int not null,</span>
 <span class="s2">        Nome_Funcao varchar(50),</span>
 <span class="s2">        constraint PK_Funcoes primary key (Num_Funcao)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
+
 
 
 <div class="viewcode-block" id="criar_tabela_Funcionario">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Funcionario">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Funcionario</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com dados sobre funcionários</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        create table Funcionario(</span>
 <span class="s2">        Num_Funcionario int not null,</span>
@@ -391,11 +450,22 @@ document.write(`
 <span class="s2">        constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)</span>
 <span class="s2">        references Funcoes(Num_Funcao)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+    
+    <span class="k">return</span> <span class="n">query</span></div>
+
+
 
 <div class="viewcode-block" id="criar_tabela_Horario">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Horario">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Horario</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com o horário de cada funcionário</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        create table Horario(</span>
 <span class="s2">        Num_funcionario int,</span>
@@ -405,12 +475,22 @@ document.write(`
 <span class="s2">        constraint FK_Funcionario_Horario foreign key (Num_Funcionario)</span>
 <span class="s2">        references Funcionario (Num_Funcionario)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
+
 
 
 <div class="viewcode-block" id="criar_tabela_Reserva">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Reserva">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Reserva</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com dados sobre reservas feitas</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        create table Reserva(</span>
 <span class="s2">        Num_Reserva int not null,</span>
@@ -424,12 +504,22 @@ document.write(`
 <span class="s2">        constraint FK_Funcionario_Reserva foreign key (Num_Funcionario)</span>
 <span class="s2">        references Funcionario(Num_funcionario)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
+
 
 
 <div class="viewcode-block" id="criar_tabela_Hospedes">
 <a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Hospedes">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Hospedes</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cria tabela com dados sobre os hospedes referentes a uma reserva</span>
+
+<span class="sd">    :return: Código SQL para *query*</span>
+<span class="sd">    :rtype: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        create table Hospedes(</span>
 <span class="s2">        Num_Reserva int,</span>
@@ -443,7 +533,9 @@ document.write(`
 <span class="s2">        constraint FK_Quarto_Hospedes foreign key (Num_Quarto)</span>
 <span class="s2">        references Quarto (Num_Quarto)</span>
 <span class="s2">        );</span>
-<span class="s2">    &quot;&quot;&quot;</span></div>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span></div>
 
 </pre></div>
 
