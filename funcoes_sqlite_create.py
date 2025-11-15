@@ -24,6 +24,8 @@ def criar_tabela_tipo_cama():
         );
     """
 
+    return query
+
 
 def criar_tabela_tipo_quarto():
     """
@@ -40,6 +42,10 @@ def criar_tabela_tipo_quarto():
             CONSTRAINT PK_Tipo_Quarto PRIMARY KEY (Num_Tipo_Quarto)
         );
     """
+
+    return query
+
+
 def criar_tabela_Quarto():
     """
     Cria tabela com os quartos disponíveis no hotel
@@ -60,6 +66,8 @@ def criar_tabela_Quarto():
     );  
     """
 
+    return query
+
 
 def criar_tabela_Cliente():
     """
@@ -78,6 +86,9 @@ def criar_tabela_Cliente():
         );
     """
 
+    return query
+
+
 def criar_tabela_Tipo_Reserva():
     """
     Cria tabela com tipo de reserva
@@ -93,6 +104,9 @@ def criar_tabela_Tipo_Reserva():
         constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
         );
     """
+
+    return query
+
     
 def criar_tabela_Camas():
     """
@@ -113,6 +127,9 @@ def criar_tabela_Camas():
     );
 """
 
+    return query
+
+
 def criar_tabela_Funcoes():
     """
     Cria tabela com funções do funcionários
@@ -128,6 +145,9 @@ def criar_tabela_Funcoes():
         constraint PK_Funcoes primary key (Num_Funcao)
         );
     """
+
+    return query
+
 
 def criar_tabela_Funcionario():
     """
@@ -147,6 +167,10 @@ def criar_tabela_Funcionario():
         references Funcoes(Num_Funcao)
         );
     """
+    
+    return query
+
+
 def criar_tabela_Horario():
     """
     Cria tabela com o horário de cada funcionário
@@ -165,6 +189,9 @@ def criar_tabela_Horario():
         references Funcionario (Num_Funcionario)
         );
     """
+
+    return query
+
 
 def criar_tabela_Reserva():
     """
@@ -189,6 +216,9 @@ def criar_tabela_Reserva():
         );
     """
 
+    return query
+
+
 def criar_tabela_Hospedes():
     """
     Cria tabela com dados sobre os hospedes referentes a uma reserva
@@ -211,3 +241,5 @@ def criar_tabela_Hospedes():
         references Quarto (Num_Quarto)
         );
     """
+
+    return query
