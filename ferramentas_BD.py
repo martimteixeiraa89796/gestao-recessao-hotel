@@ -4,10 +4,6 @@ Módulo de interação com bases de dados SQLite
 
 Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dados da aplicação.
 É utilizado como ponte entre as *queries* SQL e a sua execução na base de dados.
-
-:Authors: Martim Teixeira
-:Date: 12 de novembro de 2025
-:Version: 1.0
 """
 
 import sqlite3  #Módulo já vem instalado com Python
@@ -15,15 +11,17 @@ import sqlite3  #Módulo já vem instalado com Python
 class FerramentasBD():
     """
     Classe com ferramentas para interagir com base de dados SQLite.
-    ===============================================================
 
     Serve para centralizar todos os processos relacionados ao ponto em cima.
     Desta forma, só se escreve a lógica uma única vez e executa-se quando quisermos.
 
     Esta classe contém métodos e funções que:
+
     - Inicia conecção com base de dados;
     - Fecha conecção com base de dados;
     - Executa *queries* SQL na base de dados (com opção de imprimir tabelas);
+
+    Exemplo de inicialização da classe:
 
     >>> basedados = FerramentasBD()
     """
@@ -39,13 +37,19 @@ class FerramentasBD():
         """
         Inicia a conecção com base de dados.
 
-        Para iniciar a base de dados, primeiro é necessário conectar à mesma.
+        Para iniciar a base de dados, primeiro é necessário conectá-la.
         Se a base de dados não existir, ela será criada automaticamente.
+        Esta função utiliza o módulo **sqlite** que vem pre-instalado com o Python
+        para criar o objeto de conecção **sqlconnector**.
 
         :param ficheiro: Nome do ficheiro **.bd** da base de dados a ser utilizado
         :type ficheiro: string
 
-        >>> basedados.conectar("bd")
+        :raise sqlite3.Error: Se ocorrer algum erro durante a conecção
+
+        Exemplo de conecção com base de dados: 
+
+        >>> basedados.conectarBD("bd")
         """
 
         try:
@@ -60,7 +64,11 @@ class FerramentasBD():
         Desconecta base de dados.
         
         É necessário fechar a base de dados para que, caso a aplicação falhe, os dados não serem perdidos.
-        Este método também limpa a variável **sqlconnector** da memória.
+        Este método fecha e limpa a variável **sqlconnector** da memória.
+
+        :raise sqlite3.Error: Se ocorrer algum erro durante a o desconecção
+
+        Exemplo de fechar conecção:
 
         >>> basedados.desconectarBD()
         """
@@ -83,13 +91,20 @@ class FerramentasBD():
         
         Cria-se um cursor para se poder interagir com a base de dados.
         Se a query enviar um resultado, o mesmo fica guardado, caso contrário fica **None**.
-        Faz-se um commit das ações das queries (Não confundir com commits do Git)
+        Após a execução, faz um commit das ações das queries.
+
+        Caso for necessário, esta também chama uma função para imprimir tabelas formatadas.
 
         :param query: A query para ser executada na base de dados
         :type query: string
+
         :param imprimir: Se deve ou não imprimir tabelas
         :type imprimir: boolean
 
+        :raise sqlite3.Error: Se ocorrer algum erro durante a criação do cursor ou na execução
+
+        Exemplo de execução de querie com impressão de tabela:
+        
         >>> basedados.executar("SELECT * FROM Tabela;", imprimir=True)
         """
         
@@ -122,6 +137,37 @@ class FerramentasBD():
 
 
     def imprimir_tabela(self, headers, dados):
+        """
+        Imprime tabelas de forma formatada.
+
+        Uma vez que o resultado que advém da execução de queries que devolvem tabelas é uma lista com tuples,
+        para que o utilizador perceba o que está a ser apresentado, o resultado tem de ser formatado.
+
+        Para tal, este método faz a iteração pelos *headers* (cabeçalhos) e dados para encontrar aquele com maior comprimento.
+        Estes comprimentos são depois guardados numa lista para serem usados na construção das colunas da tabela.
+        Quando os dados necessários para a construção da tabelas estiverem prontos, são construídas strings para cada linha da tabela,
+        que são depois guardados numa lista, prontos para serem impressos.
+
+        Uma limitação do método, é que os header têm de estar no mesmo formato que o módulo **sqlite** fornece em **cursor.description**.
+
+        :param headers: Headers (cabeçalhos) da tabela, cada valor deve estar numa lista/tuple
+        :type headers: list
+
+        :param dados: Lista de dados retirados de uma tabela, organizados por linha
+        :type dados: list
+
+        Exemplo com dados retirados de queries:
+
+        >>> imprimir_tabela(cursor.description, cursor.fetchall())
+
+        Exemplo com dados externos:
+
+        >>> imprimir_tabela([("Idade"), ("Nome"), ("Contacto")],
+                            [(21, "João", 999999999),
+                            (23, "Mariana", 888888888)
+                            ])
+        """
+
         headers_listados = []
         comprimento_listado = []
 
