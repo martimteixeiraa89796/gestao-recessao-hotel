@@ -3,11 +3,16 @@
 #Diretórios cache do Python, estes não contém código útil para o projeto
 __pycache__/
 
+
 #Diretório com definições do vscode
 .vscode/
+
 
 #Excluir ficheiro de base de dados pois é um binário e não código útil (Utilizado apenas para guardar dados)
 *.db
 
-#Ficheiro com binários criados durante criação de documentação
+
+#Ficheiro com binários ou lixo criados durante criação de documentação que não são necessários para o projeto
 doctrees/
+.buildinfo
+objects.inv
