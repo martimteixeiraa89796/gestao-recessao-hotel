@@ -372,6 +372,9 @@ document.write(`
 <span class="sd">        :param imprimir: Se deve ou não imprimir tabelas</span>
 <span class="sd">        :type imprimir: boolean</span>
 
+<span class="sd">        :return: Resultado da *query*</span>
+<span class="sd">        :rtype: list</span>
+
 <span class="sd">        :raise sqlite3.Error: Se ocorrer algum erro durante a criação do cursor ou na execução</span>
 
 <span class="sd">        Exemplo de execução de querie com impressão de tabela:</span>
@@ -392,7 +395,7 @@ document.write(`
                     <span class="bp">self</span><span class="o">.</span><span class="n">sqlconnector</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>  <span class="c1">#Fazer commit das ações</span>
 
                     <span class="k">if</span> <span class="n">imprimir</span><span class="p">:</span>
-                        <span class="n">resultado</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">imprimir_tabela</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">imprimir_tabela</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
                     
                     <span class="n">resultado</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>  <span class="c1">#Retirar todas as linhas e guardar na variável</span>
                     <span class="k">return</span> <span class="n">resultado</span>
