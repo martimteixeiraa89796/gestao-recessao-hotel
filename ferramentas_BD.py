@@ -101,6 +101,9 @@ class FerramentasBD():
         :param imprimir: Se deve ou não imprimir tabelas
         :type imprimir: boolean
 
+        :return: Resultado da *query*
+        :rtype: list
+
         :raise sqlite3.Error: Se ocorrer algum erro durante a criação do cursor ou na execução
 
         Exemplo de execução de querie com impressão de tabela:
@@ -121,7 +124,7 @@ class FerramentasBD():
                     self.sqlconnector.commit()  #Fazer commit das ações
 
                     if imprimir:
-                        resultado = self.imprimir_tabela(cursor.description, cursor.fetchall())
+                        self.imprimir_tabela(cursor.description, cursor.fetchall())
                     
                     resultado = cursor.fetchall()  #Retirar todas as linhas e guardar na variável
                     return resultado

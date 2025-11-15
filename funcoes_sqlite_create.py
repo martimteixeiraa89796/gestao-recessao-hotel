@@ -1,26 +1,21 @@
-#Este ficheiro é onde vai ser colocado funções com comandos de SQL
-#O objetivo é que estas sejam chamadas dentro de um ficheiro python
-#onde depois a classe que está dentro de ferramentas_BD.py
-#vai depois ser iniciada e utilizada.
+"""
+Módulo com funções de criação de tabelas
+========================================
 
-#Isto é somente para separar a query e a lógica do código.
+Este módulo contém funções que são usadas para criar as várias tabelas existentes na base de dados da aplicação.
+As funções retornam a query SQL para ser usada na execução na base de dados.
+"""
 
-
-
-#Exemplo de função e estrutura
-def função(exemplo, exemplo2, exemplo3):  #<--- Colocar argumentos para alterar partes da query antes de ser mandada para ser executada
-    """Função de exemplo"""
-    
-    #Query é construída com as variáveis de cima
-    query = f"""
-        SELECT * FROM {exemplo};
-    """
-
-    return query #Retorna a query finalizada para depois ser executada
-    #A query seria guardada numa variável para depois ser executada noutro lado
 
     
 def criar_tabela_tipo_cama():
+    """
+    Cria tabela com tipos de cama
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query ="""
         create table Tipo_Cama(
         Num_Tipo_Cama int not null,
@@ -29,9 +24,17 @@ def criar_tabela_tipo_cama():
         );
     """
 
+    return query
+
 
 def criar_tabela_tipo_quarto():
-    """Cria a tabela Tipo_Quarto"""
+    """
+    Cria tabela com tipos de quartos
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
         CREATE TABLE IF NOT EXISTS Tipo_Quarto (
             Num_Tipo_Quarto INT NOT NULL,
@@ -39,8 +42,18 @@ def criar_tabela_tipo_quarto():
             CONSTRAINT PK_Tipo_Quarto PRIMARY KEY (Num_Tipo_Quarto)
         );
     """
+
+    return query
+
+
 def criar_tabela_Quarto():
-    """Criar tabela Quarto"""
+    """
+    Cria tabela com os quartos disponíveis no hotel
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query ="""
         CREATE TABLE IF NOT EXISTS Quarto (
             Num_Quarto INT AUTO_INCREMENT,
@@ -53,8 +66,17 @@ def criar_tabela_Quarto():
     );  
     """
 
+    return query
+
 
 def criar_tabela_Cliente():
+    """
+    Cria tabela com dados sobre os clientes
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
         create table Cliente(
         NIF int not null,
@@ -64,7 +86,17 @@ def criar_tabela_Cliente():
         );
     """
 
+    return query
+
+
 def criar_tabela_Tipo_Reserva():
+    """
+    Cria tabela com tipo de reserva
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
         create table Tipo_Reserva(
         Num_Tipo_Reserva int not null,
@@ -72,8 +104,18 @@ def criar_tabela_Tipo_Reserva():
         constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
         );
     """
+
+    return query
+
     
 def criar_tabela_Camas():
+    """
+    Cria tabela com relação entre tipos de camas e respetivo quarto
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
     CREATE TABLE IF NOT EXISTS tipo_Camas(
     Num_Quarto INT NOT NULL,
@@ -85,7 +127,17 @@ def criar_tabela_Camas():
     );
 """
 
+    return query
+
+
 def criar_tabela_Funcoes():
+    """
+    Cria tabela com funções do funcionários
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
         create table Funcoes(
         Num_Funcao int not null,
@@ -94,7 +146,17 @@ def criar_tabela_Funcoes():
         );
     """
 
+    return query
+
+
 def criar_tabela_Funcionario():
+    """
+    Cria tabela com dados sobre funcionários
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
         create table Funcionario(
         Num_Funcionario int not null,
@@ -105,7 +167,18 @@ def criar_tabela_Funcionario():
         references Funcoes(Num_Funcao)
         );
     """
+    
+    return query
+
+
 def criar_tabela_Horario():
+    """
+    Cria tabela com o horário de cada funcionário
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
         create table Horario(
         Num_funcionario int,
@@ -117,7 +190,17 @@ def criar_tabela_Horario():
         );
     """
 
+    return query
+
+
 def criar_tabela_Reserva():
+    """
+    Cria tabela com dados sobre reservas feitas
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
         create table Reserva(
         Num_Reserva int not null,
@@ -133,7 +216,17 @@ def criar_tabela_Reserva():
         );
     """
 
+    return query
+
+
 def criar_tabela_Hospedes():
+    """
+    Cria tabela com dados sobre os hospedes referentes a uma reserva
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
         create table Hospedes(
         Num_Reserva int,
@@ -148,3 +241,5 @@ def criar_tabela_Hospedes():
         references Quarto (Num_Quarto)
         );
     """
+
+    return query
