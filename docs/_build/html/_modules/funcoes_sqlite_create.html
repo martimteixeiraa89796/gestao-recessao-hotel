@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pt" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>funcoes_sqlite_create &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=0ff6c57f"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=beaedd51"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/funcoes_sqlite_create';</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Pesquisar" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Documentação Aplicação de Gestão de Recessão de Hotel </p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Pesquisar</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ferramentas_BD.html">ferramentas_BD module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html">main module</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Código fonte de funcoes_sqlite_create</h1><div class="highlight"><pre>
+<span></span><span class="c1">#Este ficheiro é onde vai ser colocado funções com comandos de SQL</span>
+<span class="c1">#O objetivo é que estas sejam chamadas dentro de um ficheiro python</span>
+<span class="c1">#onde depois a classe que está dentro de ferramentas_BD.py</span>
+<span class="c1">#vai depois ser iniciada e utilizada.</span>
+
+<span class="c1">#Isto é somente para separar a query e a lógica do código.</span>
+
+
+
+<span class="c1">#Exemplo de função e estrutura</span>
+<div class="viewcode-block" id="função">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.função">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">função</span><span class="p">(</span><span class="n">exemplo</span><span class="p">,</span> <span class="n">exemplo2</span><span class="p">,</span> <span class="n">exemplo3</span><span class="p">):</span>  <span class="c1">#&lt;--- Colocar argumentos para alterar partes da query antes de ser mandada para ser executada</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Função de exemplo&quot;&quot;&quot;</span>
+    
+    <span class="c1">#Query é construída com as variáveis de cima</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        SELECT * FROM </span><span class="si">{</span><span class="n">exemplo</span><span class="si">}</span><span class="s2">;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">query</span> <span class="c1">#Retorna a query finalizada para depois ser executada</span></div>
+
+    <span class="c1">#A query seria guardada numa variável para depois ser executada noutro lado</span>
+
+    
+<div class="viewcode-block" id="criar_tabela_tipo_cama">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_tipo_cama">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_tipo_cama</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        create table Tipo_Cama(</span>
+<span class="s2">        Num_Tipo_Cama int not null,</span>
+<span class="s2">        Nome_Tipo_Cama varchar(100),</span>
+<span class="s2">        constraint PK_Tipo_Cama primary key (Num_Tipo_Cama)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="criar_tabela_tipo_quarto">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_tipo_quarto">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_tipo_quarto</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cria a tabela Tipo_Quarto&quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        CREATE TABLE IF NOT EXISTS Tipo_Quarto (</span>
+<span class="s2">            Num_Tipo_Quarto INT NOT NULL,</span>
+<span class="s2">            Nome_Tipo_Quarto VARCHAR(50) NOT NULL,</span>
+<span class="s2">            CONSTRAINT PK_Tipo_Quarto PRIMARY KEY (Num_Tipo_Quarto)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="criar_tabela_Quarto">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Quarto">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Quarto</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Criar tabela Quarto&quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        CREATE TABLE IF NOT EXISTS Quarto (</span>
+<span class="s2">            Num_Quarto INT AUTO_INCREMENT,</span>
+<span class="s2">            Num_Tipo_Quarto INT NOT NULL,</span>
+<span class="s2">            Preco Decimal(10,2) NOT NULL,</span>
+<span class="s2">            Ocupado VARCHAR(15),</span>
+<span class="s2">            CONSTRAINT PK_quarto Primary key (Num_Quarto),</span>
+<span class="s2">            CONSTRAINT FK_Quarto_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)</span>
+<span class="s2">                REFERENCES Tipo_Quarto(Num_Tipo_Quarto)</span>
+<span class="s2">    );  </span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="criar_tabela_Cliente">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Cliente">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Cliente</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        create table Cliente(</span>
+<span class="s2">        NIF int not null,</span>
+<span class="s2">        Nome_Cliente varchar(50),</span>
+<span class="s2">        Telefone varchar(15),</span>
+<span class="s2">        constraint PK_Cliente primary key(NIF)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="criar_tabela_Tipo_Reserva">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Tipo_Reserva">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Tipo_Reserva</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        create table Tipo_Reserva(</span>
+<span class="s2">        Num_Tipo_Reserva int not null,</span>
+<span class="s2">        Nome_Tipo_Reserva varchar(50),</span>
+<span class="s2">        constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+    
+<div class="viewcode-block" id="criar_tabela_Camas">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Camas">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Camas</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS tipo_Camas(</span>
+<span class="s2">    Num_Quarto INT NOT NULL,</span>
+<span class="s2">    Num_Tipo_Cama INT NOT NULL,</span>
+<span class="s2">    CONSTRAINT FK_Camas_Quarto FOREIGN KEY(Num_Quarto)</span>
+<span class="s2">        REFERENCES Quartos(Num_Quarto),</span>
+<span class="s2">    CONSTRAINT FK_Camas_Tipo_Cama FOREIGN KEY(Num_Tipo_Quarto)</span>
+<span class="s2">        REFERENCES Tipo_Cama(Num_Tipo_Cama)</span>
+<span class="s2">    );</span>
+<span class="s2">&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="criar_tabela_Funcoes">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Funcoes">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Funcoes</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        create table Funcoes(</span>
+<span class="s2">        Num_Funcao int not null,</span>
+<span class="s2">        Nome_Funcao varchar(50),</span>
+<span class="s2">        constraint PK_Funcoes primary key (Num_Funcao)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="criar_tabela_Funcionario">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Funcionario">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Funcionario</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        create table Funcionario(</span>
+<span class="s2">        Num_Funcionario int not null,</span>
+<span class="s2">        Nome_Funcionario varchar(50),</span>
+<span class="s2">        Num_funcao int,</span>
+<span class="s2">        constraint PK_Funcionario primary key (Num_Funcionario),</span>
+<span class="s2">        constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)</span>
+<span class="s2">        references Funcoes(Num_Funcao)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="criar_tabela_Horario">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Horario">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Horario</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        create table Horario(</span>
+<span class="s2">        Num_funcionario int,</span>
+<span class="s2">        Comeca datetime,</span>
+<span class="s2">        Acaba datetime,</span>
+<span class="s2">        Folga varchar(15),</span>
+<span class="s2">        constraint FK_Funcionario_Horario foreign key (Num_Funcionario)</span>
+<span class="s2">        references Funcionario (Num_Funcionario)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="criar_tabela_Reserva">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Reserva">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Reserva</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        create table Reserva(</span>
+<span class="s2">        Num_Reserva int not null,</span>
+<span class="s2">        Num_Tipo_Reserva int,</span>
+<span class="s2">        Check_in datetime,</span>
+<span class="s2">        Check_out datetime,</span>
+<span class="s2">        Num_Funcionario int,</span>
+<span class="s2">        constraint PK_Reserva primary key (Num_Reserva),</span>
+<span class="s2">        constraint FK_Tipo_Reserva_Reserva foreign key (Num_Tipo_Reserva)</span>
+<span class="s2">        references Tipo_Reserva(Num_Tipo_Reserva),</span>
+<span class="s2">        constraint FK_Funcionario_Reserva foreign key (Num_Funcionario)</span>
+<span class="s2">        references Funcionario(Num_funcionario)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="criar_tabela_Hospedes">
+<a class="viewcode-back" href="../funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Hospedes">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_tabela_Hospedes</span><span class="p">():</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        create table Hospedes(</span>
+<span class="s2">        Num_Reserva int,</span>
+<span class="s2">        NIF int,</span>
+<span class="s2">        Reservado_Em_Nome varchar(20),</span>
+<span class="s2">        Num_Quarto int,</span>
+<span class="s2">        constraint FK_Reserva_Hospedes foreign key (Num_Reserva)</span>
+<span class="s2">        references Reserva (Num_Reserva),</span>
+<span class="s2">        constraint FK_Cliente_Hospedes foreign key (NIF)</span>
+<span class="s2">        references Cliente (NIF),</span>
+<span class="s2">        constraint FK_Quarto_Hospedes foreign key (Num_Quarto)</span>
+<span class="s2">        references Quarto (Num_Quarto)</span>
+<span class="s2">        );</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De David Zeferino, Martim Teixeira, Afonso Bento, Romano Balan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, David Zeferino, Martim Teixeira, Afonso Bento, Romano Balan.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
