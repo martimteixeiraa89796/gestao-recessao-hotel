@@ -63,6 +63,8 @@ def criar_tabela_Quarto():
             CONSTRAINT PK_quarto Primary key (Num_Quarto),
             CONSTRAINT FK_Quarto_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)
                 REFERENCES Tipo_Quarto(Num_Tipo_Quarto)
+                on update cascade
+                on delete restrict
     );  
     """
 
@@ -122,8 +124,12 @@ def criar_tabela_Camas():
     Num_Tipo_Cama INT NOT NULL,
     CONSTRAINT FK_Camas_Quarto FOREIGN KEY(Num_Quarto)
         REFERENCES Quartos(Num_Quarto),
+        on update cascade
+        on delete restrict
     CONSTRAINT FK_Camas_Tipo_Cama FOREIGN KEY(Num_Tipo_Quarto)
         REFERENCES Tipo_Cama(Num_Tipo_Cama)
+        on update cascade
+        on delete restrict
     );
 """
 
@@ -164,7 +170,9 @@ def criar_tabela_Funcionario():
         Num_funcao int,
         constraint PK_Funcionario primary key (Num_Funcionario),
         constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)
-        references Funcoes(Num_Funcao)
+            references Funcoes(Num_Funcao)
+            on update cascade
+            on delete restrict
         );
     """
     
@@ -186,7 +194,9 @@ def criar_tabela_Horario():
         Acaba datetime,
         Folga varchar(15),
         constraint FK_Funcionario_Horario foreign key (Num_Funcionario)
-        references Funcionario (Num_Funcionario)
+            references Funcionario (Num_Funcionario)
+            on update cascade
+            on delete restrict
         );
     """
 
@@ -210,9 +220,13 @@ def criar_tabela_Reserva():
         Num_Funcionario int,
         constraint PK_Reserva primary key (Num_Reserva),
         constraint FK_Tipo_Reserva_Reserva foreign key (Num_Tipo_Reserva)
-        references Tipo_Reserva(Num_Tipo_Reserva),
+            references Tipo_Reserva(Num_Tipo_Reserva),
+            on update cascade
+            on delete restrict
         constraint FK_Funcionario_Reserva foreign key (Num_Funcionario)
-        references Funcionario(Num_funcionario)
+            references Funcionario(Num_funcionario)
+            on update cascade
+            on delete restrict
         );
     """
 
@@ -234,11 +248,17 @@ def criar_tabela_Hospedes():
         Reservado_Em_Nome varchar(20),
         Num_Quarto int,
         constraint FK_Reserva_Hospedes foreign key (Num_Reserva)
-        references Reserva (Num_Reserva),
+            references Reserva (Num_Reserva),
+            on update cascade
+            on delete restrict
         constraint FK_Cliente_Hospedes foreign key (NIF)
-        references Cliente (NIF),
+            references Cliente (NIF),
+            on update cascade
+            on delete restrict
         constraint FK_Quarto_Hospedes foreign key (Num_Quarto)
-        references Quarto (Num_Quarto)
+            references Quarto (Num_Quarto)
+            on update cascade
+            on delete restrict
         );
     """
 
