@@ -168,20 +168,10 @@ def get_tabelas():
     return tabelas
 
 
-def listar_campos(campos):
-    print("Campos disponíveis:")
-    for numero_campo in range(len(campos)):
-        print(f"    {numero_campo + 1}. {campos[numero_campo]}".title())
-
-    return campos
-
-
-def listar_tabelas(tabelas):
-    print("Tabelas disponíveis:")
-    for numero_tabela in range(len(tabelas)):
-        print(f"    {numero_tabela + 1}. {tabelas[numero_tabela]}".title())
-
-    return tabelas
+def listar_escolhas(lista):
+    print("Opções disponíveis:")
+    for item in range(len(lista)):
+        print(f"    {item + 1}. {lista[item]}".title())
 
 
 def campos_escolha(tabela):
