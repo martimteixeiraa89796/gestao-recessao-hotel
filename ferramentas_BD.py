@@ -85,7 +85,7 @@ class FerramentasBD():
             print("Base de dados não está conectada.")
 
 
-    def executarBD(self, query, header_only=False, imprimir=False):
+    def executarBD(self, query, query_dados=(), header_only=False, imprimir=False):
         """
         Executa queries na base de dados.
         
@@ -120,7 +120,7 @@ class FerramentasBD():
 
             if cursor:
                 try:
-                    cursor.execute(str(query))
+                    cursor.execute(str(query), query_dados)
                     self.sqlconnector.commit()  #Fazer commit das ações
 
                     if imprimir:
