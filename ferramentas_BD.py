@@ -7,7 +7,6 @@ Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dado
 """
 
 import sqlite3  #Módulo já vem instalado com Python
-from funcoes_sqlite_select import select_geral, select_master
 
 
 def executarBD(query, query_dados=(), header_only=False, imprimir=False):
@@ -152,7 +151,7 @@ def imprimir_tabela(headers, dados):
 
 def get_campos(tabela):
     campos = []
-    for linha in executarBD(select_geral(tabela), header_only=True):
+    for linha in executarBD(f"SELECT * FROM {tabela};", header_only=True):
         campos.append(linha[0])
 
     return campos
@@ -160,7 +159,7 @@ def get_campos(tabela):
 
 def get_tabelas():
     tabelas = []
-    for linha in executarBD(select_master()):
+    for linha in executarBD("SELECT name FROM sqlite_master WHERE type='table'"):
         tabelas.append(linha[0])
     
     tabelas.remove("sqlite_sequence")

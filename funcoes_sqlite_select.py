@@ -5,6 +5,9 @@ Módulo com funções para fazer *selects*
 Este módulo contém funções que criam o código SQL para ser utilizado em *queries select*.
 """
 
+from ferramentas_BD import get_tabelas
+import ferramentas_escolha
+
 def select_master():
     query = f"""
         SELECT name FROM sqlite_master WHERE type='table'
@@ -45,42 +48,9 @@ def select_geral_escolha():
     A tabela escolhida é depois enviada para a função **select_geral**.
     """
 
-    info = """
-        Tabelas disponíveis:
-            1.  Cliente
-            2.  Hospedes
-            3.  Reserva
-            4.  Tipo de Reserva
-            5.  Quarto
-            6.  Tipos de Quarto
-            7.  Camas
-            8.  Tipos de Cama
-            9.  Funcionários
-            10. Funções
-            11. Horário
-    """
+    tabelas = get_tabelas()
 
-    tabelas = ["Tb_Cliente",
-               "Tb_Hospede",
-               "Tb_Reserva",
-               "Tb_Tipo_Reserva",
-               "Tb_Quarto",
-               "Tb_Tipo_Quarto",
-               "Tb_Cama",
-               "Tb_Tipo_Cama",
-               "Tb_Funcionario",
-               "Tb_Funcoes",
-               "Tb_Horario"
-               ]
-    print(info)
+    print("Escolha tabela para visualizar.")
+    ferramentas_escolha.listar_escolhas(tabelas)
 
-    while True:
-        escolha = int(input("Escolha uma tabela: "))
-
-        if 0 < escolha <= len(tabelas):
-            break
-
-        else:
-            print("Tabela não disponível.")
-
-    select_geral(tabelas[escolha-1])
+select_geral_escolha()
