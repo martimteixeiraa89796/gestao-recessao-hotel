@@ -33,7 +33,7 @@ class FerramentasBD():
         self.sqlconnector = None
 
 
-    def conectarBD(self, ficheiro):
+    def conectarBD(self):
         """
         Inicia a conecção com base de dados.
 
@@ -53,7 +53,7 @@ class FerramentasBD():
         """
 
         try:
-            self.sqlconnector = sqlite3.connect(f'{str(ficheiro)}.db')
+            self.sqlconnector = sqlite3.connect(f'basedados.db')
         
         except sqlite3.Error:
             print("Ocorreu um erro ao tentar conectar à base de dados.")
