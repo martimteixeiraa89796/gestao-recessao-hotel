@@ -150,11 +150,25 @@ def imprimir_tabela(headers, dados):
         print(linha)
 
 
-def listar_campos(tabela):
+def get_campos(tabela):
     campos = []
     for linha in executarBD(select_geral(tabela), header_only=True):
         campos.append(linha[0])
 
+    return campos
+
+
+def get_tabelas():
+    tabelas = []
+    for linha in executarBD(select_master()):
+        tabelas.append(linha[0])
+    
+    tabelas.remove("sqlite_sequence")
+
+    return tabelas
+
+
+def listar_campos(campos):
     print("Campos disponíveis:")
     for numero_campo in range(len(campos)):
         print(f"    {numero_campo + 1}. {campos[numero_campo]}".title())
@@ -162,13 +176,7 @@ def listar_campos(tabela):
     return campos
 
 
-def listar_tabelas():
-    tabelas = []
-    for linha in executarBD(select_master()):
-        tabelas.append(linha[0])
-    
-    tabelas.pop()
-
+def listar_tabelas(tabelas):
     print("Tabelas disponíveis:")
     for numero_tabela in range(len(tabelas)):
         print(f"    {numero_tabela + 1}. {tabelas[numero_tabela]}".title())
