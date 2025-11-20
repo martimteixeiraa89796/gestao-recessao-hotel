@@ -174,31 +174,18 @@ def listar_escolhas(lista):
         print(f"    {item + 1}. {lista[item]}".title())
 
 
-def campos_escolha(tabela):
-    campos = listar_campos(tabela)
-
+def fazer_escolha(lista):
     while True:
-        escolha = int(input("escolha um campo: "))
+        try:
+            escolha = int(input("Escolha uma opção: "))
 
-        if 0 < escolha <= len(campos):
-            break
+            if 0 < escolha <= len(lista):
+                break
 
-        else:
-            print("Campo não disponivel")
+            else:
+                print("Opção não disponivel")
+        
+        except ValueError:
+            pass
     
-    return campos[escolha-1]
-
-
-def tabela_escolha():
-    tabelas = listar_tabelas()
-
-    while True:
-        escolha = int(input("escolha uma tabela: "))
-
-        if 0 < escolha <= len(tabelas):
-            break
-
-        else:
-            print("Campo não disponivel")
-
-    return tabelas[escolha-1]
+    return lista[escolha-1]
