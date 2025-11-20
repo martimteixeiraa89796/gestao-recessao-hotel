@@ -85,7 +85,7 @@ class FerramentasBD():
             print("Base de dados não está conectada.")
 
 
-    def executarBD(self, query, imprimir=False):
+    def executarBD(self, query, header_only=False, imprimir=False):
         """
         Executa queries na base de dados.
         
@@ -126,7 +126,12 @@ class FerramentasBD():
                     if imprimir:
                         self.imprimir_tabela(cursor.description, cursor.fetchall())
                     
-                    resultado = cursor.fetchall()  #Retirar todas as linhas e guardar na variável
+                    if header_only:
+                        resultado = cursor.description
+
+                    else:
+                        resultado = cursor.fetchall()  #Retirar todas as linhas e guardar na variável
+                    
                     return resultado
                     
                 except sqlite3.Error:
