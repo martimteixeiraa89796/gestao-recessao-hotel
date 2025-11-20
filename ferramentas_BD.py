@@ -150,7 +150,7 @@ def imprimir_tabela(headers, dados):
         print(linha)
 
 
-def campos_escolha(tabela):
+def listar_campos(tabela):
     campos = []
     for linha in executarBD(select_geral(tabela), header_only=True):
         campos.append(linha[0])
@@ -158,6 +158,26 @@ def campos_escolha(tabela):
     print("Campos disponíveis:")
     for numero_campo in range(len(campos)):
         print(f"    {numero_campo + 1}. {campos[numero_campo]}".title())
+
+    return campos
+
+
+def listar_tabelas():
+    tabelas = []
+    for linha in executarBD("SELECT name FROM sqlite_master WHERE type='table'"):
+        tabelas.append(linha[0])
+    
+    tabelas.pop()
+
+    print("Tabelas disponíveis:")
+    for numero_tabela in range(len(tabelas)):
+        print(f"    {numero_tabela + 1}. {tabelas[numero_tabela]}".title())
+
+    return tabelas
+
+
+def campos_escolha(tabela):
+    campos = listar_campos(tabela)
 
     while True:
         escolha = int(input("escolha um campo: "))
@@ -172,15 +192,7 @@ def campos_escolha(tabela):
 
 
 def tabela_escolha():
-    tabelas = []
-    for linha in executarBD("SELECT name FROM sqlite_master WHERE type='table'"):
-        tabelas.append(linha[0])
-    
-    tabelas.pop()
-
-    print("Tabelas disponíveis:")
-    for numero_tabela in range(len(tabelas)):
-        print(f"    {numero_tabela + 1}. {tabelas[numero_tabela]}".title())
+    tabelas = listar_tabelas()
 
     while True:
         escolha = int(input("escolha uma tabela: "))
