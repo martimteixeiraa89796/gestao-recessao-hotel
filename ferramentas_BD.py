@@ -147,3 +147,21 @@ def imprimir_tabela(headers, dados):
     #imprimir tabela
     for linha in tabela_formatada:
         print(linha)
+
+
+def get_campos(tabela):
+    campos = []
+    for linha in executarBD(f"SELECT * FROM {tabela};", header_only=True):
+        campos.append(linha[0])
+
+    return campos
+
+
+def get_tabelas():
+    tabelas = []
+    for linha in executarBD("SELECT name FROM sqlite_master WHERE type='table'"):
+        tabelas.append(linha[0])
+    
+    tabelas.remove("sqlite_sequence")
+
+    return tabelas
