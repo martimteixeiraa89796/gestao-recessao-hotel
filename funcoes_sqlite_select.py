@@ -5,6 +5,13 @@ Módulo com funções para fazer *selects*
 Este módulo contém funções que criam o código SQL para ser utilizado em *queries select*.
 """
 
+def select_master():
+    query = f"""
+        SELECT name FROM sqlite_master WHERE type='table'
+    """
+
+    return query
+
 def select_geral(tabela):
     """
     Retorna código SQL para *queries select* de uma tabela.
