@@ -5,7 +5,7 @@ Módulo com funções para fazer *selects*
 Este módulo contém funções que criam o código SQL para ser utilizado em *queries select*.
 """
 
-from ferramentas_BD import get_tabelas
+from ferramentas_BD import executarBD, get_tabelas
 import ferramentas_escolha
 
 def select_master():
@@ -48,9 +48,13 @@ def select_geral_escolha():
     A tabela escolhida é depois enviada para a função **select_geral**.
     """
 
-    tabelas = get_tabelas()
+    tabela_lista = get_tabelas()
 
     print("Escolha tabela para visualizar.")
-    ferramentas_escolha.listar_escolhas(tabelas)
+    ferramentas_escolha.listar_escolhas(tabela_lista)
+
+    tabela = ferramentas_escolha.fazer_escolha(tabela_lista)
+
+    executarBD(select_geral(tabela), imprimir=True)
 
 select_geral_escolha()
