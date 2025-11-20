@@ -169,3 +169,26 @@ def campos_escolha(tabela):
             print("Campo não disponivel")
     
     return campos[escolha-1]
+
+
+def tabela_escolha():
+    tabelas = []
+    for linha in executarBD("SELECT name FROM sqlite_master WHERE type='table'"):
+        tabelas.append(linha[0])
+    
+    tabelas.pop()
+
+    print("Tabelas disponíveis:")
+    for numero_tabela in range(len(tabelas)):
+        print(f"    {numero_tabela + 1}. {tabelas[numero_tabela]}".title())
+
+    while True:
+        escolha = int(input("escolha uma tabela: "))
+
+        if 0 < escolha <= len(tabelas):
+            break
+
+        else:
+            print("Campo não disponivel")
+
+    return tabelas[escolha-1]
