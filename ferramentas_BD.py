@@ -33,58 +33,6 @@ class FerramentasBD():
         self.sqlconnector = None
 
 
-    def conectarBD(self):
-        """
-        Inicia a conecção com base de dados.
-
-        Para iniciar a base de dados, primeiro é necessário conectá-la.
-        Se a base de dados não existir, ela será criada automaticamente.
-        Esta função utiliza o módulo **sqlite** que vem pre-instalado com o Python
-        para criar o objeto de conecção **sqlconnector**.
-
-        :param ficheiro: Nome do ficheiro **.bd** da base de dados a ser utilizado
-        :type ficheiro: string
-
-        :raise sqlite3.Error: Se ocorrer algum erro durante a conecção
-
-        Exemplo de conecção com base de dados: 
-
-        >>> basedados.conectarBD("bd")
-        """
-
-        try:
-            self.sqlconnector = sqlite3.connect(f'basedados.db')
-        
-        except sqlite3.Error:
-            print("Ocorreu um erro ao tentar conectar à base de dados.")
-
-
-    def desconectarBD(self):
-        """
-        Desconecta base de dados.
-        
-        É necessário fechar a base de dados para que, caso a aplicação falhe, os dados não serem perdidos.
-        Este método fecha e limpa a variável **sqlconnector** da memória.
-
-        :raise sqlite3.Error: Se ocorrer algum erro durante a o desconecção
-
-        Exemplo de fechar conecção:
-
-        >>> basedados.desconectarBD()
-        """
-
-        if self.sqlconnector:
-            try:
-                self.sqlconnector.close()
-                self.sqlconnector = None
-            
-            except sqlite3.Error:
-                print("Ocorreu um erro ao tentar desconectar base de dados.")
-        
-        else:
-            print("Base de dados não está conectada.")
-
-
     def executarBD(self, query, query_dados=(), header_only=False, imprimir=False):
         """
         Executa queries na base de dados.
@@ -111,37 +59,45 @@ class FerramentasBD():
         >>> basedados.executar("SELECT * FROM Tabela;", imprimir=True)
         """
         
-        if self.sqlconnector:
-            try:
-                cursor = self.sqlconnector.cursor()  #Criar cursor para interagir com base de dados
+        #Fazer conecção com base de dados
+        try:
+            sqlconnector = sqlite3.connect(f'basedados.db')
+        
+        except sqlite3.Error:
+            print("Ocorreu um erro ao tentar conectar à base de dados.")
+
+        try:
+            cursor = sqlconnector.cursor()  #Criar cursor para interagir com base de dados
+        
+        except sqlite3.Error:
+            print("Ocorreu um erro ao tentar criar cursor.")
+
+        #Executar comandos sql
+        try:
+            cursor.execute(str(query), query_dados)
+            sqlconnector.commit()  #Fazer commit das ações
+
+            if imprimir:
+                self.imprimir_tabela(cursor.description, cursor.fetchall())
             
-            except sqlite3.Error:
-                print("Ocorreu um erro ao tentar criar cursor.")
+            if header_only:
+                resultado = cursor.description
 
-            if cursor:
-                try:
-                    cursor.execute(str(query), query_dados)
-                    self.sqlconnector.commit()  #Fazer commit das ações
-
-                    if imprimir:
-                        self.imprimir_tabela(cursor.description, cursor.fetchall())
-                    
-                    if header_only:
-                        resultado = cursor.description
-
-                    else:
-                        resultado = cursor.fetchall()  #Retirar todas as linhas e guardar na variável
-                    
-                    return resultado
-                    
-                except sqlite3.Error:
-                    print("Ocorreu um erro ao executar commandos SQL.")
-            
             else:
-                print("Não é possível executar SQL porque cursor não existe.")
+                resultado = cursor.fetchall()  #Retirar todas as linhas e guardar na variável
             
-        else:
-            print("Base de dados não está conectada.")
+            return resultado
+            
+        except sqlite3.Error:
+            print("Ocorreu um erro ao executar commandos SQL.")
+
+        #Deconectar base de dados
+        try:
+            sqlconnector.close()
+            sqlconnector = None
+            
+        except sqlite3.Error:
+            print("Ocorreu um erro ao tentar desconectar base de dados.")
 
 
     def imprimir_tabela(self, headers, dados):
