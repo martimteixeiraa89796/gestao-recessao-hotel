@@ -7,6 +7,7 @@ Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dado
 """
 
 import sqlite3  #Módulo já vem instalado com Python
+from funcoes_sqlite_select import select_geral
 
 
 def executarBD(query, query_dados=(), header_only=False, imprimir=False):
@@ -147,3 +148,24 @@ def imprimir_tabela(headers, dados):
     #imprimir tabela
     for linha in tabela_formatada:
         print(linha)
+
+
+def campos_escolha(tabela):
+    campos = []
+    for linha in executarBD(select_geral(tabela), header_only=True):
+        campos.append(linha[0])
+
+    print("Campos disponíveis:")
+    for numero_campo in range(len(campos)):
+        print(f"    {numero_campo + 1}. {campos[numero_campo]}".title())
+
+    while True:
+        escolha = int(input("escolha um campo: "))
+
+        if 0 < escolha <= len(campos):
+            break
+
+        else:
+            print("Campo não disponivel")
+    
+    return campos[escolha-1]
