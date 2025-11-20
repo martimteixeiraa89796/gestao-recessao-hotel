@@ -7,7 +7,7 @@ Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dado
 """
 
 import sqlite3  #Módulo já vem instalado com Python
-from funcoes_sqlite_select import select_geral
+from funcoes_sqlite_select import select_geral, select_master
 
 
 def executarBD(query, query_dados=(), header_only=False, imprimir=False):
@@ -164,7 +164,7 @@ def listar_campos(tabela):
 
 def listar_tabelas():
     tabelas = []
-    for linha in executarBD("SELECT name FROM sqlite_master WHERE type='table'"):
+    for linha in executarBD(select_master()):
         tabelas.append(linha[0])
     
     tabelas.pop()
