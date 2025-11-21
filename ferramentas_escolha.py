@@ -110,3 +110,49 @@ def sql_escolher_tipo():
                 print("Formato incompatível.")
 
     return resposta
+
+
+def input_string():
+    while True:
+            resposta = input("--> ")
+
+            if not resposta:
+                pass
+
+            else:
+                break
+
+    return resposta
+
+
+def input_int():
+    while True:
+        try:
+            resposta = int(input("--> "))
+            break
+        
+        except ValueError:
+            print("Tem de ser um número!")
+
+    return resposta
+
+
+def input_float():
+    while True:
+        try:
+            resposta = float(input("--> "))
+            break
+        
+        except ValueError:
+            print("Tem de ser um número decimal!")
+
+    return resposta
+
+
+def input_bool():
+    opcoes = ["True", "False"]
+
+    listar_escolhas(opcoes)
+    resposta = fazer_escolha(opcoes)
+
+    return resposta
