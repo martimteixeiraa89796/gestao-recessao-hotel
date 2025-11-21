@@ -162,6 +162,9 @@ def get_tabelas():
     for linha in executarBD("SELECT name FROM sqlite_master WHERE type='table'"):
         tabelas.append(linha[0])
     
-    tabelas.remove("sqlite_sequence")
+    try:
+        tabelas.remove("sqlite_sequence")
+    except ValueError:
+        pass
 
     return tabelas
