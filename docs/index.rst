@@ -15,8 +15,10 @@ Aplicação Gestão de Recessão de Hotel
    :caption: Contents:
 
    ferramentas_BD
+   ferramentas_escolha
    funcoes_sqlite_create
    funcoes_sqlite_delete
+   funcoes_sqlite_insert
    funcoes_sqlite_select
    funcoes_sqlite_update
    main

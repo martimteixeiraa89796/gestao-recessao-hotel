@@ -44,7 +44,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'funcoes_sqlite_delete';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Pesquisar" href="search.html" />
-    <link rel="next" title="funcoes_sqlite_select module" href="funcoes_sqlite_select.html" />
+    <link rel="next" title="funcoes_sqlite_insert module" href="funcoes_sqlite_insert.html" />
     <link rel="prev" title="funcoes_sqlite_create module" href="funcoes_sqlite_create.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt"/>
@@ -152,8 +152,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ferramentas_BD.html">ferramentas_BD module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ferramentas_escolha.html">ferramentas_escolha module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_insert.html">funcoes_sqlite_insert module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
@@ -282,7 +284,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -298,6 +302,29 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-de-remocao-de-tabelas">Módulo com funções de remoção de tabelas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.delete_geral"><code class="docutils literal notranslate"><span class="pre">delete_geral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.limpar_tabela_geral"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.limpar_tabela_geral_escolha"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral_escolha()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Camas"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Camas()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Cliente"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Cliente()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Funcionario"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Funcionario()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Funcoes"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Funcoes()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Horario"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Horario()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Hospedes"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Hospedes()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Quarto"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Quarto()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Reserva"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Reserva()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Tipo_Reserva"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Tipo_Reserva()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_tipo_cama"><code class="docutils literal notranslate"><span class="pre">remover_tabela_tipo_cama()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_tipo_quarto"><code class="docutils literal notranslate"><span class="pre">remover_tabela_tipo_quarto()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.update_geral_escolha"><code class="docutils literal notranslate"><span class="pre">update_geral_escolha()</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -309,6 +336,185 @@ document.write(`
                   
   <section id="module-funcoes_sqlite_delete">
 <span id="funcoes-sqlite-delete-module"></span><h1>funcoes_sqlite_delete module<a class="headerlink" href="#module-funcoes_sqlite_delete" title="Link to this heading">#</a></h1>
+<section id="modulo-com-funcoes-de-remocao-de-tabelas">
+<h2>Módulo com funções de remoção de tabelas<a class="headerlink" href="#modulo-com-funcoes-de-remocao-de-tabelas" title="Link to this heading">#</a></h2>
+<p>Este módulo contém funções que são usadas para remover as várias tabelas existentes na base de dados da aplicação.
+As funções retornam a query SQL para ser usada na execução na base de dados.</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.delete_geral">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">delete_geral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">campo_condicao</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#delete_geral"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.delete_geral" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.limpar_tabela_geral">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">limpar_tabela_geral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#limpar_tabela_geral"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.limpar_tabela_geral" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.limpar_tabela_geral_escolha">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">limpar_tabela_geral_escolha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#limpar_tabela_geral_escolha"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.limpar_tabela_geral_escolha" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Camas">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Camas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Camas"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Camas" title="Link to this definition">#</a></dt>
+<dd><p>Remover tabela com relação entre tipos de camas e respetivo quarto</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Cliente">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Cliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Cliente"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Cliente" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com dados sobre os clientes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Funcionario">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Funcionario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Funcionario"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Funcionario" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com dados sobre funcionários</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Funcoes">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Funcoes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Funcoes"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Funcoes" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com funções do funcionários</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Horario">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Horario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Horario"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Horario" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com o horário de cada funcionário</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Hospedes">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Hospedes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Hospedes"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Hospedes" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com dados sobre os hospedes referentes a uma reserva</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Quarto">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Quarto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Quarto"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Quarto" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com os quartos disponíveis no hotel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Reserva">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Reserva</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Reserva"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Reserva" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com dados sobre reservas feitas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_Tipo_Reserva">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_Tipo_Reserva</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_Tipo_Reserva"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_Tipo_Reserva" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com tipo de reserva</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_tipo_cama">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_tipo_cama</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_tipo_cama"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_tipo_cama" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com tipos de cama</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.remover_tabela_tipo_quarto">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">remover_tabela_tipo_quarto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#remover_tabela_tipo_quarto"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.remover_tabela_tipo_quarto" title="Link to this definition">#</a></dt>
+<dd><p>Remove tabela com tipos de quartos</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Código SQL para <em>query</em></p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_delete.update_geral_escolha">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">update_geral_escolha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#update_geral_escolha"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.update_geral_escolha" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
 
 
@@ -332,11 +538,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="funcoes_sqlite_select.html"
+       href="funcoes_sqlite_insert.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">próximo</p>
-        <p class="prev-next-title">funcoes_sqlite_select module</p>
+        <p class="prev-next-title">funcoes_sqlite_insert module</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -346,6 +552,36 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-de-remocao-de-tabelas">Módulo com funções de remoção de tabelas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.delete_geral"><code class="docutils literal notranslate"><span class="pre">delete_geral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.limpar_tabela_geral"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.limpar_tabela_geral_escolha"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral_escolha()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Camas"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Camas()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Cliente"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Cliente()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Funcionario"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Funcionario()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Funcoes"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Funcoes()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Horario"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Horario()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Hospedes"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Hospedes()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Quarto"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Quarto()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Reserva"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Reserva()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_Tipo_Reserva"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Tipo_Reserva()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_tipo_cama"><code class="docutils literal notranslate"><span class="pre">remover_tabela_tipo_cama()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.remover_tabela_tipo_quarto"><code class="docutils literal notranslate"><span class="pre">remover_tabela_tipo_quarto()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.update_geral_escolha"><code class="docutils literal notranslate"><span class="pre">update_geral_escolha()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

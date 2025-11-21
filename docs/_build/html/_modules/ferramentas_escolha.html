@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visão geral: código do módulo &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
+    <title>ferramentas_escolha &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
   
   
   
@@ -40,7 +40,7 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/translations.js?v=beaedd51"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ferramentas_escolha';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Pesquisar" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -260,15 +260,129 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h1>Todos os módulos onde este código está disponível</h1>
-<ul><li><a href="ferramentas_BD.html">ferramentas_BD</a></li>
-<li><a href="ferramentas_escolha.html">ferramentas_escolha</a></li>
-<li><a href="funcoes_sqlite_create.html">funcoes_sqlite_create</a></li>
-<li><a href="funcoes_sqlite_delete.html">funcoes_sqlite_delete</a></li>
-<li><a href="funcoes_sqlite_insert.html">funcoes_sqlite_insert</a></li>
-<li><a href="funcoes_sqlite_select.html">funcoes_sqlite_select</a></li>
-<li><a href="funcoes_sqlite_update.html">funcoes_sqlite_update</a></li>
-</ul>
+  <h1>Código fonte de ferramentas_escolha</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo com função para ajudar com input do utilizador</span>
+<span class="sd">-----------------------------------------------------</span>
+
+<span class="sd">Este módulo contém funções com tudo o que é necessário para se interagir com o utilizador.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="listar_escolhas">
+<a class="viewcode-back" href="../ferramentas_escolha.html#ferramentas_escolha.listar_escolhas">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">listar_escolhas</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Imprime uma listagem de listas.</span>
+
+<span class="sd">    Esta função faz uma listagem numérica do que lhe é fornecido.</span>
+<span class="sd">    Isto é feito através da iteração na lista e construção de strings para serem imprimidas.</span>
+
+<span class="sd">    :param lista: Lista com os objetos para listagem</span>
+<span class="sd">    :type lista: list</span>
+
+<span class="sd">    Exemplo de listagem:</span>
+
+<span class="sd">    &gt;&gt;&gt; listar_escolhas([&quot;Azul&quot;, &quot;Vermelho&quot;, &quot;Amarelo&quot;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções disponíveis:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">item</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">lista</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">title</span><span class="p">())</span></div>
+
+
+
+<div class="viewcode-block" id="fazer_escolha">
+<a class="viewcode-back" href="../ferramentas_escolha.html#ferramentas_escolha.fazer_escolha">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fazer_escolha</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    De uma lista, pregunta *input* ao utilizador e retorna a resposta.</span>
+
+<span class="sd">    Esta função cria um loop onde o utilizador tem de escolher uma opção baseado numa lista que</span>
+<span class="sd">    é fornecida á função. O loop termina se a escolha for válida.</span>
+
+<span class="sd">    :return: Opção escolhida pelo utilizador</span>
+<span class="sd">    :rtype: Depende do valor inseridos</span>
+
+<span class="sd">    Exemplo de ambiente de escolha:</span>
+
+<span class="sd">    &gt;&gt;&gt; fazer_escolha([&quot;Banana&quot;, &quot;Maçã&quot;, &quot;Pera&quot;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">escolha</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha uma opção: &quot;</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">escolha</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+                <span class="k">break</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção não disponivel&quot;</span><span class="p">)</span>
+        
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">pass</span>
+    
+    <span class="k">return</span> <span class="n">lista</span><span class="p">[</span><span class="n">escolha</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="sql_escolher_tipo">
+<a class="viewcode-back" href="../ferramentas_escolha.html#ferramentas_escolha.sql_escolher_tipo">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sql_escolher_tipo</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pede ao utilizador para introduzir dados e formato sql equivalente.</span>
+
+<span class="sd">    Esta função pede ao utilizador para inserir dados e o formato que o mesmo pretende.</span>
+<span class="sd">    A função faz depois a tradução entre os tipos em Python que são equivalente no sql.</span>
+
+<span class="sd">    :return: Resposta do utilizador traduzida</span>
+<span class="sd">    :rtype: string, int ou float</span>
+
+<span class="sd">    Exemplo de execução:</span>
+
+<span class="sd">    &gt;&gt;&gt; sql_escolher_tipo()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">resposta</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;--&gt; &quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">resposta</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="n">tipo_dado_lista</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sql int&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sql decimal&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sql string&quot;</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Escolha formato.&quot;</span><span class="p">)</span>
+        <span class="n">listar_escolhas</span><span class="p">(</span><span class="n">tipo_dado_lista</span><span class="p">)</span>
+
+
+        <span class="n">escolha</span> <span class="o">=</span> <span class="n">fazer_escolha</span><span class="p">(</span><span class="n">tipo_dado_lista</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">escolha</span> <span class="o">==</span> <span class="n">tipo_dado_lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">resposta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">resposta</span><span class="p">)</span>
+            
+            <span class="k">elif</span> <span class="n">escolha</span> <span class="o">==</span> <span class="n">tipo_dado_lista</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">resposta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">resposta</span><span class="p">)</span>
+            
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">escolha</span><span class="p">:</span>
+                <span class="k">continue</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">pass</span>
+            
+            <span class="k">break</span>
+
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Formato incompatível.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">resposta</span></div>
+
+</pre></div>
 
                 </article>
               

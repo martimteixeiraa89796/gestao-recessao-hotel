@@ -38,7 +38,11 @@ def select_geral_escolha():
     Forma interativa de fazer *select* de uma tabela.
 
     É pedido ao utilizador uma tabela para ser feito um *select*.
-    A tabela escolhida é depois enviada para a função **select_geral**.
+    A tabela escolhida é depois enviada para a função **select_geral** e imprimida.
+
+    Exemplo de execução:
+
+    >>> select_geral_escolha()
     """
 
     tabela_lista = get_tabelas()
