@@ -54,10 +54,11 @@ def criar_tabela_Quarto():
 
     query ="""
         CREATE TABLE Tb_Quarto (
-            Num_Quarto INTEGER PRIMARY KEY,
-            Num_Tipo_Quarto INT NOT NULL,
+            Num_Quarto INT NOT NULL,
+            Num_Tipo_Quarto INTEGER NOT NULL,
             Preco Decimal(10,2) NOT NULL,
             Ocupado BOOLEAN NOT NULL,
+            CONSTRAINT PK_Tb_Quarto Primary key (Num_Quarto),
             CONSTRAINT FK_Tb_Quarto_Tb_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)
                 REFERENCES Tb_Tipo_Quarto(Num_Tipo_Quarto)
                 ON UPDATE CASCADE
@@ -118,7 +119,7 @@ def criar_tabela_Camas():
     CREATE TABLE Tb_Camas(
         Num_Cama INTEGER PRIMARY KEY,
         Num_Quarto INT NOT NULL,
-        Num_Tipo_Cama INT NOT NULL,
+        Num_Tipo_Cama INTEGER NOT NULL,
         CONSTRAINT FK_Tb_Camas_Tb_Quarto FOREIGN KEY(Num_Quarto)
             REFERENCES Tb_Quarto(Num_Quarto)
             ON UPDATE CASCADE
@@ -163,7 +164,7 @@ def criar_tabela_Funcionario():
         CREATE TABLE Tb_Funcionario(
             Num_Funcionario INTEGER PRIMARY KEY,
             Nome_Funcionario VARCHAR(50) NOT NULL,
-            Num_funcao int NOT NULL,
+            Num_funcao INTEGER NOT NULL,
             CONSTRAINT FK_Tb_Funcoes_Tb_Funcionario FOREIGN KEY (Num_Funcao)
                 REFERENCES Tb_Funcoes(Num_Funcao)
                 ON UPDATE CASCADE
@@ -184,7 +185,7 @@ def criar_tabela_Horario():
 
     query = """
         CREATE TABLE Tb_Horario(
-            Num_funcionario INT NOT NULL,
+            Num_funcionario INTEGER NOT NULL,
             Comeca DATETIME NOT NULL,
             Acaba DATETIME NOT NULL,
             Folga VARCHAR(15) NOT NULL,
@@ -209,10 +210,10 @@ def criar_tabela_Reserva():
     query = """
         CREATE TABLE Tb_Reserva(
             Num_Reserva INTEGER PRIMARY KEY,
-            Num_Tipo_Reserva INT NOT NULL,
+            Num_Tipo_Reserva INTEGER NOT NULL,
             Check_in DATETIME NOT NULL,
             Check_out DATETIME NOT NULL,
-            Num_Funcionario INT NOT NULL,
+            Num_Funcionario INTEGER NOT NULL,
             CONSTRAINT FK_Tb_Tipo_Reserva_Tb_Reserva FOREIGN KEY (Num_Tipo_Reserva)
                 REFERENCES Tb_Tipo_Reserva(Num_Tipo_Reserva)
                 ON UPDATE CASCADE
@@ -238,7 +239,7 @@ def criar_tabela_Hospedes():
     query = """
         CREATE TABLE Tb_Hospedes(
             Num_Registo INTEGER PRIMARY KEY,
-            Num_Reserva INT NOT NULL,
+            Num_Reserva INTEGER NOT NULL,
             NIF INT NOT NULL,
             Reservado_Em_Nome BOOLEAN NOT NULL,
             Num_Quarto INT NOT NULL,
