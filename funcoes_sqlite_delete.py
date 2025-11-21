@@ -17,6 +17,14 @@ def limpar_tabela_geral(tabela):
     executarBD(query)
 
 
+def delete_geral(tabela, campo_condicao, valor):
+    query = f"""
+        DELETE FROM {tabela} WHERE {campo_condicao} = ?;
+    """
+
+    executarBD(query, (valor))
+
+
 def limpar_tabela_geral_escolha():
     tabela_lista = get_tabelas()
 
