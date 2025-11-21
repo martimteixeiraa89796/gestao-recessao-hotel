@@ -259,6 +259,3 @@ def criar_tabela_Hospedes():
     """
 
     executarBD(query)
-
-
-criar_tabela_tipo_cama()
