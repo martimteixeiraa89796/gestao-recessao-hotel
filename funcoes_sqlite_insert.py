@@ -1,5 +1,29 @@
-from ferramentas_BD import executarBD
-from ferramentas_escolha import input_string, input_int, input_float, input_bool
+from ferramentas_BD import executarBD, get_tabelas
+from ferramentas_escolha import input_string, input_int, input_float, input_bool, listar_escolhas, fazer_escolha
+
+
+def mapeador_inserts():
+    tabelas = get_tabelas()
+
+    listar_escolhas(tabelas)
+    tabela = fazer_escolha(tabelas)
+
+    lista_inserts = [inserir_tipo_cama,
+                     inserir_tipo_Quarto,
+                     inserir_tipo_reserva,
+                     inserir_funcao,
+                     inserir_cliente,
+                     inserir_quarto,
+                     inserir_Funcionario,
+                     inserir_camas,
+                     inserir_reserva,
+                     inserir_horario,
+                     inserir_hospede]
+
+    for x in range(len(tabelas)):
+        if tabela == tabelas[x]:
+            lista_inserts[x]()
+
 
 
 def inserir_tipo_cama():          
@@ -7,11 +31,11 @@ def inserir_tipo_cama():
     nome_tipo_cama = input_string()
   
     query = f"""
-        INSERT INTO Tipo_Cama (Nome_Tipo_Cama)
+        INSERT INTO Tb_Tipo_Cama (Nome_Tipo_Cama)
         VALUES (?);
     """
 
-    executarBD(query, (nome_tipo_cama))
+    executarBD(query, (nome_tipo_cama,))
 
 
 def inserir_tipo_Quarto():
@@ -19,11 +43,11 @@ def inserir_tipo_Quarto():
     nome_tipo_quarto = input_string()
     
     query = f"""
-        INSERT INTO Tipo_Quarto(Nome_Tipo_Quarto)
+        INSERT INTO Tb_Tipo_Quarto(Nome_Tipo_Quarto)
         VALUES (?);
     """
 
-    executarBD(query, (nome_tipo_quarto))
+    executarBD(query, (nome_tipo_quarto,))
 
 
 def inserir_quarto():
@@ -40,7 +64,7 @@ def inserir_quarto():
     ocupado = input_bool()
 
     query = f"""
-        INSERT INTO Quarto(Num_Quarto, Num_Tipo_Quarto, Preco, Ocupado)
+        INSERT INTO Tb_Quarto(Num_Quarto, Num_Tipo_Quarto, Preco, Ocupado)
         VALUES (?, ? , ? , ?);
     """
 
@@ -58,7 +82,7 @@ def inserir_cliente():
     telefone = input_string()
 
     query = f"""
-        INSERT INTO Cliente (NIF, Nome_Cliente, Telefone)
+        INSERT INTO Tb_Cliente (NIF, Nome_Cliente, Telefone)
         VALUES (?, ?, ?);
     """
 
@@ -70,11 +94,11 @@ def inserir_tipo_reserva():
     nome_tipo_reserva = input_string()
 
     query = f"""
-        INSERT INTO Tipo_Reserva (Nome_Tipo_Reserva)
+        INSERT INTO Tb_Tipo_Reserva (Nome_Tipo_Reserva)
         VALUES (?);
     """
 
-    executarBD(query, (nome_tipo_reserva))
+    executarBD(query, (nome_tipo_reserva,))
 
 
 def inserir_camas():
@@ -85,7 +109,7 @@ def inserir_camas():
     num_tipo_cama =input_int()
 
     query = f"""
-        INSERT INTO tipo_Camas (Num_Quarto, Num_Tipo_Cama)
+        INSERT INTO Tb_tipo_Camas (Num_Quarto, Num_Tipo_Cama)
         VALUES (?, ?);
     """
 
@@ -101,7 +125,7 @@ def inserir_funcao():
         VALUES (?);
     """
     
-    executarBD(query, (nome_funcao))
+    executarBD(query, (nome_funcao,))
 
 
 def inserir_Funcionario():
@@ -112,7 +136,7 @@ def inserir_Funcionario():
     num_funcao = input_int
 
     query = f"""
-        INSERT INTO Funcionario (Nome_Funcionario, Num_Funcao)
+        INSERT INTO Tb_Funcionario (Nome_Funcionario, Num_Funcao)
         VALUES (?, ?);
     """
     
@@ -133,7 +157,7 @@ def inserir_horario():
     folga = input_string()
 
     query = f"""
-        INSERT INTO Horario (Num_Funcionario, Comeca, Acaba, Folga)
+        INSERT INTO Tb_Horario (Num_Funcionario, Comeca, Acaba, Folga)
         VALUES (?, ?, ?, ?);
     """
 
@@ -154,7 +178,7 @@ def inserir_reserva():
     num_funcionario = input_float()
 
     query = f"""
-        INSERT INTO Reserva (Num_Tipo_Reserva, Check_in, Check_out, Num_Funcionario)
+        INSERT INTO Tb_Reserva (Num_Tipo_Reserva, Check_in, Check_out, Num_Funcionario)
         VALUES (?, ?, ?, ?, ?);
     """
     
@@ -175,7 +199,7 @@ def inserir_hospede():
     num_quarto =input_int()
     
     query = f"""
-        INSERT INTO Hospedes (Num_Reserva, NIF, Reservado_Em_Nome, Num_Quarto)
+        INSERT INTO Tb_Hospedes (Num_Reserva, NIF, Reservado_Em_Nome, Num_Quarto)
         VALUES (?, ?, ?, ?);
     """
     
