@@ -22,7 +22,7 @@ def delete_geral(tabela, campo_condicao, valor):
         DELETE FROM {tabela} WHERE {campo_condicao} = ?;
     """
 
-    executarBD(query, (valor))
+    executarBD(query, (valor,))
 
 
 def limpar_tabela_geral_escolha():
