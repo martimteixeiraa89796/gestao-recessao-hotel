@@ -3,7 +3,7 @@ Módulo de interação com bases de dados SQLite
 ---------------------------------------------
 
 Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dados da aplicação.
-É utilizado como ponte entre as *queries* SQL e a sua execução na base de dados.
+É utilizado como ponte entre as *queries* SQL e a sua execução na base de dados e obter dados da mesma.
 """
 
 import sqlite3  #Módulo já vem instalado com Python
@@ -13,26 +13,32 @@ def executarBD(query, query_dados=(), header_only=False, imprimir=False):
     """
     Executa queries na base de dados.
     
-    Cria-se um cursor para se poder interagir com a base de dados.
-    Se a query enviar um resultado, o mesmo fica guardado, caso contrário fica **None**.
-    Após a execução, faz um commit das ações das queries.
-
-    Caso for necessário, esta também chama uma função para imprimir tabelas formatadas.
+    Esta função cria uma conecção ao ficheiro de base de dados SQLite e, caso não exista, o mesmo é criado.
+    Após a ligação, é criado o leitor e o cursor para se poder interagir dentro da base de dados.
+    Se houver alterações feitas à base de dados, esta função também as guarda.
+    Caso seja feito um select, esta função também consegue imprimir os resultado com a ajuda de uma função adjacente.
+    No final das operções, a função desconecta-se da base de dados.
 
     :param query: A query para ser executada na base de dados
     :type query: string
 
+    :param query_dados: Tuple com variáveis a serem introduzidas na query.
+    :type query_dados: tuple
+
+    :param header_only: Faz com que a função retorne apenas os headers das tabelas
+    :type header_only: boolean
+
     :param imprimir: Se deve ou não imprimir tabelas
     :type imprimir: boolean
 
-    :return: Resultado da *query*
+    :return: Por padrão, a função retorna o conteudo de tabelas, mas pode ser alterado para apenas retornar os headers das mesmas.
     :rtype: list
 
-    :raise sqlite3.Error: Se ocorrer algum erro durante a criação do cursor ou na execução
+    :raise sqlite3.Error: Se ocorrer algum erro durante a execução de ações do módulo SQLite.
 
     Exemplo de execução de querie com impressão de tabela:
     
-    >>> basedados.executar("SELECT * FROM Tabela;", imprimir=True)
+    >>> executarBD("SELECT * FROM Tabela;", imprimir=True)
     """
     
     #Fazer conecção com base de dados
@@ -150,6 +156,23 @@ def imprimir_tabela(headers, dados):
 
 
 def get_campos(tabela):
+    """
+    Retorna uma lista com campos de uma tabela na base de dados.
+
+    Esta função acede à base de dados e retorna os campos/colunas de uma tabela.
+    Isto é feito através da função executarBD e mandá-la retornar apenas os headers das tabelas.
+
+    :param tabela: O nome da tabela que se pretende obter os campos
+    :type tabela: string
+
+    :return: Os nomes dos campos de uma tabela
+    :rtype: list
+
+    Exemplo de obtenção de campos:
+
+    >>> get_campos("Tb_Clientes")
+    """
+    
     campos = []
     for linha in executarBD(f"SELECT * FROM {tabela};", header_only=True):
         campos.append(linha[0])
@@ -158,6 +181,21 @@ def get_campos(tabela):
 
 
 def get_tabelas():
+    """
+    Retorna uma lista com o nome das tabelas na base de dados.
+
+    Esta função acede à base de dados e retorna os nomes das tabelas na base de dados.
+    Isto é feito através do executarBD, com uma *query **select*** que verifica a tabela master.
+    Esta função remove da lista tabelas de sistema.
+
+    :return: Os nomes das tabela na base de dados
+    :rtype: list
+
+    Exemplo de obtenção de campos:
+
+    >>> get_tabelas()
+    """
+
     tabelas = []
     for linha in executarBD("SELECT name FROM sqlite_master WHERE type='table'"):
         tabelas.append(linha[0])
