@@ -1,22 +1,24 @@
+from ferramentas_BD import executarBD
+
 def inserir_tipo_cama():
     num_tipo_cama =int(input("insira tipo de cama:"))                 
     nome_tipo_cama=input("insira nome cama:")
   
     query = f"""
         INSERT INTO Tipo_Cama (Num_Tipo_Cama, Nome_Tipo_Cama)
-        VALUES ({num_tipo_cama}, '{nome_tipo_cama}');
+        VALUES (?,?);
     """
-    return query
-
+    executarBD(query, (num_tipo_cama, nome_tipo_cama))
+    
 def inserir_tipo_Quarto():
     Num_Tipo_Quarto =int(input("insira Numerotipocama:"))
     Nome_Tipo_Quarto =input("insira Tipo Quarto:")
     
     query = f"""
     INSERT INTO Tipo_Quarto(Num_Tipo_Quarto,Nome_Tipo_Quarto)
-    VALUES ({Num_Tipo_Quarto},'{Nome_Tipo_Quarto}');
+    VALUES (?,?);
 """
-    return query
+    executarBD(query, (Num_Tipo_Quarto, Nome_Tipo_Quarto))
 
 def inserir_quarto():
     num_tipo_quarto = int(input("insira o numero do tipo de quarto"))
@@ -25,9 +27,9 @@ def inserir_quarto():
 
     query = f"""
     INSERT INTO Quarto(Num_Tipo_Quarto,preco, ocupado)
-    VALUES ({num_tipo_quarto}, {preco}, '{ocupado}');
+    VALUES (?,?,?);
 """
-    return query
+    executarBD(query, (num_tipo_quarto,preco, ocupado))
 
 def inserir_cliente():
     nif = int(input("Insira o NIF do Cliente:"))
@@ -36,9 +38,9 @@ def inserir_cliente():
 
     query = f"""
     INSERT INTO Cliente (NIF,Nome_Cliente,Telefone)
-    VALUES ({nif},'{nome_cliente}','{telefone}');
-"""
-    return query
+    VALUES (?,?,?);
+    """
+    executarBD(query, (nif,nome_cliente,telefone))
 
 def inserir_tipo_reserva():
 
@@ -47,9 +49,9 @@ def inserir_tipo_reserva():
 
     query = f"""
     INSERT INTO Tipo_Reserva (Num_Tipo_Reserva, Nome_Tipo_Reserva)
-    VALUES ({num_tipo_reserva}, '{nome_tipo_reserva}');
-"""
-    return query
+    VALUES (?,?);
+    """
+    executarBD(query, (num_tipo_reserva,nome_tipo_reserva))
 
 def inserir_camas():
 
@@ -58,9 +60,9 @@ def inserir_camas():
 
     query = f"""
     INSERT INTO tipo_Camas (Num_Quarto, Num_Tipo_Cama)
-    VALUES ({num_quarto}, {num_tipo_cama});
-"""
-    return query
+    VALUES (?,?);
+    """
+    executarBD(query, (num_quarto,num_tipo_cama))
 
 def inserir_funcao():
     num_funcao = int(input("Insira o numero da funcao:"))
@@ -68,9 +70,9 @@ def inserir_funcao():
 
     query = f"""
     INSERT INTO funcoes (Num_Funcao, Nome_Funcao)
-    VALUES ({num_funcao}, '{nome_funcao}');
+    VALUES (?,?);
     """
-    return query
+    executarBD(query, (num_funcao,nome_funcao))
 
 def inserir_Funcionario():
     num_funcionario = int(input("Insira o número do funcionário: "))
@@ -79,9 +81,9 @@ def inserir_Funcionario():
 
     query = f"""
     INSERT INTO Funcionario (Num_Funcionario, Nome_Funcionario, Num_Funcao)
-    VALUES ({num_funcionario}, '{nome_funcionario}', {num_funcao});
+    VALUES (?, ?, ?);
     """
-    return query
+    executarBD(query, (num_funcionario,nome_funcionario,num_funcao))
 
 def inserir_horario():
     num_funcionario = int(input("Insira o número do funcionário: "))
@@ -91,9 +93,9 @@ def inserir_horario():
 
     query = f"""
     INSERT INTO Horario (Num_Funcionario, Comeca, Acaba, Folga)
-    VALUES ({num_funcionario}, '{comeca}', '{acaba}', '{folga}');
+    VALUES (?,?,?,?);
     """
-    return query
+    executarBD(query, (num_funcionario,comeca,acaba,folga))
 
 def inserir_reserva():
     num_reserva = int(input("Insira o número da reserva: "))
@@ -104,9 +106,9 @@ def inserir_reserva():
 
     query = f"""
     INSERT INTO Reserva (Num_Reserva, Num_Tipo_Reserva, Check_in, Check_out, Num_Funcionario)
-    VALUES ({num_reserva}, {num_tipo_reserva}, '{check_in}', '{check_out}', {num_funcionario});
+    VALUES (?,?,?,?,?);
     """
-    return query
+    executarBD(query, (num_reserva,num_tipo_reserva,check_in,check_out,num_funcionario))
 
 def inserir_hospede():
     num_reserva = int(input("Insira o número da reserva: "))
@@ -116,7 +118,7 @@ def inserir_hospede():
     
     query = f"""
     INSERT INTO Hospedes (Num_Reserva, NIF, Reservado_Em_Nome, Num_Quarto)
-    VALUES ({num_reserva}, {nif}, '{reservado_em_nome}', {num_quarto});
+    VALUES (?,?,?,?);
     """
-    return query
+    executarBD(query, (num_reserva,nif,reservado_em_nome,num_quarto))
 
