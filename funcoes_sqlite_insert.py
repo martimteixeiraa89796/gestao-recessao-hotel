@@ -73,7 +73,7 @@ def inserir_quarto():
 
 def inserir_cliente():
     print("Insira o NIF do cliente:")
-    nif = input_int
+    nif = input_int()
 
     print("Insira o nome do cliente:")
     nome_cliente = input_string()
@@ -133,7 +133,7 @@ def inserir_Funcionario():
     nome_funcionario = input_string()
 
     print("Insira o número da função:")
-    num_funcao = input_int
+    num_funcao = input_int()
 
     query = f"""
         INSERT INTO Tb_Funcionario (Nome_Funcionario, Num_Funcao)
