@@ -6,7 +6,7 @@ Este módulo contém funções que são usadas para criar as várias tabelas exi
 As funções retornam a query SQL para ser usada na execução na base de dados.
 """
 
-
+from ferramentas_BD import executarBD
     
 def criar_tabela_tipo_cama():
     """
@@ -24,7 +24,7 @@ def criar_tabela_tipo_cama():
         );
     """
 
-    return query
+    executarBD(query)
 
 
 def criar_tabela_tipo_quarto():
@@ -43,7 +43,7 @@ def criar_tabela_tipo_quarto():
         );
     """
 
-    return query
+    executarBD(query)
 
 
 def criar_tabela_Quarto():
@@ -68,7 +68,7 @@ def criar_tabela_Quarto():
         );  
     """
 
-    return query
+    executarBD(query)
 
 
 def criar_tabela_Cliente():
@@ -88,7 +88,7 @@ def criar_tabela_Cliente():
         );
     """
 
-    return query
+    executarBD(query)
 
 
 def criar_tabela_Tipo_Reserva():
@@ -107,7 +107,7 @@ def criar_tabela_Tipo_Reserva():
         );
     """
 
-    return query
+    executarBD(query)
 
     
 def criar_tabela_Camas():
@@ -135,7 +135,7 @@ def criar_tabela_Camas():
         );
     """
 
-    return query
+    executarBD(query)
 
 
 def criar_tabela_Funcoes():
@@ -154,7 +154,7 @@ def criar_tabela_Funcoes():
         );
     """
 
-    return query
+    executarBD(query)
 
 
 def criar_tabela_Funcionario():
@@ -178,7 +178,7 @@ def criar_tabela_Funcionario():
         );
     """
     
-    return query
+    executarBD(query)
 
 
 def criar_tabela_Horario():
@@ -202,7 +202,7 @@ def criar_tabela_Horario():
         );
     """
 
-    return query
+    executarBD(query)
 
 
 def criar_tabela_Reserva():
@@ -232,7 +232,7 @@ def criar_tabela_Reserva():
         );
     """
 
-    return query
+    executarBD(query)
 
 
 def criar_tabela_Hospedes():
@@ -265,4 +265,4 @@ def criar_tabela_Hospedes():
         );
     """
 
-    return query
+    executarBD(query)
