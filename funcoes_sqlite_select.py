@@ -8,13 +8,6 @@ Este módulo contém funções que criam o código SQL para ser utilizado em *qu
 from ferramentas_BD import executarBD, get_tabelas
 import ferramentas_escolha
 
-def select_master():
-    query = f"""
-        SELECT name FROM sqlite_master WHERE type='table'
-    """
-
-    return query
-
 def select_geral(tabela):
     """
     Retorna código SQL para *queries select* de uma tabela.
