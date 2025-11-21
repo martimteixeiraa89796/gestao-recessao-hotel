@@ -18,9 +18,8 @@ def criar_tabela_tipo_cama():
 
     query ="""
         CREATE TABLE Tb_Tipo_Cama(
-            Num_Tipo_Cama INT NOT NULL AUTO_INCREMENT,
-            Nome_Tipo_Cama VARCHAR(100) NOT NULL,
-            CONSTRAINT PK_Tb_Tipo_Cama PRIMARY KEY (Num_Tipo_Cama)
+            Num_Tipo_Cama INTEGER PRIMARY KEY,
+            Nome_Tipo_Cama VARCHAR(100) NOT NULL
         );
     """
 
@@ -37,9 +36,8 @@ def criar_tabela_tipo_quarto():
 
     query = """
         CREATE TABLE Tb_Tipo_Quarto (
-            Num_Tipo_Quarto INT NOT NULL AUTO_INCREMENT,
-            Nome_Tipo_Quarto VARCHAR(50) NOT NULL,
-            CONSTRAINT PK_Tb_Tipo_Quarto PRIMARY KEY (Num_Tipo_Quarto)
+            Num_Tipo_Quarto INTEGER PRIMARY KEY,
+            Nome_Tipo_Quarto VARCHAR(50) NOT NULL
         );
     """
 
@@ -56,11 +54,10 @@ def criar_tabela_Quarto():
 
     query ="""
         CREATE TABLE Tb_Quarto (
-            Num_Quarto INT NOT NULL AUTO_INCREMENT,
+            Num_Quarto INTEGER PRIMARY KEY,
             Num_Tipo_Quarto INT NOT NULL,
             Preco Decimal(10,2) NOT NULL,
             Ocupado BOOLEAN NOT NULL,
-            CONSTRAINT PK_Tb_Quarto Primary key (Num_Quarto),
             CONSTRAINT FK_Tb_Quarto_Tb_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)
                 REFERENCES Tb_Tipo_Quarto(Num_Tipo_Quarto)
                 ON UPDATE CASCADE
@@ -101,9 +98,8 @@ def criar_tabela_Tipo_Reserva():
 
     query = """
         CREATE TABLE Tb_Tipo_Reserva(
-            Num_Tipo_Reserva INT NOT NULL AUTO_INCREMENT,
-            Nome_Tipo_Reserva VARCHAR(50) NOT NULL,
-            CONSTRAINT PK_Tb_Tipo_Reserva PRIMARY KEY (Num_Tipo_Reserva)
+            Num_Tipo_Reserva INTEGER PRIMARY KEY,
+            Nome_Tipo_Reserva VARCHAR(50) NOT NULL
         );
     """
 
@@ -120,10 +116,9 @@ def criar_tabela_Camas():
 
     query = """
     CREATE TABLE Tb_Camas(
-        Num_Cama INT NOT NULL AUTO_INCREMENT,
+        Num_Cama INTEGER PRIMARY KEY,
         Num_Quarto INT NOT NULL,
         Num_Tipo_Cama INT NOT NULL,
-        CONSTRAINT PK_Tb_Camas PRIMARY KEY(Num_Cama),
         CONSTRAINT FK_Tb_Camas_Tb_Quarto FOREIGN KEY(Num_Quarto)
             REFERENCES Tb_Quarto(Num_Quarto)
             ON UPDATE CASCADE
@@ -148,9 +143,8 @@ def criar_tabela_Funcoes():
 
     query = """
         CREATE TABLE Tb_Funcoes(
-            Num_Funcao INT NOT NULL AUTO_INCREMENT,
-            Nome_Funcao VARCHAR(50) NOT NULL,
-            CONSTRAINT PK_Tb_Funcoes PRIMARY KEY (Num_Funcao)
+            Num_Funcao INTEGER PRIMARY KEY,
+            Nome_Funcao VARCHAR(50) NOT NULL
         );
     """
 
@@ -167,10 +161,9 @@ def criar_tabela_Funcionario():
 
     query = """
         CREATE TABLE Tb_Funcionario(
-            Num_Funcionario INT NOT NULL AUTO_INCREMENT,
+            Num_Funcionario INTEGER PRIMARY KEY,
             Nome_Funcionario VARCHAR(50) NOT NULL,
             Num_funcao int NOT NULL,
-            CONSTRAINT PK_Tb_Funcionario PRIMARY KEY (Num_Funcionario),
             CONSTRAINT FK_Tb_Funcoes_Tb_Funcionario FOREIGN KEY (Num_Funcao)
                 REFERENCES Tb_Funcoes(Num_Funcao)
                 ON UPDATE CASCADE
@@ -215,12 +208,11 @@ def criar_tabela_Reserva():
 
     query = """
         CREATE TABLE Tb_Reserva(
-            Num_Reserva INT NOT NULL AUTO_INCREMENT,
+            Num_Reserva INTEGER PRIMARY KEY,
             Num_Tipo_Reserva INT NOT NULL,
             Check_in DATETIME NOT NULL,
             Check_out DATETIME NOT NULL,
             Num_Funcionario INT NOT NULL,
-            CONSTRAINT PK_Tb_Reserva PRIMARY KEY (Num_Reserva),
             CONSTRAINT FK_Tb_Tipo_Reserva_Tb_Reserva FOREIGN KEY (Num_Tipo_Reserva)
                 REFERENCES Tb_Tipo_Reserva(Num_Tipo_Reserva)
                 ON UPDATE CASCADE
@@ -245,7 +237,7 @@ def criar_tabela_Hospedes():
 
     query = """
         CREATE TABLE Tb_Hospedes(
-            Num_Registo INT NOT NULL AUTO_INCREMENT,
+            Num_Registo INTEGER PRIMARY KEY,
             Num_Reserva INT NOT NULL,
             NIF INT NOT NULL,
             Reservado_Em_Nome BOOLEAN NOT NULL,
@@ -266,3 +258,6 @@ def criar_tabela_Hospedes():
     """
 
     executarBD(query)
+
+
+criar_tabela_tipo_cama()
