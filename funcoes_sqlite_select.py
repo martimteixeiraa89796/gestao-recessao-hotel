@@ -56,5 +56,3 @@ def select_geral_escolha():
     tabela = ferramentas_escolha.fazer_escolha(tabela_lista)
 
     executarBD(select_geral(tabela), imprimir=True)
-
-select_geral_escolha()
