@@ -17,10 +17,10 @@ def criar_tabela_tipo_cama():
     """
 
     query ="""
-        create table Tipo_Cama(
-        Num_Tipo_Cama int not null,
-        Nome_Tipo_Cama varchar(100),
-        constraint PK_Tipo_Cama primary key (Num_Tipo_Cama)
+        CREATE TABLE Tipo_Cama(
+            Num_Tipo_Cama INT NOT NULL AUTO_INCREMENT,
+            Nome_Tipo_Cama VARCHAR(100) NOT NULL,
+            CONSTRAINT PK_Tipo_Cama PRIMARY KEY (Num_Tipo_Cama)
         );
     """
 
@@ -36,8 +36,8 @@ def criar_tabela_tipo_quarto():
     """
 
     query = """
-        CREATE TABLE IF NOT EXISTS Tipo_Quarto (
-            Num_Tipo_Quarto INT NOT NULL,
+        CREATE TABLE Tipo_Quarto (
+            Num_Tipo_Quarto INT NOT NULL AUTO_INCREMENT,
             Nome_Tipo_Quarto VARCHAR(50) NOT NULL,
             CONSTRAINT PK_Tipo_Quarto PRIMARY KEY (Num_Tipo_Quarto)
         );
@@ -55,17 +55,17 @@ def criar_tabela_Quarto():
     """
 
     query ="""
-        CREATE TABLE IF NOT EXISTS Quarto (
-            Num_Quarto INT AUTO_INCREMENT,
+        CREATE TABLE Quarto (
+            Num_Quarto INT NOT NULL AUTO_INCREMENT,
             Num_Tipo_Quarto INT NOT NULL,
             Preco Decimal(10,2) NOT NULL,
-            Ocupado VARCHAR(15),
+            Ocupado BOOLEAN NOT NULL,
             CONSTRAINT PK_quarto Primary key (Num_Quarto),
             CONSTRAINT FK_Quarto_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)
                 REFERENCES Tipo_Quarto(Num_Tipo_Quarto)
-                on update cascade
-                on delete restrict
-    );  
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
+        );  
     """
 
     return query
@@ -80,11 +80,11 @@ def criar_tabela_Cliente():
     """
 
     query = """
-        create table Cliente(
-        NIF int not null,
-        Nome_Cliente varchar(50),
-        Telefone varchar(15),
-        constraint PK_Cliente primary key(NIF)
+        CREATE TABLE Cliente(
+            NIF INT NOT NULL,
+            Nome_Cliente VARCHAR(50) NOT NULL,
+            Telefone VARCHAR(15) NOT NULL,
+            CONSTRAINT PK_Cliente PRIMARY KEY(NIF)
         );
     """
 
@@ -100,10 +100,10 @@ def criar_tabela_Tipo_Reserva():
     """
 
     query = """
-        create table Tipo_Reserva(
-        Num_Tipo_Reserva int not null,
-        Nome_Tipo_Reserva varchar(50),
-        constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
+        CREATE TABLE Tipo_Reserva(
+            Num_Tipo_Reserva INT NOT NULL AUTO_INCREMENT,
+            Nome_Tipo_Reserva VARCHAR(50) NOT NULL,
+            CONSTRAINT PK_Tipo_Reserva PRIMARY KEY (Num_Tipo_Reserva)
         );
     """
 
@@ -119,19 +119,21 @@ def criar_tabela_Camas():
     """
 
     query = """
-    CREATE TABLE IF NOT EXISTS tipo_Camas(
-    Num_Quarto INT NOT NULL,
-    Num_Tipo_Cama INT NOT NULL,
-    CONSTRAINT FK_Camas_Quarto FOREIGN KEY(Num_Quarto)
-        REFERENCES Quartos(Num_Quarto),
-        on update cascade
-        on delete restrict
-    CONSTRAINT FK_Camas_Tipo_Cama FOREIGN KEY(Num_Tipo_Quarto)
-        REFERENCES Tipo_Cama(Num_Tipo_Cama)
-        on update cascade
-        on delete restrict
-    );
-"""
+    CREATE TABLE Camas(
+        Num_Cama INT NOT NULL AUTO_INCREMENT,
+        Num_Quarto INT NOT NULL,
+        Num_Tipo_Cama INT NOT NULL,
+        CONSTRAINT PK_Camas PRIMARY KEY(Num_Cama),
+        CONSTRAINT FK_Camas_Quarto FOREIGN KEY(Num_Quarto)
+            REFERENCES Quartos(Num_Quarto)
+            ON UPDATE CASCADE
+            ON DELETE RESTRICT,
+        CONSTRAINT FK_Camas_Tipo_Cama FOREIGN KEY(Num_Tipo_Cama)
+            REFERENCES Tipo_Cama(Num_Tipo_Cama)
+            ON UPDATE CASCADE
+            ON DELETE RESTRICT
+        );
+    """
 
     return query
 
@@ -145,10 +147,10 @@ def criar_tabela_Funcoes():
     """
 
     query = """
-        create table Funcoes(
-        Num_Funcao int not null,
-        Nome_Funcao varchar(50),
-        constraint PK_Funcoes primary key (Num_Funcao)
+        CREATE TABLE Funcoes(
+            Num_Funcao INT NOT NULL AUTO_INCREMENT,
+            Nome_Funcao VARCHAR(50) NOT NULL,
+            CONSTRAINT PK_Funcoes PRIMARY KEY (Num_Funcao)
         );
     """
 
@@ -164,15 +166,15 @@ def criar_tabela_Funcionario():
     """
 
     query = """
-        create table Funcionario(
-        Num_Funcionario int not null,
-        Nome_Funcionario varchar(50),
-        Num_funcao int,
-        constraint PK_Funcionario primary key (Num_Funcionario),
-        constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)
-            references Funcoes(Num_Funcao)
-            on update cascade
-            on delete restrict
+        CREATE TABLE Funcionario(
+            Num_Funcionario INT NOT NULL AUTO_INCREMENT,
+            Nome_Funcionario VARCHAR(50) NOT NULL,
+            Num_funcao int NOT NULL,
+            CONSTRAINT PK_Funcionario PRIMARY KEY (Num_Funcionario),
+            CONSTRAINT FK_Funcoes_Funcionario FOREIGN KEY (Num_Funcao)
+                REFERENCES Funcoes(Num_Funcao)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
         );
     """
     
@@ -188,15 +190,15 @@ def criar_tabela_Horario():
     """
 
     query = """
-        create table Horario(
-        Num_funcionario int,
-        Comeca datetime,
-        Acaba datetime,
-        Folga varchar(15),
-        constraint FK_Funcionario_Horario foreign key (Num_Funcionario)
-            references Funcionario (Num_Funcionario)
-            on update cascade
-            on delete restrict
+        CREATE TABLE Horario(
+            Num_funcionario INT NOT NULL,
+            Comeca DATETIME NOT NULL,
+            Acaba DATETIME NOT NULL,
+            Folga VARCHAR(15) NOT NULL,
+            CONSTRAINT FK_Funcionario_Horario FOREIGN KEY (Num_Funcionario)
+                REFERENCES Funcionario (Num_Funcionario)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
         );
     """
 
@@ -212,21 +214,21 @@ def criar_tabela_Reserva():
     """
 
     query = """
-        create table Reserva(
-        Num_Reserva int not null,
-        Num_Tipo_Reserva int,
-        Check_in datetime,
-        Check_out datetime,
-        Num_Funcionario int,
-        constraint PK_Reserva primary key (Num_Reserva),
-        constraint FK_Tipo_Reserva_Reserva foreign key (Num_Tipo_Reserva)
-            references Tipo_Reserva(Num_Tipo_Reserva),
-            on update cascade
-            on delete restrict
-        constraint FK_Funcionario_Reserva foreign key (Num_Funcionario)
-            references Funcionario(Num_funcionario)
-            on update cascade
-            on delete restrict
+        CREATE TABLE Reserva(
+            Num_Reserva INT NOT NULL AUTO_INCREMENT,
+            Num_Tipo_Reserva INT NOT NULL,
+            Check_in DATETIME NOT NULL,
+            Check_out DATETIME NOT NULL,
+            Num_Funcionario INT NOT NULL,
+            CONSTRAINT PK_Reserva PRIMARY KEY (Num_Reserva),
+            CONSTRAINT FK_Tipo_Reserva_Reserva FOREIGN KEY (Num_Tipo_Reserva)
+                REFERENCES Tipo_Reserva(Num_Tipo_Reserva)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT,
+            CONSTRAINT FK_Funcionario_Reserva FOREIGN KEY (Num_Funcionario)
+                REFERENCES Funcionario(Num_funcionario)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
         );
     """
 
@@ -242,23 +244,24 @@ def criar_tabela_Hospedes():
     """
 
     query = """
-        create table Hospedes(
-        Num_Reserva int,
-        NIF int,
-        Reservado_Em_Nome varchar(20),
-        Num_Quarto int,
-        constraint FK_Reserva_Hospedes foreign key (Num_Reserva)
-            references Reserva (Num_Reserva),
-            on update cascade
-            on delete restrict
-        constraint FK_Cliente_Hospedes foreign key (NIF)
-            references Cliente (NIF),
-            on update cascade
-            on delete restrict
-        constraint FK_Quarto_Hospedes foreign key (Num_Quarto)
-            references Quarto (Num_Quarto)
-            on update cascade
-            on delete restrict
+        CREATE TABLE Hospedes(
+            Num_Registo INT NOT NULL AUTO_INCREMENT,
+            Num_Reserva INT NOT NULL,
+            NIF INT NOT NULL,
+            Reservado_Em_Nome BOOLEAN NOT NULL,
+            Num_Quarto INT NOT NULL,
+            CONSTRAINT FK_Reserva_Hospedes FOREIGN KEY (Num_Reserva)
+                REFERENCES Reserva (Num_Reserva)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT,
+            CONSTRAINT FK_Cliente_Hospedes FOREIGN KEY (NIF)
+                REFERENCES Cliente (NIF)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT,
+            CONSTRAINT FK_Quarto_Hospedes FOREIGN KEY (Num_Quarto)
+                REFERENCES Quarto (Num_Quarto)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
         );
     """
 
