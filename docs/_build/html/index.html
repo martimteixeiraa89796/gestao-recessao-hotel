@@ -153,8 +153,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ferramentas_BD.html">ferramentas_BD module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ferramentas_escolha.html">ferramentas_escolha module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_insert.html">funcoes_sqlite_insert module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
@@ -327,13 +329,17 @@ document.write(`
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="ferramentas_BD.html">ferramentas_BD module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ferramentas_BD.html#modulo-de-interacao-com-bases-de-dados-sqlite">Módulo de interação com bases de dados SQLite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.FerramentasBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.FerramentasBD.conectarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.conectarBD()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.FerramentasBD.desconectarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.desconectarBD()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.FerramentasBD.executarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.executarBD()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.FerramentasBD.imprimir_tabela"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.imprimir_tabela()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.executarBD"><code class="docutils literal notranslate"><span class="pre">executarBD()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.get_campos"><code class="docutils literal notranslate"><span class="pre">get_campos()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.get_tabelas"><code class="docutils literal notranslate"><span class="pre">get_tabelas()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferramentas_BD.html#ferramentas_BD.imprimir_tabela"><code class="docutils literal notranslate"><span class="pre">imprimir_tabela()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ferramentas_escolha.html">ferramentas_escolha module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ferramentas_escolha.html#modulo-com-funcao-para-ajudar-com-input-do-utilizador">Módulo com função para ajudar com input do utilizador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferramentas_escolha.html#ferramentas_escolha.fazer_escolha"><code class="docutils literal notranslate"><span class="pre">fazer_escolha()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferramentas_escolha.html#ferramentas_escolha.listar_escolhas"><code class="docutils literal notranslate"><span class="pre">listar_escolhas()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferramentas_escolha.html#ferramentas_escolha.sql_escolher_tipo"><code class="docutils literal notranslate"><span class="pre">sql_escolher_tipo()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_create.html">funcoes_sqlite_create module</a><ul>
@@ -351,14 +357,50 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_tipo_quarto"><code class="docutils literal notranslate"><span class="pre">criar_tabela_tipo_quarto()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#modulo-com-funcoes-de-remocao-de-tabelas">Módulo com funções de remoção de tabelas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.delete_geral"><code class="docutils literal notranslate"><span class="pre">delete_geral()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.limpar_tabela_geral"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.limpar_tabela_geral_escolha"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral_escolha()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Camas"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Camas()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Cliente"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Cliente()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Funcionario"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Funcionario()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Funcoes"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Funcoes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Horario"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Horario()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Hospedes"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Hospedes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Quarto"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Quarto()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Reserva"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Reserva()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Tipo_Reserva"><code class="docutils literal notranslate"><span class="pre">remover_tabela_Tipo_Reserva()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_tipo_cama"><code class="docutils literal notranslate"><span class="pre">remover_tabela_tipo_cama()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_tipo_quarto"><code class="docutils literal notranslate"><span class="pre">remover_tabela_tipo_quarto()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.update_geral_escolha"><code class="docutils literal notranslate"><span class="pre">update_geral_escolha()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_insert.html">funcoes_sqlite_insert module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_Funcionario"><code class="docutils literal notranslate"><span class="pre">inserir_Funcionario()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_camas"><code class="docutils literal notranslate"><span class="pre">inserir_camas()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_cliente"><code class="docutils literal notranslate"><span class="pre">inserir_cliente()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_funcao"><code class="docutils literal notranslate"><span class="pre">inserir_funcao()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_horario"><code class="docutils literal notranslate"><span class="pre">inserir_horario()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_hospede"><code class="docutils literal notranslate"><span class="pre">inserir_hospede()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_quarto"><code class="docutils literal notranslate"><span class="pre">inserir_quarto()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_reserva"><code class="docutils literal notranslate"><span class="pre">inserir_reserva()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_tipo_Quarto"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_Quarto()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_tipo_cama"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_cama()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_tipo_reserva"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_reserva()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_select.html#modulo-com-funcoes-para-fazer-selects">Módulo com funções para fazer <em>selects</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_select.html#funcoes_sqlite_select.select_geral"><code class="docutils literal notranslate"><span class="pre">select_geral()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_select.html#funcoes_sqlite_select.select_geral_escolha"><code class="docutils literal notranslate"><span class="pre">select_geral_escolha()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_update.html#funcoes_sqlite_update.update_geral"><code class="docutils literal notranslate"><span class="pre">update_geral()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes_sqlite_update.html#funcoes_sqlite_update.update_geral_escolha"><code class="docutils literal notranslate"><span class="pre">update_geral_escolha()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
 </ul>
 </div>

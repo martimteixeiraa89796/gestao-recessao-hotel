@@ -45,7 +45,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Pesquisar" href="search.html" />
     <link rel="next" title="funcoes_sqlite_update module" href="funcoes_sqlite_update.html" />
-    <link rel="prev" title="funcoes_sqlite_delete module" href="funcoes_sqlite_delete.html" />
+    <link rel="prev" title="funcoes_sqlite_insert module" href="funcoes_sqlite_insert.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt"/>
   </head>
@@ -152,8 +152,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ferramentas_BD.html">ferramentas_BD module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ferramentas_escolha.html">ferramentas_escolha module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_insert.html">funcoes_sqlite_insert module</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
@@ -353,7 +355,11 @@ Serve para ter uma ideia dos dados existentes.</p>
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">select_geral_escolha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#select_geral_escolha"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.select_geral_escolha" title="Link to this definition">#</a></dt>
 <dd><p>Forma interativa de fazer <em>select</em> de uma tabela.</p>
 <p>É pedido ao utilizador uma tabela para ser feito um <em>select</em>.
-A tabela escolhida é depois enviada para a função <strong>select_geral</strong>.</p>
+A tabela escolhida é depois enviada para a função <strong>select_geral</strong> e imprimida.</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">select_geral_escolha</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -370,12 +376,12 @@ A tabela escolhida é depois enviada para a função <strong>select_geral</stron
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="funcoes_sqlite_delete.html"
+       href="funcoes_sqlite_insert.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">anterior</p>
-        <p class="prev-next-title">funcoes_sqlite_delete module</p>
+        <p class="prev-next-title">funcoes_sqlite_insert module</p>
       </div>
     </a>
     <a class="right-next"

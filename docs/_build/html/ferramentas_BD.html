@@ -44,7 +44,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ferramentas_BD';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Pesquisar" href="search.html" />
-    <link rel="next" title="funcoes_sqlite_create module" href="funcoes_sqlite_create.html" />
+    <link rel="next" title="ferramentas_escolha module" href="ferramentas_escolha.html" />
     <link rel="prev" title="Documentação" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt"/>
@@ -152,8 +152,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">ferramentas_BD module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ferramentas_escolha.html">ferramentas_escolha module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_insert.html">funcoes_sqlite_insert module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
@@ -306,13 +308,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-de-interacao-com-bases-de-dados-sqlite">Módulo de interação com bases de dados SQLite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD.conectarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.conectarBD()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD.desconectarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.desconectarBD()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD.executarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.executarBD()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD.imprimir_tabela"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.imprimir_tabela()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.executarBD"><code class="docutils literal notranslate"><span class="pre">executarBD()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.get_campos"><code class="docutils literal notranslate"><span class="pre">get_campos()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.get_tabelas"><code class="docutils literal notranslate"><span class="pre">get_tabelas()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.imprimir_tabela"><code class="docutils literal notranslate"><span class="pre">imprimir_tabela()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -329,98 +328,89 @@ document.write(`
 <section id="modulo-de-interacao-com-bases-de-dados-sqlite">
 <h2>Módulo de interação com bases de dados SQLite<a class="headerlink" href="#modulo-de-interacao-com-bases-de-dados-sqlite" title="Link to this heading">#</a></h2>
 <p>Este módulo faz a ligação com os ficheiros <strong>.bd</strong> que contém a base de dados da aplicação.
-É utilizado como ponte entre as <em>queries</em> SQL e a sua execução na base de dados.</p>
+É utilizado como ponte entre as <em>queries</em> SQL e a sua execução na base de dados e obter dados da mesma.</p>
 </section>
-<dl class="py class">
-<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ferramentas_BD.</span></span><span class="sig-name descname"><span class="pre">FerramentasBD</span></span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Classe com ferramentas para interagir com base de dados SQLite.</p>
-<p>Serve para centralizar todos os processos relacionados ao ponto em cima.
-Desta forma, só se escreve a lógica uma única vez e executa-se quando quisermos.</p>
-<p>Esta classe contém métodos e funções que:</p>
-<ul class="simple">
-<li><p>Inicia conecção com base de dados;</p></li>
-<li><p>Fecha conecção com base de dados;</p></li>
-<li><p>Executa <em>queries</em> SQL na base de dados (com opção de imprimir tabelas);</p></li>
-</ul>
-<p>Exemplo de inicialização da classe:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basedados</span> <span class="o">=</span> <span class="n">FerramentasBD</span><span class="p">()</span>
-</pre></div>
-</div>
-<dl class="py method">
-<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD.conectarBD">
-<span class="sig-name descname"><span class="pre">conectarBD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ficheiro</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD.conectarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD.conectarBD" title="Link to this definition">#</a></dt>
-<dd><p>Inicia a conecção com base de dados.</p>
-<p>Para iniciar a base de dados, primeiro é necessário conectá-la.
-Se a base de dados não existir, ela será criada automaticamente.
-Esta função utiliza o módulo <strong>sqlite</strong> que vem pre-instalado com o Python
-para criar o objeto de conecção <strong>sqlconnector</strong>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ficheiro</strong> (<em>string</em>) – Nome do ficheiro <strong>.bd</strong> da base de dados a ser utilizado</p>
-</dd>
-<dt class="field-even">Levanta<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>sqlite3.Error</strong> – Se ocorrer algum erro durante a conecção</p>
-</dd>
-</dl>
-<p>Exemplo de conecção com base de dados:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basedados</span><span class="o">.</span><span class="n">conectarBD</span><span class="p">(</span><span class="s2">&quot;bd&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD.desconectarBD">
-<span class="sig-name descname"><span class="pre">desconectarBD</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD.desconectarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD.desconectarBD" title="Link to this definition">#</a></dt>
-<dd><p>Desconecta base de dados.</p>
-<p>É necessário fechar a base de dados para que, caso a aplicação falhe, os dados não serem perdidos.
-Este método fecha e limpa a variável <strong>sqlconnector</strong> da memória.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Levanta<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>sqlite3.Error</strong> – Se ocorrer algum erro durante a o desconecção</p>
-</dd>
-</dl>
-<p>Exemplo de fechar conecção:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basedados</span><span class="o">.</span><span class="n">desconectarBD</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD.executarBD">
-<span class="sig-name descname"><span class="pre">executarBD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imprimir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD.executarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD.executarBD" title="Link to this definition">#</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ferramentas_BD.executarBD">
+<span class="sig-prename descclassname"><span class="pre">ferramentas_BD.</span></span><span class="sig-name descname"><span class="pre">executarBD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_dados</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imprimir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#executarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.executarBD" title="Link to this definition">#</a></dt>
 <dd><p>Executa queries na base de dados.</p>
-<p>Cria-se um cursor para se poder interagir com a base de dados.
-Se a query enviar um resultado, o mesmo fica guardado, caso contrário fica <strong>None</strong>.
-Após a execução, faz um commit das ações das queries.</p>
-<p>Caso for necessário, esta também chama uma função para imprimir tabelas formatadas.</p>
+<p>Esta função cria uma conecção ao ficheiro de base de dados SQLite e, caso não exista, o mesmo é criado.
+Após a ligação, é criado o leitor e o cursor para se poder interagir dentro da base de dados.
+Se houver alterações feitas à base de dados, esta função também as guarda.
+Caso seja feito um select, esta função também consegue imprimir os resultado com a ajuda de uma função adjacente.
+No final das operções, a função desconecta-se da base de dados.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>query</strong> (<em>string</em>) – A query para ser executada na base de dados</p></li>
+<li><p><strong>query_dados</strong> (<em>tuple</em>) – Tuple com variáveis a serem introduzidas na query.</p></li>
+<li><p><strong>header_only</strong> (<em>boolean</em>) – Faz com que a função retorne apenas os headers das tabelas</p></li>
 <li><p><strong>imprimir</strong> (<em>boolean</em>) – Se deve ou não imprimir tabelas</p></li>
 </ul>
 </dd>
 <dt class="field-even">Retorno<span class="colon">:</span></dt>
-<dd class="field-even"><p>Resultado da <em>query</em></p>
+<dd class="field-even"><p>Por padrão, a função retorna o conteudo de tabelas, mas pode ser alterado para apenas retornar os headers das mesmas.</p>
 </dd>
 <dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list</p>
 </dd>
 <dt class="field-even">Levanta<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>sqlite3.Error</strong> – Se ocorrer algum erro durante a criação do cursor ou na execução</p>
+<dd class="field-even"><p><strong>sqlite3.Error</strong> – Se ocorrer algum erro durante a execução de ações do módulo SQLite.</p>
 </dd>
 </dl>
 <p>Exemplo de execução de querie com impressão de tabela:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">basedados</span><span class="o">.</span><span class="n">executar</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Tabela;&quot;</span><span class="p">,</span> <span class="n">imprimir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">executarBD</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Tabela;&quot;</span><span class="p">,</span> <span class="n">imprimir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="ferramentas_BD.FerramentasBD.imprimir_tabela">
-<span class="sig-name descname"><span class="pre">imprimir_tabela</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dados</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#FerramentasBD.imprimir_tabela"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.FerramentasBD.imprimir_tabela" title="Link to this definition">#</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="ferramentas_BD.get_campos">
+<span class="sig-prename descclassname"><span class="pre">ferramentas_BD.</span></span><span class="sig-name descname"><span class="pre">get_campos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#get_campos"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.get_campos" title="Link to this definition">#</a></dt>
+<dd><p>Retorna uma lista com campos de uma tabela na base de dados.</p>
+<p>Esta função acede à base de dados e retorna os campos/colunas de uma tabela.
+Isto é feito através da função executarBD e mandá-la retornar apenas os headers das tabelas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tabela</strong> (<em>string</em>) – O nome da tabela que se pretende obter os campos</p>
+</dd>
+<dt class="field-even">Retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Os nomes dos campos de uma tabela</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p>Exemplo de obtenção de campos:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_campos</span><span class="p">(</span><span class="s2">&quot;Tb_Clientes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ferramentas_BD.get_tabelas">
+<span class="sig-prename descclassname"><span class="pre">ferramentas_BD.</span></span><span class="sig-name descname"><span class="pre">get_tabelas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#get_tabelas"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.get_tabelas" title="Link to this definition">#</a></dt>
+<dd><p>Retorna uma lista com o nome das tabelas na base de dados.</p>
+<p>Esta função acede à base de dados e retorna os nomes das tabelas na base de dados.
+Isto é feito através do executarBD, com uma <em>query **select**</em> que verifica a tabela master.
+Esta função remove da lista tabelas de sistema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Os nomes das tabela na base de dados</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+<p>Exemplo de obtenção de campos:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_tabelas</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ferramentas_BD.imprimir_tabela">
+<span class="sig-prename descclassname"><span class="pre">ferramentas_BD.</span></span><span class="sig-name descname"><span class="pre">imprimir_tabela</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dados</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#imprimir_tabela"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.imprimir_tabela" title="Link to this definition">#</a></dt>
 <dd><p>Imprime tabelas de forma formatada.</p>
 <p>Uma vez que o resultado que advém da execução de queries que devolvem tabelas é uma lista com tuples,
 para que o utilizador perceba o que está a ser apresentado, o resultado tem de ser formatado.</p>
@@ -450,8 +440,6 @@ que são depois guardados numa lista, prontos para serem impressos.</p>
 </div>
 </dd></dl>
 
-</dd></dl>
-
 </section>
 
 
@@ -475,11 +463,11 @@ que são depois guardados numa lista, prontos para serem impressos.</p>
       </div>
     </a>
     <a class="right-next"
-       href="funcoes_sqlite_create.html"
+       href="ferramentas_escolha.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">próximo</p>
-        <p class="prev-next-title">funcoes_sqlite_create module</p>
+        <p class="prev-next-title">ferramentas_escolha module</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -500,13 +488,10 @@ que são depois guardados numa lista, prontos para serem impressos.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-de-interacao-com-bases-de-dados-sqlite">Módulo de interação com bases de dados SQLite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD.conectarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.conectarBD()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD.desconectarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.desconectarBD()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD.executarBD"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.executarBD()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.FerramentasBD.imprimir_tabela"><code class="docutils literal notranslate"><span class="pre">FerramentasBD.imprimir_tabela()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.executarBD"><code class="docutils literal notranslate"><span class="pre">executarBD()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.get_campos"><code class="docutils literal notranslate"><span class="pre">get_campos()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.get_tabelas"><code class="docutils literal notranslate"><span class="pre">get_tabelas()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_BD.imprimir_tabela"><code class="docutils literal notranslate"><span class="pre">imprimir_tabela()</span></code></a></li>
 </ul>
   </nav></div>
 

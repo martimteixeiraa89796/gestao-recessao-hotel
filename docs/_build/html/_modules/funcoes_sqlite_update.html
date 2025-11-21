@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visão geral: código do módulo &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
+    <title>funcoes_sqlite_update &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
   
   
   
@@ -40,7 +40,7 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/translations.js?v=beaedd51"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/funcoes_sqlite_update';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Pesquisar" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -260,15 +260,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h1>Todos os módulos onde este código está disponível</h1>
-<ul><li><a href="ferramentas_BD.html">ferramentas_BD</a></li>
-<li><a href="ferramentas_escolha.html">ferramentas_escolha</a></li>
-<li><a href="funcoes_sqlite_create.html">funcoes_sqlite_create</a></li>
-<li><a href="funcoes_sqlite_delete.html">funcoes_sqlite_delete</a></li>
-<li><a href="funcoes_sqlite_insert.html">funcoes_sqlite_insert</a></li>
-<li><a href="funcoes_sqlite_select.html">funcoes_sqlite_select</a></li>
-<li><a href="funcoes_sqlite_update.html">funcoes_sqlite_update</a></li>
-</ul>
+  <h1>Código fonte de funcoes_sqlite_update</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ferramentas_BD</span><span class="w"> </span><span class="kn">import</span> <span class="n">executarBD</span><span class="p">,</span> <span class="n">get_campos</span><span class="p">,</span> <span class="n">get_tabelas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ferramentas_escolha</span>
+
+<div class="viewcode-block" id="update_geral">
+<a class="viewcode-back" href="../funcoes_sqlite_update.html#funcoes_sqlite_update.update_geral">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_geral</span><span class="p">(</span><span class="n">tabela</span><span class="p">,</span> <span class="n">campo</span><span class="p">,</span> <span class="n">novo_dado</span><span class="p">,</span> <span class="n">campo_condicao</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        update </span><span class="si">{</span><span class="n">tabela</span><span class="si">}</span>
+<span class="s2">        set </span><span class="si">{</span><span class="n">campo</span><span class="si">}</span><span class="s2"> = ?</span>
+<span class="s2">        where </span><span class="si">{</span><span class="n">campo_condicao</span><span class="si">}</span><span class="s2"> = ?</span>
+<span class="s2">        ;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+    
+    <span class="n">executarBD</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">novo_dado</span><span class="p">,</span> <span class="n">valor</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="update_geral_escolha">
+<a class="viewcode-back" href="../funcoes_sqlite_update.html#funcoes_sqlite_update.update_geral_escolha">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_geral_escolha</span><span class="p">():</span>
+    <span class="n">tabela_lista</span> <span class="o">=</span> <span class="n">get_tabelas</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Escolha uma tabela ser alterada.&quot;</span><span class="p">)</span>
+    <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">listar_escolhas</span><span class="p">(</span><span class="n">tabela_lista</span><span class="p">)</span>
+    <span class="n">tabela</span> <span class="o">=</span> <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">fazer_escolha</span><span class="p">(</span><span class="n">tabela_lista</span><span class="p">)</span>
+
+    <span class="n">campo_lista</span> <span class="o">=</span> <span class="n">get_campos</span><span class="p">(</span><span class="n">tabela</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Escolha um campo para alterar.&quot;</span><span class="p">)</span>
+    <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">listar_escolhas</span><span class="p">(</span><span class="n">campo_lista</span><span class="p">)</span>
+    <span class="n">campo</span> <span class="o">=</span> <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">fazer_escolha</span><span class="p">(</span><span class="n">campo_lista</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Insira dado novo.&quot;</span><span class="p">)</span>
+    <span class="n">novo_dado</span> <span class="o">=</span> <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">sql_escolher_tipo</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Escolha um campo de condição.&quot;</span><span class="p">)</span>
+    <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">listar_escolhas</span><span class="p">(</span><span class="n">campo_lista</span><span class="p">)</span>
+    <span class="n">campo_condicao</span> <span class="o">=</span> <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">fazer_escolha</span><span class="p">(</span><span class="n">campo_lista</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Insira valor de condição.&quot;</span><span class="p">)</span>
+    <span class="n">valor</span> <span class="o">=</span> <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">sql_escolher_tipo</span><span class="p">()</span>
+
+    <span class="n">update_geral</span><span class="p">(</span><span class="n">tabela</span><span class="p">,</span> <span class="n">campo</span><span class="p">,</span> <span class="n">novo_dado</span><span class="p">,</span> <span class="n">campo_condicao</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span></div>
+
+</pre></div>
 
                 </article>
               

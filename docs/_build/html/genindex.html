@@ -151,8 +151,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ferramentas_BD.html">ferramentas_BD module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ferramentas_escolha.html">ferramentas_escolha module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_insert.html">funcoes_sqlite_insert module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
@@ -266,16 +268,18 @@ document.write(`
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  
 </div>
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ferramentas_BD.html#ferramentas_BD.FerramentasBD.conectarBD">conectarBD() (método ferramentas_BD.FerramentasBD)</a>
-</li>
       <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Camas">criar_tabela_Camas() (no módulo funcoes_sqlite_create)</a>
 </li>
       <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Cliente">criar_tabela_Cliente() (no módulo funcoes_sqlite_create)</a>
@@ -306,7 +310,7 @@ document.write(`
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ferramentas_BD.html#ferramentas_BD.FerramentasBD.desconectarBD">desconectarBD() (método ferramentas_BD.FerramentasBD)</a>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.delete_geral">delete_geral() (no módulo funcoes_sqlite_delete)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -314,7 +318,7 @@ document.write(`
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ferramentas_BD.html#ferramentas_BD.FerramentasBD.executarBD">executarBD() (método ferramentas_BD.FerramentasBD)</a>
+      <li><a href="ferramentas_BD.html#ferramentas_BD.executarBD">executarBD() (no módulo ferramentas_BD)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -322,6 +326,8 @@ document.write(`
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ferramentas_escolha.html#ferramentas_escolha.fazer_escolha">fazer_escolha() (no módulo ferramentas_escolha)</a>
+</li>
       <li>
     ferramentas_BD
 
@@ -329,8 +335,13 @@ document.write(`
         <li><a href="ferramentas_BD.html#module-ferramentas_BD">module</a>
 </li>
       </ul></li>
-      <li><a href="ferramentas_BD.html#ferramentas_BD.FerramentasBD">FerramentasBD (classe em ferramentas_BD)</a>
+      <li>
+    ferramentas_escolha
+
+      <ul>
+        <li><a href="ferramentas_escolha.html#module-ferramentas_escolha">module</a>
 </li>
+      </ul></li>
       <li>
     funcoes_sqlite_create
 
@@ -345,6 +356,13 @@ document.write(`
 
       <ul>
         <li><a href="funcoes_sqlite_delete.html#module-funcoes_sqlite_delete">module</a>
+</li>
+      </ul></li>
+      <li>
+    funcoes_sqlite_insert
+
+      <ul>
+        <li><a href="funcoes_sqlite_insert.html#module-funcoes_sqlite_insert">module</a>
 </li>
       </ul></li>
       <li>
@@ -364,10 +382,60 @@ document.write(`
   </ul></td>
 </tr></table>
 
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ferramentas_BD.html#ferramentas_BD.get_campos">get_campos() (no módulo ferramentas_BD)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ferramentas_BD.html#ferramentas_BD.get_tabelas">get_tabelas() (no módulo ferramentas_BD)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ferramentas_BD.html#ferramentas_BD.FerramentasBD.imprimir_tabela">imprimir_tabela() (método ferramentas_BD.FerramentasBD)</a>
+      <li><a href="ferramentas_BD.html#ferramentas_BD.imprimir_tabela">imprimir_tabela() (no módulo ferramentas_BD)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_camas">inserir_camas() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_cliente">inserir_cliente() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_funcao">inserir_funcao() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_Funcionario">inserir_Funcionario() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_horario">inserir_horario() (no módulo funcoes_sqlite_insert)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_hospede">inserir_hospede() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_quarto">inserir_quarto() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_reserva">inserir_reserva() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_tipo_cama">inserir_tipo_cama() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_tipo_Quarto">inserir_tipo_Quarto() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_tipo_reserva">inserir_tipo_reserva() (no módulo funcoes_sqlite_insert)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.limpar_tabela_geral">limpar_tabela_geral() (no módulo funcoes_sqlite_delete)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.limpar_tabela_geral_escolha">limpar_tabela_geral_escolha() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="ferramentas_escolha.html#ferramentas_escolha.listar_escolhas">listar_escolhas() (no módulo ferramentas_escolha)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -381,15 +449,49 @@ document.write(`
       <ul>
         <li><a href="ferramentas_BD.html#module-ferramentas_BD">ferramentas_BD</a>
 </li>
+        <li><a href="ferramentas_escolha.html#module-ferramentas_escolha">ferramentas_escolha</a>
+</li>
         <li><a href="funcoes_sqlite_create.html#module-funcoes_sqlite_create">funcoes_sqlite_create</a>
 </li>
         <li><a href="funcoes_sqlite_delete.html#module-funcoes_sqlite_delete">funcoes_sqlite_delete</a>
+</li>
+        <li><a href="funcoes_sqlite_insert.html#module-funcoes_sqlite_insert">funcoes_sqlite_insert</a>
 </li>
         <li><a href="funcoes_sqlite_select.html#module-funcoes_sqlite_select">funcoes_sqlite_select</a>
 </li>
         <li><a href="funcoes_sqlite_update.html#module-funcoes_sqlite_update">funcoes_sqlite_update</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Camas">remover_tabela_Camas() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Cliente">remover_tabela_Cliente() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Funcionario">remover_tabela_Funcionario() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Funcoes">remover_tabela_Funcoes() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Horario">remover_tabela_Horario() (no módulo funcoes_sqlite_delete)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Hospedes">remover_tabela_Hospedes() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Quarto">remover_tabela_Quarto() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Reserva">remover_tabela_Reserva() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_tipo_cama">remover_tabela_tipo_cama() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_tipo_quarto">remover_tabela_tipo_quarto() (no módulo funcoes_sqlite_delete)</a>
+</li>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Tipo_Reserva">remover_tabela_Tipo_Reserva() (no módulo funcoes_sqlite_delete)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -402,6 +504,24 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="funcoes_sqlite_select.html#funcoes_sqlite_select.select_geral_escolha">select_geral_escolha() (no módulo funcoes_sqlite_select)</a>
 </li>
+      <li><a href="ferramentas_escolha.html#ferramentas_escolha.sql_escolher_tipo">sql_escolher_tipo() (no módulo ferramentas_escolha)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_update.html#funcoes_sqlite_update.update_geral">update_geral() (no módulo funcoes_sqlite_update)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.update_geral_escolha">update_geral_escolha() (no módulo funcoes_sqlite_delete)</a>
+
+      <ul>
+        <li><a href="funcoes_sqlite_update.html#funcoes_sqlite_update.update_geral_escolha">(no módulo funcoes_sqlite_update)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
