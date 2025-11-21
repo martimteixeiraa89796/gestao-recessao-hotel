@@ -6,6 +6,28 @@ Este módulo contém funções que são usadas para remover as várias tabelas e
 As funções retornam a query SQL para ser usada na execução na base de dados.
 """
 
+from ferramentas_BD import executarBD, get_tabelas
+import ferramentas_escolha
+
+def limpar_tabela_geral(tabela):
+    query = f"""
+        DELETE FROM {tabela};
+    """
+
+    executarBD(query)
+
+
+def limpar_tabela_geral_escolha():
+    tabela_lista = get_tabelas()
+
+    print("Escolha tabela para apagar todos os dados.")
+    ferramentas_escolha.listar_escolhas(tabela_lista)
+
+    tabela = ferramentas_escolha.fazer_escolha(tabela_lista)
+
+    limpar_tabela_geral(tabela)
+
+limpar_tabela_geral_escolha()
 
     
 def remover_tabela_tipo_cama():
