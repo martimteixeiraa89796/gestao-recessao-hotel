@@ -1,150 +1,261 @@
-#Este ficheiro é onde vai ser colocado funções com comandos de SQL
-#O objetivo é que estas sejam chamadas dentro de um ficheiro python
-#onde depois a classe que está dentro de ferramentas_BD.py
-#vai depois ser iniciada e utilizada.
+"""
+Módulo com funções de criação de tabelas
+========================================
 
-#Isto é somente para separar a query e a lógica do código.
+Este módulo contém funções que são usadas para criar as várias tabelas existentes na base de dados da aplicação.
+As funções retornam a query SQL para ser usada na execução na base de dados.
+"""
 
-
-
-#Exemplo de função e estrutura
-def função(exemplo, exemplo2, exemplo3):  #<--- Colocar argumentos para alterar partes da query antes de ser mandada para ser executada
-    """Função de exemplo"""
-    
-    #Query é construída com as variáveis de cima
-    query = f"""
-        SELECT * FROM {exemplo};
-    """
-
-    return query #Retorna a query finalizada para depois ser executada
-    #A query seria guardada numa variável para depois ser executada noutro lado
-
+from ferramentas_BD import executarBD
     
 def criar_tabela_tipo_cama():
+    """
+    Cria tabela com tipos de cama
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query ="""
-        create table Tipo_Cama(
-        Num_Tipo_Cama int not null,
-        Nome_Tipo_Cama varchar(100),
-        constraint PK_Tipo_Cama primary key (Num_Tipo_Cama)
+        CREATE TABLE Tb_Tipo_Cama(
+            Num_Tipo_Cama INTEGER PRIMARY KEY,
+            Nome_Tipo_Cama VARCHAR(100) NOT NULL
         );
     """
+
+    executarBD(query)
 
 
 def criar_tabela_tipo_quarto():
-    """Cria a tabela Tipo_Quarto"""
+    """
+    Cria tabela com tipos de quartos
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
-        CREATE TABLE IF NOT EXISTS Tipo_Quarto (
-            Num_Tipo_Quarto INT NOT NULL,
-            Nome_Tipo_Quarto VARCHAR(50) NOT NULL,
-            CONSTRAINT PK_Tipo_Quarto PRIMARY KEY (Num_Tipo_Quarto)
+        CREATE TABLE Tb_Tipo_Quarto (
+            Num_Tipo_Quarto INTEGER PRIMARY KEY,
+            Nome_Tipo_Quarto VARCHAR(50) NOT NULL
         );
     """
+
+    executarBD(query)
+
+
 def criar_tabela_Quarto():
-    """Criar tabela Quarto"""
-    query ="""
-        CREATE TABLE IF NOT EXISTS Quarto (
-            Num_Quarto INT AUTO_INCREMENT,
-            Num_Tipo_Quarto INT NOT NULL,
-            Preco Decimal(10,2) NOT NULL,
-            Ocupado VARCHAR(15),
-            CONSTRAINT PK_quarto Primary key (Num_Quarto),
-            CONSTRAINT FK_Quarto_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)
-                REFERENCES Tipo_Quarto(Num_Tipo_Quarto)
-    );  
     """
+    Cria tabela com os quartos disponíveis no hotel
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
+    query ="""
+        CREATE TABLE Tb_Quarto (
+            Num_Quarto INT NOT NULL,
+            Num_Tipo_Quarto INTEGER NOT NULL,
+            Preco Decimal(10,2) NOT NULL,
+            Ocupado BOOLEAN NOT NULL,
+            CONSTRAINT PK_Tb_Quarto Primary key (Num_Quarto),
+            CONSTRAINT FK_Tb_Quarto_Tb_Tipo_Quarto FOREIGN KEY (Num_Tipo_Quarto)
+                REFERENCES Tb_Tipo_Quarto(Num_Tipo_Quarto)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
+        );  
+    """
+
+    executarBD(query)
 
 
 def criar_tabela_Cliente():
+    """
+    Cria tabela com dados sobre os clientes
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
-        create table Cliente(
-        NIF int not null,
-        Nome_Cliente varchar(50),
-        Telefone varchar(15),
-        constraint PK_Cliente primary key(NIF)
+        CREATE TABLE Tb_Cliente(
+            NIF INT NOT NULL,
+            Nome_Cliente VARCHAR(50) NOT NULL,
+            Telefone VARCHAR(15) NOT NULL,
+            CONSTRAINT PK_Tb_Cliente PRIMARY KEY(NIF)
         );
     """
 
+    executarBD(query)
+
+
 def criar_tabela_Tipo_Reserva():
+    """
+    Cria tabela com tipo de reserva
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
-        create table Tipo_Reserva(
-        Num_Tipo_Reserva int not null,
-        Nome_Tipo_Reserva varchar(50),
-        constraint PK_Tipo_Reserva primary key (Num_Tipo_Reserva)
+        CREATE TABLE Tb_Tipo_Reserva(
+            Num_Tipo_Reserva INTEGER PRIMARY KEY,
+            Nome_Tipo_Reserva VARCHAR(50) NOT NULL
+        );
+    """
+
+    executarBD(query)
+
+    
+def criar_tabela_Camas():
+    """
+    Cria tabela com relação entre tipos de camas e respetivo quarto
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
+    query = """
+    CREATE TABLE Tb_Camas(
+        Num_Cama INTEGER PRIMARY KEY,
+        Num_Quarto INT NOT NULL,
+        Num_Tipo_Cama INTEGER NOT NULL,
+        CONSTRAINT FK_Tb_Camas_Tb_Quarto FOREIGN KEY(Num_Quarto)
+            REFERENCES Tb_Quarto(Num_Quarto)
+            ON UPDATE CASCADE
+            ON DELETE RESTRICT,
+        CONSTRAINT FK_Tb_Camas_Tb_Tipo_Cama FOREIGN KEY(Num_Tipo_Cama)
+            REFERENCES Tb_Tipo_Cama(Num_Tipo_Cama)
+            ON UPDATE CASCADE
+            ON DELETE RESTRICT
+        );
+    """
+
+    executarBD(query)
+
+
+def criar_tabela_Funcoes():
+    """
+    Cria tabela com funções do funcionários
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
+    query = """
+        CREATE TABLE Tb_Funcoes(
+            Num_Funcao INTEGER PRIMARY KEY,
+            Nome_Funcao VARCHAR(50) NOT NULL
+        );
+    """
+
+    executarBD(query)
+
+
+def criar_tabela_Funcionario():
+    """
+    Cria tabela com dados sobre funcionários
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
+    query = """
+        CREATE TABLE Tb_Funcionario(
+            Num_Funcionario INTEGER PRIMARY KEY,
+            Nome_Funcionario VARCHAR(50) NOT NULL,
+            Num_funcao INTEGER NOT NULL,
+            CONSTRAINT FK_Tb_Funcoes_Tb_Funcionario FOREIGN KEY (Num_Funcao)
+                REFERENCES Tb_Funcoes(Num_Funcao)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
         );
     """
     
-def criar_tabela_Camas():
-    query = """
-    CREATE TABLE IF NOT EXISTS tipo_Camas(
-    Num_Quarto INT NOT NULL,
-    Num_Tipo_Cama INT NOT NULL,
-    CONSTRAINT FK_Camas_Quarto FOREIGN KEY(Num_Quarto)
-        REFERENCES Quartos(Num_Quarto),
-    CONSTRAINT FK_Camas_Tipo_Cama FOREIGN KEY(Num_Tipo_Quarto)
-        REFERENCES Tipo_Cama(Num_Tipo_Cama)
-    );
-"""
+    executarBD(query)
 
-def criar_tabela_Funcoes():
-    query = """
-        create table Funcoes(
-        Num_Funcao int not null,
-        Nome_Funcao varchar(50),
-        constraint PK_Funcoes primary key (Num_Funcao)
-        );
-    """
 
-def criar_tabela_Funcionario():
-    query = """
-        create table Funcionario(
-        Num_Funcionario int not null,
-        Nome_Funcionario varchar(50),
-        Num_funcao int,
-        constraint PK_Funcionario primary key (Num_Funcionario),
-        constraint FK_Funcoes_Funcionario foreign key (Num_Funcao)
-        references Funcoes(Num_Funcao)
-        );
-    """
 def criar_tabela_Horario():
+    """
+    Cria tabela com o horário de cada funcionário
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
-        create table Horario(
-        Num_funcionario int,
-        Comeca datetime,
-        Acaba datetime,
-        Folga varchar(15),
-        constraint FK_Funcionario_Horario foreign key (Num_Funcionario)
-        references Funcionario (Num_Funcionario)
+        CREATE TABLE Tb_Horario(
+            Num_funcionario INTEGER NOT NULL,
+            Comeca DATETIME NOT NULL,
+            Acaba DATETIME NOT NULL,
+            Folga VARCHAR(15) NOT NULL,
+            CONSTRAINT FK_Tb_Funcionario_Tb_Horario FOREIGN KEY (Num_Funcionario)
+                REFERENCES Tb_Funcionario (Num_Funcionario)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
         );
     """
+
+    executarBD(query)
+
 
 def criar_tabela_Reserva():
+    """
+    Cria tabela com dados sobre reservas feitas
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
-        create table Reserva(
-        Num_Reserva int not null,
-        Num_Tipo_Reserva int,
-        Check_in datetime,
-        Check_out datetime,
-        Num_Funcionario int,
-        constraint PK_Reserva primary key (Num_Reserva),
-        constraint FK_Tipo_Reserva_Reserva foreign key (Num_Tipo_Reserva)
-        references Tipo_Reserva(Num_Tipo_Reserva),
-        constraint FK_Funcionario_Reserva foreign key (Num_Funcionario)
-        references Funcionario(Num_funcionario)
+        CREATE TABLE Tb_Reserva(
+            Num_Reserva INTEGER PRIMARY KEY,
+            Num_Tipo_Reserva INTEGER NOT NULL,
+            Check_in DATETIME NOT NULL,
+            Check_out DATETIME NOT NULL,
+            Num_Funcionario INTEGER NOT NULL,
+            CONSTRAINT FK_Tb_Tipo_Reserva_Tb_Reserva FOREIGN KEY (Num_Tipo_Reserva)
+                REFERENCES Tb_Tipo_Reserva(Num_Tipo_Reserva)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT,
+            CONSTRAINT FK_Tb_Funcionario_Tb_Reserva FOREIGN KEY (Num_Funcionario)
+                REFERENCES Tb_Funcionario(Num_funcionario)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
         );
     """
 
+    executarBD(query)
+
+
 def criar_tabela_Hospedes():
+    """
+    Cria tabela com dados sobre os hospedes referentes a uma reserva
+
+    :return: Código SQL para *query*
+    :rtype: string
+    """
+
     query = """
-        create table Hospedes(
-        Num_Reserva int,
-        NIF int,
-        Reservado_Em_Nome varchar(20),
-        Num_Quarto int,
-        constraint FK_Reserva_Hospedes foreign key (Num_Reserva)
-        references Reserva (Num_Reserva),
-        constraint FK_Cliente_Hospedes foreign key (NIF)
-        references Cliente (NIF),
-        constraint FK_Quarto_Hospedes foreign key (Num_Quarto)
-        references Quarto (Num_Quarto)
+        CREATE TABLE Tb_Hospedes(
+            Num_Registo INTEGER PRIMARY KEY,
+            Num_Reserva INTEGER NOT NULL,
+            NIF INT NOT NULL,
+            Reservado_Em_Nome BOOLEAN NOT NULL,
+            Num_Quarto INT NOT NULL,
+            CONSTRAINT FK_Tb_Reserva_Tb_Hospedes FOREIGN KEY (Num_Reserva)
+                REFERENCES Tb_Reserva (Num_Reserva)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT,
+            CONSTRAINT FK_Tb_Cliente_Tb_Hospedes FOREIGN KEY (NIF)
+                REFERENCES Tb_Cliente (NIF)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT,
+            CONSTRAINT FK_Tb_Quarto_Tb_Hospedes FOREIGN KEY (Num_Quarto)
+                REFERENCES Tb_Quarto (Num_Quarto)
+                ON UPDATE CASCADE
+                ON DELETE RESTRICT
         );
     """
+
+    executarBD(query)
