@@ -204,4 +204,3 @@ def inserir_hospede():
     """
     
     executarBD(query, (num_reserva,nif,reservado_em_nome,num_quarto))
-
