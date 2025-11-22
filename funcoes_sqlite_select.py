@@ -6,7 +6,7 @@ Este módulo contém funções que criam o código SQL para ser utilizado em *qu
 """
 
 from ferramentas_BD import executarBD, get_tabelas
-from ferramentas_escolha import input_int, listar_escolhas, fazer_escolha
+from ferramentas_escolha import input_int,input_string, listar_escolhas, fazer_escolha
 
 
 def select_geral(tabela):
@@ -88,3 +88,22 @@ def ver_cliente_em_quarto():
     '''
     
     executarBD(query, imprimir=True)
+
+
+
+def ver_chegada_cliente():
+    
+    print("insira a incial data(AAAA-MM-DD HH:MM:SS): ")
+    data1 = input_string()
+
+    print("insira a final data(AAAA-MM-DD HH:MM:SS): ")
+    data2 = input_string()
+
+    query = f'''
+        select Nome_Cliente, Check_In from Tb_Reserva
+        inner join Tb_Hospedes on Tb_Reserva.Num_Reserva = Tb_Hospedes.Num_Reserva,
+        inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF
+        where Check_In between ? and ?
+    '''
+
+    executarBD(query, (data1,data2),imprimir=True)
