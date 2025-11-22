@@ -64,7 +64,7 @@ def ver_horario():
 
     query = f'''
         select Dia_Semana, Hora_Trabalho from Tb_Horario
-         where Num_funcionario = ?
+         where Num_funcionario = ?;
         '''
 
     executarBD(query, (Numero), imprimir=True)
@@ -74,7 +74,7 @@ def ver_quarto_livers():
 
     query = f'''
         select Num_Quarto from Tb_Quarto
-        where Ocupado = "False"
+        where Ocupado = "False";
     '''
 
     executarBD(query, imprimir=True)
@@ -84,7 +84,7 @@ def ver_cliente_em_quarto():
 
     query = f'''
         select Num_Quarto, Nome_Cliente from Hospedes
-        inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF
+        inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF;
     '''
     
     executarBD(query, imprimir=True)
@@ -103,7 +103,17 @@ def ver_chegada_cliente():
         select Nome_Cliente, Check_In from Tb_Reserva
         inner join Tb_Hospedes on Tb_Reserva.Num_Reserva = Tb_Hospedes.Num_Reserva,
         inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF
-        where Check_In between ? and ?
+        where Check_In between ? and ?;
     '''
 
     executarBD(query, (data1,data2),imprimir=True)
+
+
+def contar_camas_em_quarto():
+
+    query = f'''
+        select Num_Quarto, count(Num_Cama) as Numero_Camas from Tb_Camas
+        group by Num_Quarto;
+    '''
+
+    executarBD(query, imprimir=True)
