@@ -73,8 +73,18 @@ def ver_horario():
 def ver_quarto_livers():
 
     query = f'''
-        select Num_Quarto from Quarto
+        select Num_Quarto from Tb_Quarto
         where Ocupado = "False"
     '''
 
+    executarBD(query, imprimir=True)
+
+
+def ver_cliente_em_quarto():
+
+    query = f'''
+        select Num_Quarto, Nome_Cliente from Hospedes
+        inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF
+    '''
+    
     executarBD(query, imprimir=True)
