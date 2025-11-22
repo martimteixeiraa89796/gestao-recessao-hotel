@@ -151,7 +151,7 @@ def inserir_camas():
     num_tipo_cama =input_int()
 
     query = f"""
-        INSERT INTO Tb_tipo_Camas (Num_Quarto, Num_Tipo_Cama)
+        INSERT INTO Tb_Camas (Num_Quarto, Num_Tipo_Cama)
         VALUES (?, ?);
     """
 
@@ -235,11 +235,11 @@ def inserir_reserva():
     check_out = input_string()
 
     print("Insira o número do funcionário:")
-    num_funcionario = input_float()
+    num_funcionario = input_int()
 
     query = f"""
         INSERT INTO Tb_Reserva (Num_Tipo_Reserva, Check_in, Check_out, Num_Funcionario)
-        VALUES (?, ?, ?, ?, ?);
+        VALUES (?, ?, ?, ?);
     """
     
     executarBD(query, (num_tipo_reserva,check_in,check_out,num_funcionario))
