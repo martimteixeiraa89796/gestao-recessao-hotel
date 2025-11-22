@@ -57,16 +57,24 @@ def select_geral_escolha():
 
 
 
-    def ver_horario():
+def ver_horario():
         
-        print("insira o seu numero de fucionario: ")
-        Numero = input_int()
+    print("insira o seu numero de fucionario: ")
+    Numero = input_int()
 
-        query = f'''
-            select Dia_Semana, Hora_Trabalho from Tb_Horario
-            where Num_funcionario = ?
-            '''
+    query = f'''
+        select Dia_Semana, Hora_Trabalho from Tb_Horario
+         where Num_funcionario = ?
+        '''
 
-        executarBD(query, (Numero))
+    executarBD(query, (Numero), imprimir=True)
 
 
+def ver_quarto_livers():
+
+    query = f'''
+        select Num_Quarto from Quarto
+        where Ocupado = "False"
+    '''
+
+    executarBD(query, imprimir=True)
