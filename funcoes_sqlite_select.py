@@ -67,7 +67,7 @@ def ver_horario():
          where Num_funcionario = ?;
         '''
 
-    executarBD(query, (Numero), imprimir=True)
+    executarBD(query, (Numero,), imprimir=True)
 
 
 def ver_quarto_livers():
@@ -83,7 +83,7 @@ def ver_quarto_livers():
 def ver_cliente_em_quarto():
 
     query = f'''
-        select Num_Quarto, Nome_Cliente from Hospedes
+        select Num_Quarto, Nome_Cliente from Tb_Hospedes
         inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF;
     '''
     
@@ -101,7 +101,7 @@ def ver_chegada_cliente():
 
     query = f'''
         select Nome_Cliente, Check_In from Tb_Reserva
-        inner join Tb_Hospedes on Tb_Reserva.Num_Reserva = Tb_Hospedes.Num_Reserva,
+        inner join Tb_Hospedes on Tb_Reserva.Num_Reserva = Tb_Hospedes.Num_Reserva
         inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF
         where Check_In between ? and ?;
     '''
