@@ -117,3 +117,15 @@ def contar_camas_em_quarto():
     '''
 
     executarBD(query, imprimir=True)
+
+
+
+def estadia():
+
+    query = f'''
+        select Nome_Cliente, Check_In, Check_Out from Tb_Reserva
+        inner join Tb_Hospedes on Tb_Reserva.Num_Reserva = Tb_Hospedes.Num_Reserva
+        inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF;
+    '''
+
+    executarBD(query, imprimir=True)
