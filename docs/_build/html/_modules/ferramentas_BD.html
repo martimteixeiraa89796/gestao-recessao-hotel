@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pt" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ferramentas_BD &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=0ff6c57f"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=beaedd51"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ferramentas_BD';</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Pesquisar" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Documentação Aplicação de Gestão de Recessão de Hotel </p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Pesquisar</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ferramentas_BD.html">ferramentas_BD module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ferramentas_escolha.html">ferramentas_escolha module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_insert.html">funcoes_sqlite_insert module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html">main module</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Código fonte de ferramentas_BD</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de interação com bases de dados SQLite</span>
+<span class="sd">---------------------------------------------</span>
+
+<span class="sd">Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dados da aplicação.</span>
+<span class="sd">É utilizado como ponte entre as *queries* SQL e a sua execução na base de dados e obter dados da mesma.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>  <span class="c1">#Módulo já vem instalado com Python</span>
+
+
+<div class="viewcode-block" id="executarBD">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.executarBD">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">executarBD</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">query_dados</span><span class="o">=</span><span class="p">(),</span> <span class="n">header_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">imprimir</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Executa queries na base de dados.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta função cria uma conecção ao ficheiro de base de dados SQLite e, caso não exista, o mesmo é criado.</span>
+<span class="sd">    Após a ligação, é criado o leitor e o cursor para se poder interagir dentro da base de dados.</span>
+<span class="sd">    Se houver alterações feitas à base de dados, esta função também as guarda.</span>
+<span class="sd">    Caso seja feito um select, esta função também consegue imprimir os resultado com a ajuda de uma função adjacente.</span>
+<span class="sd">    No final das operções, a função desconecta-se da base de dados.</span>
+
+<span class="sd">    :param query: A query para ser executada na base de dados</span>
+<span class="sd">    :type query: string</span>
+
+<span class="sd">    :param query_dados: Tuple com variáveis a serem introduzidas na query.</span>
+<span class="sd">    :type query_dados: tuple</span>
+
+<span class="sd">    :param header_only: Faz com que a função retorne apenas os headers das tabelas</span>
+<span class="sd">    :type header_only: boolean</span>
+
+<span class="sd">    :param imprimir: Se deve ou não imprimir tabelas</span>
+<span class="sd">    :type imprimir: boolean</span>
+
+<span class="sd">    :return: Por padrão, a função retorna o conteudo de tabelas, mas pode ser alterado para apenas retornar os headers das mesmas.</span>
+<span class="sd">    :rtype: list</span>
+
+<span class="sd">    :raise sqlite3.Error: Se ocorrer algum erro durante a execução de ações do módulo SQLite.</span>
+
+<span class="sd">    Exemplo de execução de querie com impressão de tabela:</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; executarBD(&quot;SELECT * FROM Tabela;&quot;, imprimir=True)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1">#Fazer conecção com base de dados</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sqlconnector</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;basedados.db&#39;</span><span class="p">)</span>
+    
+    <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao tentar conectar à base de dados.&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">sqlconnector</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>  <span class="c1">#Criar cursor para interagir com base de dados</span>
+    
+    <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao tentar criar cursor.&quot;</span><span class="p">)</span>
+
+    <span class="c1">#Executar comandos sql</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">query</span><span class="p">),</span> <span class="n">query_dados</span><span class="p">)</span>
+        <span class="n">sqlconnector</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>  <span class="c1">#Fazer commit das ações</span>
+
+        <span class="k">if</span> <span class="n">imprimir</span><span class="p">:</span>
+            <span class="n">imprimir_tabela</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+        
+        <span class="k">if</span> <span class="n">header_only</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">description</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>  <span class="c1">#Retirar todas as linhas e guardar na variável</span>
+        
+        <span class="k">return</span> <span class="n">resultado</span>
+        
+    <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao executar commandos SQL.&quot;</span><span class="p">)</span>
+
+    <span class="c1">#Deconectar base de dados</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sqlconnector</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">sqlconnector</span> <span class="o">=</span> <span class="kc">None</span>
+        
+    <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao tentar desconectar base de dados.&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="imprimir_tabela">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.imprimir_tabela">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">imprimir_tabela</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">dados</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Imprime tabelas de forma formatada.</span>
+
+<span class="sd">    Uma vez que o resultado que advém da execução de queries que devolvem tabelas é uma lista com tuples,</span>
+<span class="sd">    para que o utilizador perceba o que está a ser apresentado, o resultado tem de ser formatado.</span>
+
+<span class="sd">    Para tal, este método faz a iteração pelos *headers* (cabeçalhos) e dados para encontrar aquele com maior comprimento.</span>
+<span class="sd">    Estes comprimentos são depois guardados numa lista para serem usados na construção das colunas da tabela.</span>
+<span class="sd">    Quando os dados necessários para a construção da tabelas estiverem prontos, são construídas strings para cada linha da tabela,</span>
+<span class="sd">    que são depois guardados numa lista, prontos para serem impressos.</span>
+
+<span class="sd">    Uma limitação do método, é que os header têm de estar no mesmo formato que o módulo **sqlite** fornece em **cursor.description**.</span>
+
+<span class="sd">    :param headers: Headers (cabeçalhos) da tabela, cada valor deve estar numa lista/tuple</span>
+<span class="sd">    :type headers: list</span>
+
+<span class="sd">    :param dados: Lista de dados retirados de uma tabela, organizados por linha</span>
+<span class="sd">    :type dados: list</span>
+
+<span class="sd">    Exemplo com dados retirados de queries:</span>
+
+<span class="sd">    &gt;&gt;&gt; imprimir_tabela(cursor.description, cursor.fetchall())</span>
+
+<span class="sd">    Exemplo com dados externos:</span>
+
+<span class="sd">    &gt;&gt;&gt; imprimir_tabela([(&quot;Idade&quot;), (&quot;Nome&quot;), (&quot;Contacto&quot;)],</span>
+<span class="sd">                        [(21, &quot;João&quot;, 999999999),</span>
+<span class="sd">                        (23, &quot;Mariana&quot;, 888888888)</span>
+<span class="sd">                        ])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">headers_listados</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">comprimento_listado</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1">#Listar headers</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+        <span class="n">headers_listados</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1">#Calcular comprimento para cada coluna</span>
+    <span class="k">for</span> <span class="n">coluna</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">headers_listados</span><span class="p">)):</span> <span class="c1">#Iterar pelas colunas horizontalmente</span>
+        <span class="n">comprimento_celula</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">headers_listados</span><span class="p">[</span><span class="n">coluna</span><span class="p">]))</span>
+        
+        <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">dados</span><span class="p">:</span> <span class="c1">#Iterar pelas linhas verticalmente</span>
+            <span class="n">novo_comprimento</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="n">coluna</span><span class="p">]))</span> <span class="c1">#Celula</span>
+
+            <span class="k">if</span> <span class="n">comprimento_celula</span> <span class="o">&lt;</span> <span class="n">novo_comprimento</span><span class="p">:</span>
+                <span class="n">comprimento_celula</span> <span class="o">=</span> <span class="n">novo_comprimento</span>
+
+        <span class="n">comprimento_listado</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">comprimento_celula</span><span class="p">)</span>
+
+    <span class="c1">#Contruir tabela</span>
+    <span class="n">tabela</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tabela</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">headers_listados</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">dados</span><span class="p">:</span>
+        <span class="n">tabela</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span>
+
+    <span class="c1">#Formatar tabela</span>
+    <span class="n">tabela_formatada</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">tabela</span><span class="p">:</span>
+        <span class="n">nova_linha</span> <span class="o">=</span> <span class="s2">&quot;| &quot;</span>
+        <span class="k">for</span> <span class="n">coluna</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">linha</span><span class="p">)):</span>
+            <span class="n">formatado</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="n">coluna</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="p">(</span><span class="n">comprimento_listado</span><span class="p">[</span><span class="n">coluna</span><span class="p">]</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="n">coluna</span><span class="p">])))</span>
+            <span class="n">nova_linha</span> <span class="o">+=</span> <span class="n">formatado</span> <span class="o">+</span> <span class="s2">&quot; | &quot;</span>
+        <span class="n">tabela_formatada</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nova_linha</span><span class="p">)</span>
+
+    <span class="c1">#imprimir tabela</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">tabela_formatada</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_campos">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.get_campos">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_campos</span><span class="p">(</span><span class="n">tabela</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retorna uma lista com campos de uma tabela na base de dados.</span>
+
+<span class="sd">    Esta função acede à base de dados e retorna os campos/colunas de uma tabela.</span>
+<span class="sd">    Isto é feito através da função executarBD e mandá-la retornar apenas os headers das tabelas.</span>
+
+<span class="sd">    :param tabela: O nome da tabela que se pretende obter os campos</span>
+<span class="sd">    :type tabela: string</span>
+
+<span class="sd">    :return: Os nomes dos campos de uma tabela</span>
+<span class="sd">    :rtype: list</span>
+
+<span class="sd">    Exemplo de obtenção de campos:</span>
+
+<span class="sd">    &gt;&gt;&gt; get_campos(&quot;Tb_Clientes&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">campos</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">executarBD</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT * FROM </span><span class="si">{</span><span class="n">tabela</span><span class="si">}</span><span class="s2">;&quot;</span><span class="p">,</span> <span class="n">header_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">campos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">campos</span></div>
+
+
+
+<div class="viewcode-block" id="get_tabelas">
+<a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.get_tabelas">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_tabelas</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retorna uma lista com o nome das tabelas na base de dados.</span>
+
+<span class="sd">    Esta função acede à base de dados e retorna os nomes das tabelas na base de dados.</span>
+<span class="sd">    Isto é feito através do executarBD, com uma *query **select*** que verifica a tabela master.</span>
+<span class="sd">    Esta função remove da lista tabelas de sistema.</span>
+
+<span class="sd">    :return: Os nomes das tabela na base de dados</span>
+<span class="sd">    :rtype: list</span>
+
+<span class="sd">    Exemplo de obtenção de campos:</span>
+
+<span class="sd">    &gt;&gt;&gt; get_tabelas()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tabelas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">executarBD</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;&quot;</span><span class="p">):</span>
+        <span class="n">tabelas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tabelas</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;sqlite_sequence&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">tabelas</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De David Zeferino, Martim Teixeira, Afonso Bento, Romano Balan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, David Zeferino, Martim Teixeira, Afonso Bento, Romano Balan.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
