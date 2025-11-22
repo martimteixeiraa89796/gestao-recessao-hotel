@@ -9,7 +9,7 @@ Este módulo faz a ligação com os ficheiros **.bd** que contém a base de dado
 import sqlite3  #Módulo já vem instalado com Python
 
 
-def executarBD(query, query_dados=(), header_only=False, imprimir=False):
+def executarBD(query, query_dados=(), header_only=False, imprimir=False, omitir_sql_erro=False):
     """
     Executa queries na base de dados.
     
@@ -71,7 +71,8 @@ def executarBD(query, query_dados=(), header_only=False, imprimir=False):
         return resultado
         
     except sqlite3.Error:
-        print("Ocorreu um erro ao executar commandos SQL.")
+        if not omitir_sql_erro:
+            print("Ocorreu um erro ao executar commandos SQL.")
 
     #Deconectar base de dados
     try:
