@@ -109,7 +109,7 @@ def sql_escolher_tipo():
         except ValueError:
                 print("Formato incompatível.")
 
-    return resposta  
+    return resposta
 
 
 def input_string():
