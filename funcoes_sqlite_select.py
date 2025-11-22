@@ -6,7 +6,7 @@ Este módulo contém funções que criam o código SQL para ser utilizado em *qu
 """
 
 from ferramentas_BD import executarBD, get_tabelas
-from ferramentas_escolha import input_int
+from ferramentas_escolha import input_int, listar_escolhas, fazer_escolha
 
 
 def select_geral(tabela):
@@ -49,9 +49,9 @@ def select_geral_escolha():
     tabela_lista = get_tabelas()
 
     print("Escolha tabela para visualizar.")
-    ferramentas_escolha.listar_escolhas(tabela_lista)
+    listar_escolhas(tabela_lista)
 
-    tabela = ferramentas_escolha.fazer_escolha(tabela_lista)
+    tabela =fazer_escolha(tabela_lista)
 
     executarBD(select_geral(tabela), imprimir=True)
 
