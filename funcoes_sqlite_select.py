@@ -6,7 +6,8 @@ Este módulo contém funções que criam o código SQL para ser utilizado em *qu
 """
 
 from ferramentas_BD import executarBD, get_tabelas
-import ferramentas_escolha
+from ferramentas_escolha import input_int
+
 
 def select_geral(tabela):
     """
@@ -53,3 +54,19 @@ def select_geral_escolha():
     tabela = ferramentas_escolha.fazer_escolha(tabela_lista)
 
     executarBD(select_geral(tabela), imprimir=True)
+
+
+
+    def ver_horario():
+        
+        print("insira o seu numero de fucionario: ")
+        Numero = input_int()
+
+        query = f'''
+            select Dia_Semana, Hora_Trabalho from Tb_Horario
+            where Num_funcionario = ?
+            '''
+
+        executarBD(query, (Numero))
+
+
