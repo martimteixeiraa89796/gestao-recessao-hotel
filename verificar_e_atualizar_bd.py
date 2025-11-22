@@ -31,7 +31,7 @@ def verificador_tabelas():
 
     print("A verificar tabelas...")
     for tabela in range(len(tabelas)):
-        if executarBD(select_geral(tabelas[tabela])) != None:
+        if executarBD(select_geral(tabelas[tabela]), omitir_sql_erro=True) != None:
             pass
 
         else:
