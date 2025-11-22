@@ -205,21 +205,18 @@ def inserir_horario():
     print("Insira o número do funcionário:")
     num_funcionario = input_int()
 
-    print("Insira o horário de iníco (AAAA-MM-DD HH:MM:SS):")
-    comeca = input_string()
+    print("Insira o dia da semana :")
+    dia_semana = input_string()
     
-    print("Insira o horário de fim (AAAA-MM-DD HH:MM:SS):")
-    acaba = input_string()
-
-    print("Insira o dia de folga:")
-    folga = input_string()
+    print("Insira o intrevalo de horas de trabalho (se nao trabalha insira folga):")
+    hora_trabalho = input_string()
 
     query = f"""
-        INSERT INTO Tb_Horario (Num_Funcionario, Comeca, Acaba, Folga)
-        VALUES (?, ?, ?, ?);
+        INSERT INTO Tb_Horario (Num_Funcionario, Dia_Semana, Hora_Trabalho)
+        VALUES (?, ?, ?);
     """
 
-    executarBD(query, (num_funcionario,comeca,acaba,folga))
+    executarBD(query, (num_funcionario,dia_semana,hora_trabalho,))
 
 
 def inserir_reserva():
