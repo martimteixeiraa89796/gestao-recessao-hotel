@@ -1,8 +1,19 @@
+"""
+Modulo responsavel por inserir dados nas varias tabelas da base de dados
+========================================================================
+Este módulo contém funcoes que fazem o input ao utilizador e realizam as insercoes nas respetivas tabelas da base de dados do hotel
+"""
 from ferramentas_BD import executarBD, get_tabelas
 from ferramentas_escolha import input_string, input_int, input_float, input_bool, listar_escolhas, fazer_escolha
 
 
 def mapeador_inserts():
+    """
+    Apresenta lista das tabelas e executa a funcao de inserçao correspondente.
+    Esta função obtém a lista das tabelas,apresenta-as ao utilizador e, após a escolha, associa automaticamente a tabela á sua funcao de inserção
+    :return: none
+    :rtype: NoneType
+    """
     tabelas = get_tabelas()
 
     listar_escolhas(tabelas)
@@ -26,7 +37,12 @@ def mapeador_inserts():
 
 
 
-def inserir_tipo_cama():          
+def inserir_tipo_cama(): 
+    """
+    Insere um novo tipo de cama na tabela Tb_Tipo_cama
+    :return: none
+    :rtype: NoneType
+    """       
     print("Insira nome do tipo de cama:")       
     nome_tipo_cama = input_string()
   
@@ -39,6 +55,11 @@ def inserir_tipo_cama():
 
 
 def inserir_tipo_Quarto():
+    """
+    Insere um novo tipo de quarto na tabela Tb_Tipo_Quarto
+    :return: none
+    :rtype: NoneType
+    """
     print("Insira o nome do tipo de quarto:")
     nome_tipo_quarto = input_string()
     
@@ -51,6 +72,12 @@ def inserir_tipo_Quarto():
 
 
 def inserir_quarto():
+    """
+    Insere um novo tipo de quarto na tabela Tb_Tipo_Quarto
+    :return: none
+    :rtype: NoneType
+    """
+
     print("Insira o número de quarto:")
     num_quarto = input_int()
 
@@ -72,6 +99,11 @@ def inserir_quarto():
 
 
 def inserir_cliente():
+    """
+    Insere um cliente na tabela Tb_Cliente
+    :return: none
+    :rtype: NoneType
+    """
     print("Insira o NIF do cliente:")
     nif = input_int()
 
@@ -90,6 +122,11 @@ def inserir_cliente():
 
 
 def inserir_tipo_reserva():
+    """
+    Insere um tipo de reserva na tabela Tb_Tipo_Reserva
+    :return: none
+    :rtype: NoneType
+    """
     print("Insira o nome do tipo de reserva:")
     nome_tipo_reserva = input_string()
 
@@ -102,6 +139,11 @@ def inserir_tipo_reserva():
 
 
 def inserir_camas():
+    """
+    Insere uma relação entre um quarto e um tipo de cama
+    :return: none
+    :rtype: NoneType
+    """
     print("Insira o número do quarto:")
     num_quarto =input_int()
 
@@ -117,6 +159,11 @@ def inserir_camas():
 
 
 def inserir_funcao():
+    """
+    Insere uma função de funcionario na tabela funcoes
+    :return: none
+    :rtype: NoneType
+    """
     print("Insira o nome da função:")
     nome_funcao = input_string()
 
@@ -129,6 +176,12 @@ def inserir_funcao():
 
 
 def inserir_Funcionario():
+    """
+    Insere um funcionario na tabela Tb_Funcionario
+    :return: none
+    :rtype: NoneType
+    """
+
     print("Insira o nome do funcionário:")
     nome_funcionario = input_string()
 
@@ -144,6 +197,11 @@ def inserir_Funcionario():
 
 
 def inserir_horario():
+    """
+    Insere um horário de funcionario na tabela Tb_Horario
+    :return: none
+    :rtype: NoneType
+    """
     print("Insira o número do funcionário:")
     num_funcionario = input_int()
 
@@ -165,6 +223,11 @@ def inserir_horario():
 
 
 def inserir_reserva():
+    """
+    Insere uma reserva na tabela Tb_Reserva
+    :return: none
+    :rtype: NoneType
+    """
     print("Insira o número do tipo de reserva:")
     num_tipo_reserva = input_int()
 
@@ -186,6 +249,11 @@ def inserir_reserva():
 
 
 def inserir_hospede():
+    """
+    Insere um hóspede na tabela Tb_Hospede
+    :return: none
+    :rtype: NoneType
+    """
     print("Insira on número da reserva:")
     num_reserva = input_int()
 
