@@ -1,6 +1,7 @@
 """
 Modulo responsavel por inserir dados nas varias tabelas da base de dados
-========================================================================
+------------------------------------------------------------------------
+
 Este módulo contém funcoes que fazem o input ao utilizador e realizam as insercoes nas respetivas tabelas da base de dados do hotel
 """
 from ferramentas_BD import executarBD, get_tabelas
@@ -23,7 +24,6 @@ def mapeador_inserts():
         2. Hospede
         3. Quarto
     Escolha uma opção: 1
-    Cliente
     #Apartir deste ponto, é chamado o insert correspondente.
     inserir_cliente()
     """
@@ -61,7 +61,6 @@ def inserir_tipo_cama():
     #Resultado
     Insira nome do tipo de cama:
     --> Luxo
-    Luxo
     #Corre a lógica de insert.
     """ 
 
@@ -86,7 +85,6 @@ def inserir_tipo_Quarto():
     #resultado
     Insira o nome do tipo de quarto:
     --> VIP
-    VIP
     #Corre a lógica de insert.
     """
 
@@ -111,19 +109,15 @@ def inserir_quarto():
     #resultado
     Insira o número de quarto:
     --> 300
-    300
     Insira o numero do tipo de quarto:
     --> 3
-    3
     Insira o preço do quarto:
     --> 450.99
-    450.99
     O quarto está ocupado?
     Opções disponíveis:
         1. True
         2. False
     Escolha uma opção: 2
-    False
     #Corre a lógica de insert.
     """
 
@@ -157,13 +151,10 @@ def inserir_cliente():
     #resultado
     Insira o NIF do cliente:
     --> 8439577384
-    8439577384
     Insira o nome do cliente:
     --> João
-    João
     Insira o numero de telefone do cliente:
     --> 999999999
-    999999999
     #Corre a lógica de insert.
     """
 
@@ -194,7 +185,6 @@ def inserir_tipo_reserva():
     #resultado
     Insira o nome do tipo de reserva:
     --> Barato
-    Barato
     #Corre a lógica de insert.
     """
     print("Insira o nome do tipo de reserva:")
@@ -218,10 +208,8 @@ def inserir_camas():
     #resultado
     Insira o número do quarto:
     --> 300
-    300
     Insira o número do tipo de cama:
     --> 3
-    3
     #Corre a lógica de insert.
     """
     print("Insira o número do quarto:")
@@ -248,7 +236,6 @@ def inserir_funcao():
     #resultado
     Insira o nome da função:
     --> Gerente
-    Gerente
     #Corre a lógica de insert.
     """
     print("Insira o nome da função:")
@@ -272,10 +259,8 @@ def inserir_Funcionario():
     #resultado
     Insira o nome do funcionário:
     --> João Ratão
-    João Ratão
     Insira o número da função:
     --> 8
-    8
     #Corre a lógica de insert.
     """
 
@@ -303,13 +288,10 @@ def inserir_horario():
     >>> inserir_horario()
     Insira o número do funcionário:
     --> 4
-    4
     Insira o dia da semana :
     --> Segunda
-    Segunda
     Insira o intrevalo de horas de trabalho (se nao trabalha insira folga):
     --> 09:00 - 22:00
-    09:00 - 22:00
     #Corre a lógica de insert.
     """
 
@@ -340,16 +322,12 @@ def inserir_reserva():
     #resultado
     Insira o número do tipo de reserva:
     --> 99
-    99
     Insira a data de check-in (AAAA-MM-DD HH:MM:SS):
     --> 2025-11-23 23:59:00
-    2025-11-23 23:59:00
     Insira a data de check-out (AAAA-MM-DD HH:MM:SS):
     --> 2025-12-23 23:59:00
-    2025-12-23 23:59:00
     Insira o número do funcionário:
     --> 34
-    34
     #Corre a lógica de insert.
     """
 
@@ -383,19 +361,15 @@ def inserir_hospede():
     #resultado
     Insira on número da reserva:
     --> 65
-    65
     Insira o NIF do cliente:
     --> 548574875845
-    548574875845
     Reservado em nome deste cliente?
     Opções disponíveis:
         1. True
         2. False
     Escolha uma opção: 1
-    True
     Insira o número do quarto:
     --> 45
-    45
     #Corre a lógica de insert.
     """
     print("Insira on número da reserva:")
