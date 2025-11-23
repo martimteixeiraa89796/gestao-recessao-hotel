@@ -8,6 +8,18 @@ import funcoes_sqlite_update
 import verificar_e_atualizar_bd
 
 def continuar():
+    """
+    Mostra mensagem de confirmação.
+
+    Esta função simplesmente abranda a impressão do menu principal para que o utilizador poss ler o que fez.
+
+    Exemplo de execução:
+
+    >>> continuar()
+    #resultado
+    Primma Enter para continuar... 
+    """
+
     input("Primma Enter para continuar... ")
 
 
