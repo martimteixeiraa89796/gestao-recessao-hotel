@@ -42,7 +42,7 @@ def fazer_escolha(lista, cancelar=True):
 
     while True:
         escolha = None
-        
+
         if not cancelar:
             mensagem = "Escolha uma opção: "
         
@@ -59,8 +59,8 @@ def fazer_escolha(lista, cancelar=True):
                 print("Opção não disponivel")
         
         except ValueError:
-            if escolha == ".":
-                    return None
+            if not escolha:
+                return None
             else:
                 pass
     
