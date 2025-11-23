@@ -127,12 +127,11 @@ def input_string():
             if not resposta:
                 pass
 
+            elif resposta == ".":
+                return None
+            
             else:
-                if resposta == ".":
-                    return None
-                
-                else:
-                    break
+                break
 
     return resposta
 
