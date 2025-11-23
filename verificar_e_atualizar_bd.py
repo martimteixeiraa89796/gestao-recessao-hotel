@@ -1,3 +1,11 @@
+"""
+Módulo de verificação e criação de tabelas
+------------------------------------------
+
+Este módulo contém a lógica de verificação e criação de tabelas para assegurar de que as tabelas existem.
+É crucial para o funcionamento da aplicação.
+"""
+
 from ferramentas_BD import executarBD
 from funcoes_sqlite_select import select_geral
 import funcoes_sqlite_create
