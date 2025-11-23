@@ -10,6 +10,14 @@ from ferramentas_BD import executarBD, get_campos, get_tabelas
 import ferramentas_escolha
 
 def limpar_tabela_geral(tabela):
+    """
+    Elimina todas a linhas de uma tabela.
+
+    Exemplo de execução:
+
+    >>> limpar_tabela_geral("Clientes")
+    """
+
     query = f"""
         DELETE FROM {tabela};
     """
@@ -18,6 +26,25 @@ def limpar_tabela_geral(tabela):
 
 
 def delete_geral(tabela, campo_condicao, valor):
+    """
+    Elimina linhas de uma tabela
+
+    Esta função elimina linhas específica segundo uma dada condição definida pelo utilizador.
+
+    :param tabela: A tabela onde se pretende apagar linha
+    :type tabela: string
+
+    :param campo_condicao: Campo para servir de condição para apagar linha
+    :type campo_condicao: string
+
+    :param valor: Valor que o campo de condição deve ter numa linha
+    :type valor: string, int ou float
+
+    Exemplo de execução:
+
+    >>> delete_geral()
+    """
+
     query = f"""
         DELETE FROM {tabela} WHERE {campo_condicao} = ?;
     """
