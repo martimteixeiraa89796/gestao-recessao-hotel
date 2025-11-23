@@ -3,11 +3,10 @@
 Projeto de Universidade utilizando ferramenta Git.
 Aplicação de gestão de recessão de hotel.
 
-## Documentação do Projeto
+## Sobre o Projeto
 
 Este trata-se de uma aplicação de linha de commandos (CLI ou Command-Line Interface) para gerir a recessão de um hotel.
-
-De momentos é uma *front end* escrita em Python com uma futura base de dados em SQLite.
+É uma *front end* escrita em Python com uma base de dados em SQLite.
 
 ### Testar/Usar aplicação
 
@@ -20,7 +19,7 @@ De momentos é uma *front end* escrita em Python com uma futura base de dados em
 
 ---
 
-## Documentação do repositório
+## Sobre o repositório
 
 ### Clonar repositório
 
@@ -31,7 +30,7 @@ Só precisa de ser executado uma vez para criar uma cópia do repositório.
 git clone https://github.com/martimteixeiraa89796/gestao-recessao-hotel.git
 ```
 
-### Ramos
+### Ramos Principais
 
 - **main:** Ramo para código final/estável.
 - **dev:** Ramo para código em desenvolviemnto.
@@ -62,7 +61,7 @@ git merge <inserir ramo aqui>
 
 ---
 
-## Documentação do Servidor
+## Contribuir para o repositório
 
 ### Fazer *Pull* do repositório (Atualizar/*Download*)
 
