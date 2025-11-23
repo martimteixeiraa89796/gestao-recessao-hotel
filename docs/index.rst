@@ -9,6 +9,9 @@ Documentação
 Aplicação Gestão de Recessão de Hotel
 -------------------------------------
 
+Este documento contém toda a documentação sobre os componentes da aplicação.
+Este documento também contém o código fonte e correta utilização de cada componente.
+
 
 .. toctree::
    :maxdepth: 4

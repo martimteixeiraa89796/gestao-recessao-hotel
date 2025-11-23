@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -309,6 +310,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcao-para-ajudar-com-input-do-utilizador">Módulo com função para ajudar com input do utilizador</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.fazer_escolha"><code class="docutils literal notranslate"><span class="pre">fazer_escolha()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.input_bool"><code class="docutils literal notranslate"><span class="pre">input_bool()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.input_float"><code class="docutils literal notranslate"><span class="pre">input_float()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.input_int"><code class="docutils literal notranslate"><span class="pre">input_int()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.input_string"><code class="docutils literal notranslate"><span class="pre">input_string()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.listar_escolhas"><code class="docutils literal notranslate"><span class="pre">listar_escolhas()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.sql_escolher_tipo"><code class="docutils literal notranslate"><span class="pre">sql_escolher_tipo()</span></code></a></li>
 </ul>
@@ -334,6 +339,7 @@ document.write(`
 <dd><p>De uma lista, pregunta <em>input</em> ao utilizador e retorna a resposta.</p>
 <p>Esta função cria um loop onde o utilizador tem de escolher uma opção baseado numa lista que
 é fornecida á função. O loop termina se a escolha for válida.</p>
+<p>Esta função convém ser usada em conjunto com <strong>listar_escolhas</strong>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorno<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Opção escolhida pelo utilizador</p>
@@ -344,6 +350,115 @@ document.write(`
 </dl>
 <p>Exemplo de ambiente de escolha:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fazer_escolha</span><span class="p">([</span><span class="s2">&quot;Banana&quot;</span><span class="p">,</span> <span class="s2">&quot;Maçã&quot;</span><span class="p">,</span> <span class="s2">&quot;Pera&quot;</span><span class="p">])</span>
+<span class="go">#Resultado</span>
+<span class="go">Escolha uma opção: 4</span>
+<span class="go">Opção não disponivel</span>
+<span class="go">Escolha uma opção: 1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ferramentas_escolha.input_bool">
+<span class="sig-prename descclassname"><span class="pre">ferramentas_escolha.</span></span><span class="sig-name descname"><span class="pre">input_bool</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_escolha.html#input_bool"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_escolha.input_bool" title="Link to this definition">#</a></dt>
+<dd><p>Pede ao utilizador para escolher entre verdadeiro ou falso.</p>
+<p>Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um valor de True ou False.
+Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Resposta do utilizador</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_bool</span><span class="p">()</span>
+<span class="go">#Resultado</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. True</span>
+<span class="go">    2. False</span>
+<span class="go">Escolha uma opção: 3</span>
+<span class="go">Opção não disponivel</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. True</span>
+<span class="go">    2. False</span>
+<span class="go">Escolha uma opção: 2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ferramentas_escolha.input_float">
+<span class="sig-prename descclassname"><span class="pre">ferramentas_escolha.</span></span><span class="sig-name descname"><span class="pre">input_float</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_escolha.html#input_float"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_escolha.input_float" title="Link to this definition">#</a></dt>
+<dd><p>Pede ao utilizador um número decimal.</p>
+<p>Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um número decimal.
+Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Resposta do utilizador</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_float</span><span class="p">()</span>
+<span class="go">#Resultado</span>
+<span class="go">--&gt; #Utilizador apenas prime ENTER, loop continua</span>
+<span class="go">Tem de ser um número decimal!</span>
+<span class="go">--&gt; quatro ponto noventa e nove</span>
+<span class="go">Tem de ser um número decimal!</span>
+<span class="go">--&gt; 4.99</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ferramentas_escolha.input_int">
+<span class="sig-prename descclassname"><span class="pre">ferramentas_escolha.</span></span><span class="sig-name descname"><span class="pre">input_int</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_escolha.html#input_int"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_escolha.input_int" title="Link to this definition">#</a></dt>
+<dd><p>Pede ao utilizador um número inteiro.</p>
+<p>Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um número inteiro.
+Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Resposta do utilizador</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_int</span><span class="p">()</span>
+<span class="go">#Resultado</span>
+<span class="go">--&gt; #Utilizador apenas prime ENTER, loop continua</span>
+<span class="go">Tem de ser um número!</span>
+<span class="go">--&gt; quatro</span>
+<span class="go">Tem de ser um número!</span>
+<span class="go">--&gt; 4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ferramentas_escolha.input_string">
+<span class="sig-prename descclassname"><span class="pre">ferramentas_escolha.</span></span><span class="sig-name descname"><span class="pre">input_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_escolha.html#input_string"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_escolha.input_string" title="Link to this definition">#</a></dt>
+<dd><p>Pede ao utilizador uma string.</p>
+<p>Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza uma string.
+Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Resposta do utilizador</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_string</span><span class="p">()</span>
+<span class="go">#Resultado</span>
+<span class="go">--&gt; #Utilizador apenas prime ENTER, loop continua</span>
+<span class="go">--&gt; Ok</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -351,9 +466,10 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="ferramentas_escolha.listar_escolhas">
 <span class="sig-prename descclassname"><span class="pre">ferramentas_escolha.</span></span><span class="sig-name descname"><span class="pre">listar_escolhas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_escolha.html#listar_escolhas"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_escolha.listar_escolhas" title="Link to this definition">#</a></dt>
-<dd><p>Imprime uma listagem de listas.</p>
+<dd><p>Imprime uma listagem de itens.</p>
 <p>Esta função faz uma listagem numérica do que lhe é fornecido.
 Isto é feito através da iteração na lista e construção de strings para serem imprimidas.</p>
+<p>Útil para apresentar escolhas ao utilizador.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>lista</strong> (<em>list</em>) – Lista com os objetos para listagem</p>
@@ -361,6 +477,11 @@ Isto é feito através da iteração na lista e construção de strings para ser
 </dl>
 <p>Exemplo de listagem:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">listar_escolhas</span><span class="p">([</span><span class="s2">&quot;Azul&quot;</span><span class="p">,</span> <span class="s2">&quot;Vermelho&quot;</span><span class="p">,</span> <span class="s2">&quot;Amarelo&quot;</span><span class="p">])</span>
+<span class="go">#Resultado</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. Azul</span>
+<span class="go">    2. Vermelho</span>
+<span class="go">    3. Amarelo</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -371,6 +492,7 @@ Isto é feito através da iteração na lista e construção de strings para ser
 <dd><p>Pede ao utilizador para introduzir dados e formato sql equivalente.</p>
 <p>Esta função pede ao utilizador para inserir dados e o formato que o mesmo pretende.
 A função faz depois a tradução entre os tipos em Python que são equivalente no sql.</p>
+<p>Esta função é util quando o utilizador necessita de inserir dados, onde o formato deste não podem ser definidos.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorno<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Resposta do utilizador traduzida</p>
@@ -381,6 +503,20 @@ A função faz depois a tradução entre os tipos em Python que são equivalente
 </dl>
 <p>Exemplo de execução:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sql_escolher_tipo</span><span class="p">()</span>
+<span class="go">--&gt; João</span>
+<span class="go">Escolha formato.</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. Sql Int</span>
+<span class="go">    2. Sql Decimal</span>
+<span class="go">    3. Sql String</span>
+<span class="go">Escolha uma opção: 2</span>
+<span class="go">Formato incompatível.</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. Sql Int</span>
+<span class="go">    2. Sql Decimal</span>
+<span class="go">    3. Sql String</span>
+<span class="go">Escolha formato.</span>
+<span class="go">Escolha uma opção: 3</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -434,6 +570,10 @@ A função faz depois a tradução entre os tipos em Python que são equivalente
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcao-para-ajudar-com-input-do-utilizador">Módulo com função para ajudar com input do utilizador</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.fazer_escolha"><code class="docutils literal notranslate"><span class="pre">fazer_escolha()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.input_bool"><code class="docutils literal notranslate"><span class="pre">input_bool()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.input_float"><code class="docutils literal notranslate"><span class="pre">input_float()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.input_int"><code class="docutils literal notranslate"><span class="pre">input_int()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.input_string"><code class="docutils literal notranslate"><span class="pre">input_string()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.listar_escolhas"><code class="docutils literal notranslate"><span class="pre">listar_escolhas()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ferramentas_escolha.sql_escolher_tipo"><code class="docutils literal notranslate"><span class="pre">sql_escolher_tipo()</span></code></a></li>
 </ul>

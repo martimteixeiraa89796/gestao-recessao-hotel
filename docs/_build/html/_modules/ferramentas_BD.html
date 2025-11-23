@@ -158,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -274,7 +275,7 @@ document.write(`
 
 <div class="viewcode-block" id="executarBD">
 <a class="viewcode-back" href="../ferramentas_BD.html#ferramentas_BD.executarBD">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">executarBD</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">query_dados</span><span class="o">=</span><span class="p">(),</span> <span class="n">header_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">imprimir</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">executarBD</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">query_dados</span><span class="o">=</span><span class="p">(),</span> <span class="n">header_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">imprimir</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">omitir_sql_erro</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Executa queries na base de dados.</span>
 <span class="sd">    </span>
@@ -283,6 +284,8 @@ document.write(`
 <span class="sd">    Se houver alterações feitas à base de dados, esta função também as guarda.</span>
 <span class="sd">    Caso seja feito um select, esta função também consegue imprimir os resultado com a ajuda de uma função adjacente.</span>
 <span class="sd">    No final das operções, a função desconecta-se da base de dados.</span>
+
+<span class="sd">    É uma das funções mais importantes, pois é a única no código que consegue fazer a ponte com a base de dados.</span>
 
 <span class="sd">    :param query: A query para ser executada na base de dados</span>
 <span class="sd">    :type query: string</span>
@@ -296,6 +299,9 @@ document.write(`
 <span class="sd">    :param imprimir: Se deve ou não imprimir tabelas</span>
 <span class="sd">    :type imprimir: boolean</span>
 
+<span class="sd">    :param omitir_sql_erro: Se é ou não para omitir erros de sql durante a execução da função</span>
+<span class="sd">    :type omitir_sql_erro: boolean</span>
+
 <span class="sd">    :return: Por padrão, a função retorna o conteudo de tabelas, mas pode ser alterado para apenas retornar os headers das mesmas.</span>
 <span class="sd">    :rtype: list</span>
 
@@ -304,6 +310,10 @@ document.write(`
 <span class="sd">    Exemplo de execução de querie com impressão de tabela:</span>
 <span class="sd">    </span>
 <span class="sd">    &gt;&gt;&gt; executarBD(&quot;SELECT * FROM Tabela;&quot;, imprimir=True)</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    campo 1 | campo2 | campo3 |</span>
+<span class="sd">    1       | teste  | 34     |</span>
+<span class="sd">    2       | test2  | 35     |</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="c1">#Fazer conecção com base de dados</span>
@@ -336,7 +346,8 @@ document.write(`
         <span class="k">return</span> <span class="n">resultado</span>
         
     <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao executar commandos SQL.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">omitir_sql_erro</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ocorreu um erro ao executar commandos SQL.&quot;</span><span class="p">)</span>
 
     <span class="c1">#Deconectar base de dados</span>
     <span class="k">try</span><span class="p">:</span>
@@ -373,6 +384,10 @@ document.write(`
 <span class="sd">    Exemplo com dados retirados de queries:</span>
 
 <span class="sd">    &gt;&gt;&gt; imprimir_tabela(cursor.description, cursor.fetchall())</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    campo 1 | campo2 | campo3 | #Header do cursor.desciption</span>
+<span class="sd">    1       | teste  | 34     | #Dados do cursor.fetchall</span>
+<span class="sd">    2       | test2  | 35     |</span>
 
 <span class="sd">    Exemplo com dados externos:</span>
 
@@ -380,6 +395,10 @@ document.write(`
 <span class="sd">                        [(21, &quot;João&quot;, 999999999),</span>
 <span class="sd">                        (23, &quot;Mariana&quot;, 888888888)</span>
 <span class="sd">                        ])</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    Idade | Nome    | Contacto  |</span>
+<span class="sd">    21    | João    | 999999999 |</span>
+<span class="sd">    23    | Mariana | 888888888 |</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">headers_listados</span> <span class="o">=</span> <span class="p">[]</span>
@@ -433,6 +452,8 @@ document.write(`
 <span class="sd">    Esta função acede à base de dados e retorna os campos/colunas de uma tabela.</span>
 <span class="sd">    Isto é feito através da função executarBD e mandá-la retornar apenas os headers das tabelas.</span>
 
+<span class="sd">    Esta função é util quando se pretende listar ou trabalhar com os campos de uma tabela.</span>
+
 <span class="sd">    :param tabela: O nome da tabela que se pretende obter os campos</span>
 <span class="sd">    :type tabela: string</span>
 
@@ -461,6 +482,8 @@ document.write(`
 <span class="sd">    Esta função acede à base de dados e retorna os nomes das tabelas na base de dados.</span>
 <span class="sd">    Isto é feito através do executarBD, com uma *query **select*** que verifica a tabela master.</span>
 <span class="sd">    Esta função remove da lista tabelas de sistema.</span>
+
+<span class="sd">    Esta função é util quando se pretende listar ou trabalhar com os nomes de tabelas.</span>
 
 <span class="sd">    :return: Os nomes das tabela na base de dados</span>
 <span class="sd">    :rtype: list</span>

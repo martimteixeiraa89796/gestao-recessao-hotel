@@ -159,6 +159,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -308,8 +309,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-para-fazer-selects">Módulo com funções para fazer <em>selects</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.contar_camas_em_quarto"><code class="docutils literal notranslate"><span class="pre">contar_camas_em_quarto()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.estadia"><code class="docutils literal notranslate"><span class="pre">estadia()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.select_geral"><code class="docutils literal notranslate"><span class="pre">select_geral()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.select_geral_escolha"><code class="docutils literal notranslate"><span class="pre">select_geral_escolha()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.ver_chegada_cliente"><code class="docutils literal notranslate"><span class="pre">ver_chegada_cliente()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.ver_cliente_em_quarto"><code class="docutils literal notranslate"><span class="pre">ver_cliente_em_quarto()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.ver_horario"><code class="docutils literal notranslate"><span class="pre">ver_horario()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.ver_quarto_livers"><code class="docutils literal notranslate"><span class="pre">ver_quarto_livers()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -327,6 +334,34 @@ document.write(`
 <h2>Módulo com funções para fazer <em>selects</em><a class="headerlink" href="#modulo-com-funcoes-para-fazer-selects" title="Link to this heading">#</a></h2>
 <p>Este módulo contém funções que criam o código SQL para ser utilizado em <em>queries select</em>.</p>
 </section>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_select.contar_camas_em_quarto">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">contar_camas_em_quarto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#contar_camas_em_quarto"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.contar_camas_em_quarto" title="Link to this definition">#</a></dt>
+<dd><p>Mostra quantas camas exitem em cada quarto.</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">contar_camas_em_quarto</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Num_Quarto | Numero_Camas |</span>
+<span class="go">23         | 3            |</span>
+<span class="go">45         | 2            |</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_select.estadia">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">estadia</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#estadia"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.estadia" title="Link to this definition">#</a></dt>
+<dd><p>Mostra as datas dos clientes com Check_In e Check_Out.</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">estadia</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Nome_Cliente | Check_In   | Check_Out  |</span>
+<span class="go">João         | 2000-12-24 | 2000-12-20 |</span>
+<span class="go">Maria        | 2000-12-19 | 2000-12-31 |</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_select.select_geral">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">select_geral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#select_geral"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.select_geral" title="Link to this definition">#</a></dt>
@@ -358,6 +393,80 @@ Serve para ter uma ideia dos dados existentes.</p>
 A tabela escolhida é depois enviada para a função <strong>select_geral</strong> e imprimida.</p>
 <p>Exemplo de execução:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">select_geral_escolha</span><span class="p">()</span>
+<span class="go">#Resultado</span>
+<span class="go">Escolha tabela para visualizar.</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. Cliente</span>
+<span class="go">    2. Hospede</span>
+<span class="go">    3. Quarto</span>
+<span class="go">Escolha uma opção: 1</span>
+<span class="go">ID | Nome    | Contacto  |</span>
+<span class="go">1  | João    | 999999999 |</span>
+<span class="go">2  | Mariana | 888888888 |</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_select.ver_chegada_cliente">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">ver_chegada_cliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#ver_chegada_cliente"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.ver_chegada_cliente" title="Link to this definition">#</a></dt>
+<dd><p>Mostra os clientes que fizeram Check_In entre as datas.</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ver_chegada_cliente</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">insira a incial data(AAAA-MM-DD HH:MM:SS):</span>
+<span class="go">--&gt; 2000-12-20</span>
+<span class="go">insira a final data(AAAA-MM-DD HH:MM:SS):</span>
+<span class="go">--&gt; 2001-01-10</span>
+<span class="go">Nome_Cliente | Check_In   |</span>
+<span class="go">João         | 2000-12-24 |</span>
+<span class="go">Maria        | 2001-01-02 |</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_select.ver_cliente_em_quarto">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">ver_cliente_em_quarto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#ver_cliente_em_quarto"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.ver_cliente_em_quarto" title="Link to this definition">#</a></dt>
+<dd><p>Mostra o numero do quarto e nome do cliente</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ver_cliente_em_quarto</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Num_Quarto | Nome_Cliente |</span>
+<span class="go">23         | João         |</span>
+<span class="go">45         | Maria        |</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_select.ver_horario">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">ver_horario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#ver_horario"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.ver_horario" title="Link to this definition">#</a></dt>
+<dd><p>Mostra o Horario do funcionario
+O utilizador mostra o numero do funcionario e a função mostra a informação do dia_semana e Hora_Trabalho.</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ver_horario</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">insira o seu numero de fucionario:</span>
+<span class="go">--&gt; 5</span>
+<span class="go">Dia_Semana | Hora_Trabalho |</span>
+<span class="go">Segunda    | 09:00 - 10:00 |</span>
+<span class="go">Terça      | 08:00 - 17:00 |</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_select.ver_quarto_livers">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_select.</span></span><span class="sig-name descname"><span class="pre">ver_quarto_livers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_select.html#ver_quarto_livers"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_select.ver_quarto_livers" title="Link to this definition">#</a></dt>
+<dd><p>Mostra o numero de quartos livres
+Seleciona o numero do quarto ocupado=False</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ver_quarto_livers</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Num_Quarto |</span>
+<span class="go">23         |</span>
+<span class="go">45         |</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -410,8 +519,14 @@ A tabela escolhida é depois enviada para a função <strong>select_geral</stron
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-para-fazer-selects">Módulo com funções para fazer <em>selects</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.contar_camas_em_quarto"><code class="docutils literal notranslate"><span class="pre">contar_camas_em_quarto()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.estadia"><code class="docutils literal notranslate"><span class="pre">estadia()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.select_geral"><code class="docutils literal notranslate"><span class="pre">select_geral()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.select_geral_escolha"><code class="docutils literal notranslate"><span class="pre">select_geral_escolha()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.ver_chegada_cliente"><code class="docutils literal notranslate"><span class="pre">ver_chegada_cliente()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.ver_cliente_em_quarto"><code class="docutils literal notranslate"><span class="pre">ver_cliente_em_quarto()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.ver_horario"><code class="docutils literal notranslate"><span class="pre">ver_horario()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_select.ver_quarto_livers"><code class="docutils literal notranslate"><span class="pre">ver_quarto_livers()</span></code></a></li>
 </ul>
   </nav></div>
 
