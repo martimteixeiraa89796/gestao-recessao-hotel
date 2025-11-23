@@ -158,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -272,14 +273,18 @@ document.write(`
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
- | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
  
 </div>
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_select.html#funcoes_sqlite_select.contar_camas_em_quarto">contar_camas_em_quarto() (no módulo funcoes_sqlite_select)</a>
+</li>
+      <li><a href="main.html#main.continuar">continuar() (no módulo main)</a>
+</li>
       <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Camas">criar_tabela_Camas() (no módulo funcoes_sqlite_create)</a>
 </li>
       <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Cliente">criar_tabela_Cliente() (no módulo funcoes_sqlite_create)</a>
@@ -288,10 +293,10 @@ document.write(`
 </li>
       <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Funcoes">criar_tabela_Funcoes() (no módulo funcoes_sqlite_create)</a>
 </li>
-      <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Horario">criar_tabela_Horario() (no módulo funcoes_sqlite_create)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Horario">criar_tabela_Horario() (no módulo funcoes_sqlite_create)</a>
+</li>
       <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Hospedes">criar_tabela_Hospedes() (no módulo funcoes_sqlite_create)</a>
 </li>
       <li><a href="funcoes_sqlite_create.html#funcoes_sqlite_create.criar_tabela_Quarto">criar_tabela_Quarto() (no módulo funcoes_sqlite_create)</a>
@@ -313,10 +318,18 @@ document.write(`
       <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.delete_geral">delete_geral() (no módulo funcoes_sqlite_delete)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.delete_geral_escolha">delete_geral_escolha() (no módulo funcoes_sqlite_delete)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_select.html#funcoes_sqlite_select.estadia">estadia() (no módulo funcoes_sqlite_select)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ferramentas_BD.html#ferramentas_BD.executarBD">executarBD() (no módulo ferramentas_BD)</a>
 </li>
@@ -399,18 +412,26 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ferramentas_BD.html#ferramentas_BD.imprimir_tabela">imprimir_tabela() (no módulo ferramentas_BD)</a>
 </li>
+      <li><a href="ferramentas_escolha.html#ferramentas_escolha.input_bool">input_bool() (no módulo ferramentas_escolha)</a>
+</li>
+      <li><a href="ferramentas_escolha.html#ferramentas_escolha.input_float">input_float() (no módulo ferramentas_escolha)</a>
+</li>
+      <li><a href="ferramentas_escolha.html#ferramentas_escolha.input_int">input_int() (no módulo ferramentas_escolha)</a>
+</li>
+      <li><a href="ferramentas_escolha.html#ferramentas_escolha.input_string">input_string() (no módulo ferramentas_escolha)</a>
+</li>
       <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_camas">inserir_camas() (no módulo funcoes_sqlite_insert)</a>
 </li>
       <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_cliente">inserir_cliente() (no módulo funcoes_sqlite_insert)</a>
 </li>
       <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_funcao">inserir_funcao() (no módulo funcoes_sqlite_insert)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_Funcionario">inserir_Funcionario() (no módulo funcoes_sqlite_insert)</a>
 </li>
       <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_horario">inserir_horario() (no módulo funcoes_sqlite_insert)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_hospede">inserir_hospede() (no módulo funcoes_sqlite_insert)</a>
 </li>
       <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.inserir_quarto">inserir_quarto() (no módulo funcoes_sqlite_insert)</a>
@@ -444,6 +465,15 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    main
+
+      <ul>
+        <li><a href="main.html#module-main">module</a>
+</li>
+      </ul></li>
+      <li><a href="funcoes_sqlite_insert.html#funcoes_sqlite_insert.mapeador_inserts">mapeador_inserts() (no módulo funcoes_sqlite_insert)</a>
+</li>
+      <li>
     module
 
       <ul>
@@ -461,37 +491,11 @@ document.write(`
 </li>
         <li><a href="funcoes_sqlite_update.html#module-funcoes_sqlite_update">funcoes_sqlite_update</a>
 </li>
+        <li><a href="main.html#module-main">main</a>
+</li>
+        <li><a href="verificar_e_atualizar_bd.html#module-verificar_e_atualizar_bd">verificar_e_atualizar_bd</a>
+</li>
       </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="R">R</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Camas">remover_tabela_Camas() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Cliente">remover_tabela_Cliente() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Funcionario">remover_tabela_Funcionario() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Funcoes">remover_tabela_Funcoes() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Horario">remover_tabela_Horario() (no módulo funcoes_sqlite_delete)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Hospedes">remover_tabela_Hospedes() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Quarto">remover_tabela_Quarto() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Reserva">remover_tabela_Reserva() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_tipo_cama">remover_tabela_tipo_cama() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_tipo_quarto">remover_tabela_tipo_quarto() (no módulo funcoes_sqlite_delete)</a>
-</li>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Tipo_Reserva">remover_tabela_Tipo_Reserva() (no módulo funcoes_sqlite_delete)</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -516,10 +520,31 @@ document.write(`
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="funcoes_sqlite_delete.html#funcoes_sqlite_delete.update_geral_escolha">update_geral_escolha() (no módulo funcoes_sqlite_delete)</a>
+      <li><a href="funcoes_sqlite_update.html#funcoes_sqlite_update.update_geral_escolha">update_geral_escolha() (no módulo funcoes_sqlite_update)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_select.html#funcoes_sqlite_select.ver_chegada_cliente">ver_chegada_cliente() (no módulo funcoes_sqlite_select)</a>
+</li>
+      <li><a href="funcoes_sqlite_select.html#funcoes_sqlite_select.ver_cliente_em_quarto">ver_cliente_em_quarto() (no módulo funcoes_sqlite_select)</a>
+</li>
+      <li><a href="funcoes_sqlite_select.html#funcoes_sqlite_select.ver_horario">ver_horario() (no módulo funcoes_sqlite_select)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="funcoes_sqlite_select.html#funcoes_sqlite_select.ver_quarto_livers">ver_quarto_livers() (no módulo funcoes_sqlite_select)</a>
+</li>
+      <li><a href="verificar_e_atualizar_bd.html#verificar_e_atualizar_bd.verificador_tabelas">verificador_tabelas() (no módulo verificar_e_atualizar_bd)</a>
+</li>
+      <li>
+    verificar_e_atualizar_bd
 
       <ul>
-        <li><a href="funcoes_sqlite_update.html#funcoes_sqlite_update.update_geral_escolha">(no módulo funcoes_sqlite_update)</a>
+        <li><a href="verificar_e_atualizar_bd.html#module-verificar_e_atualizar_bd">module</a>
 </li>
       </ul></li>
   </ul></td>

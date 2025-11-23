@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -307,6 +308,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-responsavel-por-inserir-dados-nas-varias-tabelas-da-base-de-dados">Modulo responsavel por inserir dados nas varias tabelas da base de dados</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_Funcionario"><code class="docutils literal notranslate"><span class="pre">inserir_Funcionario()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_camas"><code class="docutils literal notranslate"><span class="pre">inserir_camas()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_cliente"><code class="docutils literal notranslate"><span class="pre">inserir_cliente()</span></code></a></li>
@@ -318,6 +320,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_tipo_Quarto"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_Quarto()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_tipo_cama"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_cama()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_tipo_reserva"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_reserva()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.mapeador_inserts"><code class="docutils literal notranslate"><span class="pre">mapeador_inserts()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -329,62 +332,221 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="funcoes-sqlite-insert-module">
-<h1>funcoes_sqlite_insert module<a class="headerlink" href="#funcoes-sqlite-insert-module" title="Link to this heading">#</a></h1>
-<dl class="py function" id="module-funcoes_sqlite_insert">
+  <section id="module-funcoes_sqlite_insert">
+<span id="funcoes-sqlite-insert-module"></span><h1>funcoes_sqlite_insert module<a class="headerlink" href="#module-funcoes_sqlite_insert" title="Link to this heading">#</a></h1>
+<section id="modulo-responsavel-por-inserir-dados-nas-varias-tabelas-da-base-de-dados">
+<h2>Modulo responsavel por inserir dados nas varias tabelas da base de dados<a class="headerlink" href="#modulo-responsavel-por-inserir-dados-nas-varias-tabelas-da-base-de-dados" title="Link to this heading">#</a></h2>
+<p>Este módulo contém funcoes que fazem o input ao utilizador e realizam as insercoes nas respetivas tabelas da base de dados do hotel</p>
+</section>
+<dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_Funcionario">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_Funcionario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_Funcionario"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_Funcionario" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere um funcionario na tabela Tb_Funcionario.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_Funcionario</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira o nome do funcionário:</span>
+<span class="go">--&gt; João Ratão</span>
+<span class="go">Insira o número da função:</span>
+<span class="go">--&gt; 8</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_camas">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_camas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_camas"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_camas" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere uma relação entre um quarto e um tipo de cama.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_camas</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira o número do quarto:</span>
+<span class="go">--&gt; 300</span>
+<span class="go">Insira o número do tipo de cama:</span>
+<span class="go">--&gt; 3</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_cliente">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_cliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_cliente"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_cliente" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere um cliente na tabela Tb_Cliente.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_cliente</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira o NIF do cliente:</span>
+<span class="go">--&gt; 8439577384</span>
+<span class="go">Insira o nome do cliente:</span>
+<span class="go">--&gt; João</span>
+<span class="go">Insira o numero de telefone do cliente:</span>
+<span class="go">--&gt; 999999999</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_funcao">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_funcao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_funcao"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_funcao" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere uma função de funcionario na tabela funcoes.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_funcao</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira o nome da função:</span>
+<span class="go">--&gt; Gerente</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_horario">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_horario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_horario"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_horario" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere um horário de funcionario na tabela Tb_Horario.</p>
+<p>Exemplo de pedido:
+#resultado</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_horario</span><span class="p">()</span>
+<span class="go">Insira o número do funcionário:</span>
+<span class="go">--&gt; 4</span>
+<span class="go">Insira o dia da semana :</span>
+<span class="go">--&gt; Segunda</span>
+<span class="go">Insira o intrevalo de horas de trabalho (se nao trabalha insira folga):</span>
+<span class="go">--&gt; 09:00 - 22:00</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_hospede">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_hospede</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_hospede"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_hospede" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere um hóspede na tabela Tb_Hospede.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_hospede</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira on número da reserva:</span>
+<span class="go">--&gt; 65</span>
+<span class="go">Insira o NIF do cliente:</span>
+<span class="go">--&gt; 548574875845</span>
+<span class="go">Reservado em nome deste cliente?</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. True</span>
+<span class="go">    2. False</span>
+<span class="go">Escolha uma opção: 1</span>
+<span class="go">Insira o número do quarto:</span>
+<span class="go">--&gt; 45</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_quarto">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_quarto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_quarto"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_quarto" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere um novo quarto na tabela Tb_Quarto.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_quarto</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira o número de quarto:</span>
+<span class="go">--&gt; 300</span>
+<span class="go">Insira o numero do tipo de quarto:</span>
+<span class="go">--&gt; 3</span>
+<span class="go">Insira o preço do quarto:</span>
+<span class="go">--&gt; 450.99</span>
+<span class="go">O quarto está ocupado?</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. True</span>
+<span class="go">    2. False</span>
+<span class="go">Escolha uma opção: 2</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_reserva">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_reserva</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_reserva"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_reserva" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere uma reserva na tabela Tb_Reserva.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_reserva</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira o número do tipo de reserva:</span>
+<span class="go">--&gt; 99</span>
+<span class="go">Insira a data de check-in (AAAA-MM-DD HH:MM:SS):</span>
+<span class="go">--&gt; 2025-11-23 23:59:00</span>
+<span class="go">Insira a data de check-out (AAAA-MM-DD HH:MM:SS):</span>
+<span class="go">--&gt; 2025-12-23 23:59:00</span>
+<span class="go">Insira o número do funcionário:</span>
+<span class="go">--&gt; 34</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_tipo_Quarto">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_tipo_Quarto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_tipo_Quarto"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_tipo_Quarto" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere um novo tipo de quarto na tabela Tb_Tipo_Quarto.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_tipo_Quarto</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira o nome do tipo de quarto:</span>
+<span class="go">--&gt; VIP</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_tipo_cama">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_tipo_cama</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_tipo_cama"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_tipo_cama" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere um novo tipo de cama na tabela Tb_Tipo_cama.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_tipo_cama</span><span class="p">()</span>
+<span class="go">#Resultado</span>
+<span class="go">Insira nome do tipo de cama:</span>
+<span class="go">--&gt; Luxo</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="funcoes_sqlite_insert.inserir_tipo_reserva">
 <span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">inserir_tipo_reserva</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#inserir_tipo_reserva"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.inserir_tipo_reserva" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Insere um tipo de reserva na tabela Tb_Tipo_Reserva.</p>
+<p>Exemplo de pedido:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inserir_tipo_reserva</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Insira o nome do tipo de reserva:</span>
+<span class="go">--&gt; Barato</span>
+<span class="go">#Corre a lógica de insert.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes_sqlite_insert.mapeador_inserts">
+<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_insert.</span></span><span class="sig-name descname"><span class="pre">mapeador_inserts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_insert.html#mapeador_inserts"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_insert.mapeador_inserts" title="Link to this definition">#</a></dt>
+<dd><p>Apresenta lista das tabelas e executa a funcao de inserção correspondente.</p>
+<p>Esta função obtém a lista das tabelas, apresenta-as ao utilizador e, após a escolha,
+associa automaticamente a tabela à sua funcao de inserção.</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapeador_inserts</span><span class="p">()</span>
+<span class="go">#Resultado</span>
+<span class="go">Opções disponíveis:</span>
+<span class="go">    1. Cliente</span>
+<span class="go">    2. Hospede</span>
+<span class="go">    3. Quarto</span>
+<span class="go">Escolha uma opção: 1</span>
+<span class="go">#Apartir deste ponto, é chamado o insert correspondente.</span>
+<span class="go">inserir_cliente()</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </section>
 
@@ -433,6 +595,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-responsavel-por-inserir-dados-nas-varias-tabelas-da-base-de-dados">Modulo responsavel por inserir dados nas varias tabelas da base de dados</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_Funcionario"><code class="docutils literal notranslate"><span class="pre">inserir_Funcionario()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_camas"><code class="docutils literal notranslate"><span class="pre">inserir_camas()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_cliente"><code class="docutils literal notranslate"><span class="pre">inserir_cliente()</span></code></a></li>
@@ -444,6 +607,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_tipo_Quarto"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_Quarto()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_tipo_cama"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_cama()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.inserir_tipo_reserva"><code class="docutils literal notranslate"><span class="pre">inserir_tipo_reserva()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_insert.mapeador_inserts"><code class="docutils literal notranslate"><span class="pre">mapeador_inserts()</span></code></a></li>
 </ul>
   </nav></div>
 

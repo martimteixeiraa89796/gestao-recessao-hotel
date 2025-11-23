@@ -19,6 +19,8 @@ def executarBD(query, query_dados=(), header_only=False, imprimir=False, omitir_
     Caso seja feito um select, esta função também consegue imprimir os resultado com a ajuda de uma função adjacente.
     No final das operções, a função desconecta-se da base de dados.
 
+    É uma das funções mais importantes, pois é a única no código que consegue fazer a ponte com a base de dados.
+
     :param query: A query para ser executada na base de dados
     :type query: string
 
@@ -31,6 +33,9 @@ def executarBD(query, query_dados=(), header_only=False, imprimir=False, omitir_
     :param imprimir: Se deve ou não imprimir tabelas
     :type imprimir: boolean
 
+    :param omitir_sql_erro: Se é ou não para omitir erros de sql durante a execução da função
+    :type omitir_sql_erro: boolean
+
     :return: Por padrão, a função retorna o conteudo de tabelas, mas pode ser alterado para apenas retornar os headers das mesmas.
     :rtype: list
 
@@ -39,6 +44,10 @@ def executarBD(query, query_dados=(), header_only=False, imprimir=False, omitir_
     Exemplo de execução de querie com impressão de tabela:
     
     >>> executarBD("SELECT * FROM Tabela;", imprimir=True)
+    #Resultado
+    campo 1 | campo2 | campo3 |
+    1       | teste  | 34     |
+    2       | test2  | 35     |
     """
     
     #Fazer conecção com base de dados
@@ -106,6 +115,10 @@ def imprimir_tabela(headers, dados):
     Exemplo com dados retirados de queries:
 
     >>> imprimir_tabela(cursor.description, cursor.fetchall())
+    #Resultado
+    campo 1 | campo2 | campo3 | #Header do cursor.desciption
+    1       | teste  | 34     | #Dados do cursor.fetchall
+    2       | test2  | 35     |
 
     Exemplo com dados externos:
 
@@ -113,6 +126,10 @@ def imprimir_tabela(headers, dados):
                         [(21, "João", 999999999),
                         (23, "Mariana", 888888888)
                         ])
+    #Resultado
+    Idade | Nome    | Contacto  |
+    21    | João    | 999999999 |
+    23    | Mariana | 888888888 |
     """
 
     headers_listados = []
@@ -163,6 +180,8 @@ def get_campos(tabela):
     Esta função acede à base de dados e retorna os campos/colunas de uma tabela.
     Isto é feito através da função executarBD e mandá-la retornar apenas os headers das tabelas.
 
+    Esta função é util quando se pretende listar ou trabalhar com os campos de uma tabela.
+
     :param tabela: O nome da tabela que se pretende obter os campos
     :type tabela: string
 
@@ -188,6 +207,8 @@ def get_tabelas():
     Esta função acede à base de dados e retorna os nomes das tabelas na base de dados.
     Isto é feito através do executarBD, com uma *query **select*** que verifica a tabela master.
     Esta função remove da lista tabelas de sistema.
+
+    Esta função é util quando se pretende listar ou trabalhar com os nomes de tabelas.
 
     :return: Os nomes das tabela na base de dados
     :rtype: list

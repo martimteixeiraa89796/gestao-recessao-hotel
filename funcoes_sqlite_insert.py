@@ -1,6 +1,7 @@
 """
 Modulo responsavel por inserir dados nas varias tabelas da base de dados
-========================================================================
+------------------------------------------------------------------------
+
 Este módulo contém funcoes que fazem o input ao utilizador e realizam as insercoes nas respetivas tabelas da base de dados do hotel
 """
 from ferramentas_BD import executarBD, get_tabelas
@@ -9,11 +10,24 @@ from ferramentas_escolha import input_string, input_int, input_float, input_bool
 
 def mapeador_inserts():
     """
-    Apresenta lista das tabelas e executa a funcao de inserçao correspondente.
-    Esta função obtém a lista das tabelas,apresenta-as ao utilizador e, após a escolha, associa automaticamente a tabela á sua funcao de inserção
-    :return: none
-    :rtype: NoneType
+    Apresenta lista das tabelas e executa a funcao de inserção correspondente.
+    
+    Esta função obtém a lista das tabelas, apresenta-as ao utilizador e, após a escolha,
+    associa automaticamente a tabela à sua funcao de inserção.
+
+    Exemplo de execução:
+
+    >>> mapeador_inserts()
+    #Resultado
+    Opções disponíveis:
+        1. Cliente
+        2. Hospede
+        3. Quarto
+    Escolha uma opção: 1
+    #Apartir deste ponto, é chamado o insert correspondente.
+    inserir_cliente()
     """
+
     tabelas = get_tabelas()
 
     listar_escolhas(tabelas)
@@ -39,10 +53,17 @@ def mapeador_inserts():
 
 def inserir_tipo_cama(): 
     """
-    Insere um novo tipo de cama na tabela Tb_Tipo_cama
-    :return: none
-    :rtype: NoneType
-    """       
+    Insere um novo tipo de cama na tabela Tb_Tipo_cama.
+
+    Exemplo de pedido:
+
+    >>> inserir_tipo_cama()
+    #Resultado
+    Insira nome do tipo de cama:
+    --> Luxo
+    #Corre a lógica de insert.
+    """ 
+
     print("Insira nome do tipo de cama:")       
     nome_tipo_cama = input_string()
   
@@ -56,10 +77,17 @@ def inserir_tipo_cama():
 
 def inserir_tipo_Quarto():
     """
-    Insere um novo tipo de quarto na tabela Tb_Tipo_Quarto
-    :return: none
-    :rtype: NoneType
+    Insere um novo tipo de quarto na tabela Tb_Tipo_Quarto.
+    
+    Exemplo de pedido:
+
+    >>> inserir_tipo_Quarto()
+    #resultado
+    Insira o nome do tipo de quarto:
+    --> VIP
+    #Corre a lógica de insert.
     """
+
     print("Insira o nome do tipo de quarto:")
     nome_tipo_quarto = input_string()
     
@@ -73,9 +101,24 @@ def inserir_tipo_Quarto():
 
 def inserir_quarto():
     """
-    Insere um novo tipo de quarto na tabela Tb_Tipo_Quarto
-    :return: none
-    :rtype: NoneType
+    Insere um novo quarto na tabela Tb_Quarto.
+    
+    Exemplo de pedido:
+
+    >>> inserir_quarto()
+    #resultado
+    Insira o número de quarto:
+    --> 300
+    Insira o numero do tipo de quarto:
+    --> 3
+    Insira o preço do quarto:
+    --> 450.99
+    O quarto está ocupado?
+    Opções disponíveis:
+        1. True
+        2. False
+    Escolha uma opção: 2
+    #Corre a lógica de insert.
     """
 
     print("Insira o número de quarto:")
@@ -100,10 +143,21 @@ def inserir_quarto():
 
 def inserir_cliente():
     """
-    Insere um cliente na tabela Tb_Cliente
-    :return: none
-    :rtype: NoneType
+    Insere um cliente na tabela Tb_Cliente.
+    
+    Exemplo de pedido:
+
+    >>> inserir_cliente()
+    #resultado
+    Insira o NIF do cliente:
+    --> 8439577384
+    Insira o nome do cliente:
+    --> João
+    Insira o numero de telefone do cliente:
+    --> 999999999
+    #Corre a lógica de insert.
     """
+
     print("Insira o NIF do cliente:")
     nif = input_int()
 
@@ -123,9 +177,15 @@ def inserir_cliente():
 
 def inserir_tipo_reserva():
     """
-    Insere um tipo de reserva na tabela Tb_Tipo_Reserva
-    :return: none
-    :rtype: NoneType
+    Insere um tipo de reserva na tabela Tb_Tipo_Reserva.
+
+    Exemplo de pedido:
+
+    >>> inserir_tipo_reserva()
+    #resultado
+    Insira o nome do tipo de reserva:
+    --> Barato
+    #Corre a lógica de insert.
     """
     print("Insira o nome do tipo de reserva:")
     nome_tipo_reserva = input_string()
@@ -140,9 +200,17 @@ def inserir_tipo_reserva():
 
 def inserir_camas():
     """
-    Insere uma relação entre um quarto e um tipo de cama
-    :return: none
-    :rtype: NoneType
+    Insere uma relação entre um quarto e um tipo de cama.
+
+    Exemplo de pedido:
+
+    >>> inserir_camas()
+    #resultado
+    Insira o número do quarto:
+    --> 300
+    Insira o número do tipo de cama:
+    --> 3
+    #Corre a lógica de insert.
     """
     print("Insira o número do quarto:")
     num_quarto =input_int()
@@ -151,7 +219,7 @@ def inserir_camas():
     num_tipo_cama =input_int()
 
     query = f"""
-        INSERT INTO Tb_tipo_Camas (Num_Quarto, Num_Tipo_Cama)
+        INSERT INTO Tb_Camas (Num_Quarto, Num_Tipo_Cama)
         VALUES (?, ?);
     """
 
@@ -160,9 +228,15 @@ def inserir_camas():
 
 def inserir_funcao():
     """
-    Insere uma função de funcionario na tabela funcoes
-    :return: none
-    :rtype: NoneType
+    Insere uma função de funcionario na tabela funcoes.
+
+    Exemplo de pedido:
+
+    >>> inserir_funcao()
+    #resultado
+    Insira o nome da função:
+    --> Gerente
+    #Corre a lógica de insert.
     """
     print("Insira o nome da função:")
     nome_funcao = input_string()
@@ -177,9 +251,17 @@ def inserir_funcao():
 
 def inserir_Funcionario():
     """
-    Insere um funcionario na tabela Tb_Funcionario
-    :return: none
-    :rtype: NoneType
+    Insere um funcionario na tabela Tb_Funcionario.
+    
+    Exemplo de pedido:
+
+    >>> inserir_Funcionario()
+    #resultado
+    Insira o nome do funcionário:
+    --> João Ratão
+    Insira o número da função:
+    --> 8
+    #Corre a lógica de insert.
     """
 
     print("Insira o nome do funcionário:")
@@ -198,36 +280,57 @@ def inserir_Funcionario():
 
 def inserir_horario():
     """
-    Insere um horário de funcionario na tabela Tb_Horario
-    :return: none
-    :rtype: NoneType
+    Insere um horário de funcionario na tabela Tb_Horario.
+    
+    Exemplo de pedido:
+    #resultado
+
+    >>> inserir_horario()
+    Insira o número do funcionário:
+    --> 4
+    Insira o dia da semana :
+    --> Segunda
+    Insira o intrevalo de horas de trabalho (se nao trabalha insira folga):
+    --> 09:00 - 22:00
+    #Corre a lógica de insert.
     """
+
     print("Insira o número do funcionário:")
     num_funcionario = input_int()
 
-    print("Insira o horário de iníco (AAAA-MM-DD HH:MM:SS):")
-    comeca = input_string()
+    print("Insira o dia da semana :")
+    dia_semana = input_string()
     
-    print("Insira o horário de fim (AAAA-MM-DD HH:MM:SS):")
-    acaba = input_string()
-
-    print("Insira o dia de folga:")
-    folga = input_string()
+    print("Insira o intrevalo de horas de trabalho (se nao trabalha insira folga):")
+    hora_trabalho = input_string()
 
     query = f"""
-        INSERT INTO Tb_Horario (Num_Funcionario, Comeca, Acaba, Folga)
-        VALUES (?, ?, ?, ?);
+        INSERT INTO Tb_Horario (Num_Funcionario, Dia_Semana, Hora_Trabalho)
+        VALUES (?, ?, ?);
     """
 
-    executarBD(query, (num_funcionario,comeca,acaba,folga))
+    executarBD(query, (num_funcionario,dia_semana,hora_trabalho,))
 
 
 def inserir_reserva():
     """
-    Insere uma reserva na tabela Tb_Reserva
-    :return: none
-    :rtype: NoneType
+    Insere uma reserva na tabela Tb_Reserva.
+    
+    Exemplo de pedido:
+
+    >>> inserir_reserva()
+    #resultado
+    Insira o número do tipo de reserva:
+    --> 99
+    Insira a data de check-in (AAAA-MM-DD HH:MM:SS):
+    --> 2025-11-23 23:59:00
+    Insira a data de check-out (AAAA-MM-DD HH:MM:SS):
+    --> 2025-12-23 23:59:00
+    Insira o número do funcionário:
+    --> 34
+    #Corre a lógica de insert.
     """
+
     print("Insira o número do tipo de reserva:")
     num_tipo_reserva = input_int()
 
@@ -238,11 +341,11 @@ def inserir_reserva():
     check_out = input_string()
 
     print("Insira o número do funcionário:")
-    num_funcionario = input_float()
+    num_funcionario = input_int()
 
     query = f"""
         INSERT INTO Tb_Reserva (Num_Tipo_Reserva, Check_in, Check_out, Num_Funcionario)
-        VALUES (?, ?, ?, ?, ?);
+        VALUES (?, ?, ?, ?);
     """
     
     executarBD(query, (num_tipo_reserva,check_in,check_out,num_funcionario))
@@ -250,9 +353,24 @@ def inserir_reserva():
 
 def inserir_hospede():
     """
-    Insere um hóspede na tabela Tb_Hospede
-    :return: none
-    :rtype: NoneType
+    Insere um hóspede na tabela Tb_Hospede.
+    
+    Exemplo de pedido:
+
+    >>> inserir_hospede()
+    #resultado
+    Insira on número da reserva:
+    --> 65
+    Insira o NIF do cliente:
+    --> 548574875845
+    Reservado em nome deste cliente?
+    Opções disponíveis:
+        1. True
+        2. False
+    Escolha uma opção: 1
+    Insira o número do quarto:
+    --> 45
+    #Corre a lógica de insert.
     """
     print("Insira on número da reserva:")
     num_reserva = input_int()
