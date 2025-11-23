@@ -35,7 +35,6 @@ git clone https://github.com/martimteixeiraa89796/gestao-recessao-hotel.git
 - **main:** Ramo para código final/estável.
 - **dev:** Ramo para código em desenvolviemnto.
 - **basedados:** Ramo para desenvolvimento relacionado a BDs.
-- **test:** Ramo para testes, não deveria ser feito merges com ele.
 
 > [!IMPORTANT]
 > Não apagar ramos utilizados, eles vão ser usados para avaliação.
