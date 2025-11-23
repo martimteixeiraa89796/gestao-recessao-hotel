@@ -45,7 +45,7 @@ def fazer_escolha(lista, cancelar=True):
             mensagem = "Escolha uma opção: "
         
         else:
-            mensagem = "Escolha uma opção (cancelar/skip: 0): "
+            mensagem = "Escolha uma opção (cancelar/skip: .): "
 
         try:
             escolha = int(input(mensagem))
@@ -54,7 +54,7 @@ def fazer_escolha(lista, cancelar=True):
                 break
 
             else:
-                if escolha == 0:
+                if escolha == ".":
                     return None
                 
                 else:
@@ -83,13 +83,13 @@ def sql_escolher_tipo():
 
     while True:
         while True:
-            resposta = input("(cancelar/skip: ...) --> ")
+            resposta = input("(cancelar/skip: .) --> ")
 
             if not resposta:
                 pass
 
             else:
-                if resposta == "...":
+                if resposta == ".":
                     return None
                 
                 else:
