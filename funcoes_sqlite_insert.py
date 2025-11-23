@@ -4,7 +4,7 @@ Modulo responsavel por inserir dados nas varias tabelas da base de dados
 Este módulo contém funcoes que fazem o input ao utilizador e realizam as insercoes nas respetivas tabelas da base de dados do hotel
 """
 from ferramentas_BD import executarBD, get_tabelas
-from ferramentas_escolha import input_string, input_int, input_float, input_bool, listar_escolhas, fazer_escolha
+from ferramentas_escolha import input_string, input_int, input_float, input_bool, listar_escolhas, fazer_escolha, verificar_cancelar
 
 
 def mapeador_inserts():
@@ -18,22 +18,23 @@ def mapeador_inserts():
 
     listar_escolhas(tabelas)
     tabela = fazer_escolha(tabelas)
+    
+    if tabela:
+        lista_inserts = [inserir_tipo_cama,
+                        inserir_tipo_Quarto,
+                        inserir_tipo_reserva,
+                        inserir_funcao,
+                        inserir_cliente,
+                        inserir_quarto,
+                        inserir_Funcionario,
+                        inserir_camas,
+                        inserir_reserva,
+                        inserir_horario,
+                        inserir_hospede]
 
-    lista_inserts = [inserir_tipo_cama,
-                     inserir_tipo_Quarto,
-                     inserir_tipo_reserva,
-                     inserir_funcao,
-                     inserir_cliente,
-                     inserir_quarto,
-                     inserir_Funcionario,
-                     inserir_camas,
-                     inserir_reserva,
-                     inserir_horario,
-                     inserir_hospede]
-
-    for x in range(len(tabelas)):
-        if tabela == tabelas[x]:
-            lista_inserts[x]()
+        for x in range(len(tabelas)):
+            if tabela == tabelas[x]:
+                lista_inserts[x]()
 
 
 
@@ -45,6 +46,8 @@ def inserir_tipo_cama():
     """       
     print("Insira nome do tipo de cama:")       
     nome_tipo_cama = input_string()
+    if verificar_cancelar:
+        return None
   
     query = f"""
         INSERT INTO Tb_Tipo_Cama (Nome_Tipo_Cama)
@@ -62,6 +65,8 @@ def inserir_tipo_Quarto():
     """
     print("Insira o nome do tipo de quarto:")
     nome_tipo_quarto = input_string()
+    if verificar_cancelar:
+        return None
     
     query = f"""
         INSERT INTO Tb_Tipo_Quarto(Nome_Tipo_Quarto)
@@ -80,15 +85,23 @@ def inserir_quarto():
 
     print("Insira o número de quarto:")
     num_quarto = input_int()
+    if verificar_cancelar:
+        return None
 
     print("Insira o numero do tipo de quarto:")
     num_tipo_quarto = input_int()
+    if verificar_cancelar:
+        return None
 
     print("Insira o preço do quarto:")
     preco = input_float()
+    if verificar_cancelar:
+        return None
 
     print("O quarto está ocupado?")
     ocupado = input_bool()
+    if verificar_cancelar:
+        return None
 
     query = f"""
         INSERT INTO Tb_Quarto(Num_Quarto, Num_Tipo_Quarto, Preco, Ocupado)
@@ -106,12 +119,18 @@ def inserir_cliente():
     """
     print("Insira o NIF do cliente:")
     nif = input_int()
+    if verificar_cancelar:
+        return None
 
     print("Insira o nome do cliente:")
     nome_cliente = input_string()
+    if verificar_cancelar:
+        return None
 
     print("Insira o numero de telefone do cliente:")  
     telefone = input_string()
+    if verificar_cancelar:
+        return None
 
     query = f"""
         INSERT INTO Tb_Cliente (NIF, Nome_Cliente, Telefone)
@@ -129,6 +148,8 @@ def inserir_tipo_reserva():
     """
     print("Insira o nome do tipo de reserva:")
     nome_tipo_reserva = input_string()
+    if verificar_cancelar:
+        return None
 
     query = f"""
         INSERT INTO Tb_Tipo_Reserva (Nome_Tipo_Reserva)
@@ -146,9 +167,13 @@ def inserir_camas():
     """
     print("Insira o número do quarto:")
     num_quarto =input_int()
+    if verificar_cancelar:
+        return None
 
     print("Insira o número do tipo de cama:")
     num_tipo_cama =input_int()
+    if verificar_cancelar:
+        return None
 
     query = f"""
         INSERT INTO Tb_Camas (Num_Quarto, Num_Tipo_Cama)
@@ -166,6 +191,8 @@ def inserir_funcao():
     """
     print("Insira o nome da função:")
     nome_funcao = input_string()
+    if verificar_cancelar:
+        return None
 
     query = f"""
         INSERT INTO funcoes (Nome_Funcao)
@@ -184,9 +211,13 @@ def inserir_Funcionario():
 
     print("Insira o nome do funcionário:")
     nome_funcionario = input_string()
+    if verificar_cancelar:
+        return None
 
     print("Insira o número da função:")
     num_funcao = input_int()
+    if verificar_cancelar:
+        return None
 
     query = f"""
         INSERT INTO Tb_Funcionario (Nome_Funcionario, Num_Funcao)
@@ -204,12 +235,18 @@ def inserir_horario():
     """
     print("Insira o número do funcionário:")
     num_funcionario = input_int()
+    if verificar_cancelar:
+        return None
 
     print("Insira o dia da semana :")
     dia_semana = input_string()
+    if verificar_cancelar:
+        return None
     
     print("Insira o intrevalo de horas de trabalho (se nao trabalha insira folga):")
     hora_trabalho = input_string()
+    if verificar_cancelar:
+        return None
 
     query = f"""
         INSERT INTO Tb_Horario (Num_Funcionario, Dia_Semana, Hora_Trabalho)
@@ -227,15 +264,23 @@ def inserir_reserva():
     """
     print("Insira o número do tipo de reserva:")
     num_tipo_reserva = input_int()
+    if verificar_cancelar:
+        return None
 
     print("Insira a data de check-in (AAAA-MM-DD HH:MM:SS):")
     check_in = input_string()
+    if verificar_cancelar:
+        return None
 
     print("Insira a data de check-out (AAAA-MM-DD HH:MM:SS):")
     check_out = input_string()
+    if verificar_cancelar:
+        return None
 
     print("Insira o número do funcionário:")
     num_funcionario = input_int()
+    if verificar_cancelar:
+        return None
 
     query = f"""
         INSERT INTO Tb_Reserva (Num_Tipo_Reserva, Check_in, Check_out, Num_Funcionario)
@@ -253,15 +298,23 @@ def inserir_hospede():
     """
     print("Insira on número da reserva:")
     num_reserva = input_int()
+    if verificar_cancelar:
+        return None
 
     print("Insira o NIF do cliente:")
     nif = input_int()
+    if verificar_cancelar:
+        return None
 
     print("Reservado em nome deste cliente?")
     reservado_em_nome = input_bool()
+    if verificar_cancelar:
+        return None
 
     print("Insira o número do quarto:")
     num_quarto =input_int()
+    if verificar_cancelar:
+        return None
     
     query = f"""
         INSERT INTO Tb_Hospedes (Num_Reserva, NIF, Reservado_Em_Nome, Num_Quarto)
