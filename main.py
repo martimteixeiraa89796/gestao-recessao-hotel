@@ -1,3 +1,12 @@
+"""
+Módulo principal da aplicação
+-----------------------------
+
+Módulo usado para iniciar a aplicação.
+Este módulo contém a junção de toda a lógica da aplicação.
+Este apresenta uma interface onde o utilizador pode escolher a funcionalidade que a aplicação pode executar.
+"""
+
 import ferramentas_BD
 import ferramentas_escolha
 import funcoes_sqlite_create
