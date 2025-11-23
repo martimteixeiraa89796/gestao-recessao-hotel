@@ -194,3 +194,11 @@ def input_bool():
     
     else:
         return None
+    
+
+def verificar_cancelar(resposta):
+    if resposta:
+        return False
+    
+    else:
+        return True
