@@ -54,14 +54,13 @@ def fazer_escolha(lista, cancelar=True):
                 break
 
             else:
-                if escolha == ".":
-                    return None
-                
-                else:
-                    print("Opção não disponivel")
+                print("Opção não disponivel")
         
         except ValueError:
-            pass
+            if escolha == ".":
+                    return None
+            else:
+                pass
     
     return lista[escolha-1]
 
@@ -82,18 +81,7 @@ def sql_escolher_tipo():
     """
 
     while True:
-        while True:
-            resposta = input("(cancelar/skip: .) --> ")
-
-            if not resposta:
-                pass
-
-            else:
-                if resposta == ".":
-                    return None
-                
-                else:
-                    break
+        resposta = input_string()
 
         tipo_dado_lista = ["sql int",
                         "sql decimal",
