@@ -113,6 +113,7 @@ def delete_geral_escolha():
         3. Telefone
     Escolha uma opção: 1
     Nome
+    Insira valor de condição.
     --> João
     Escolha formato.
     Opções disponíveis:
