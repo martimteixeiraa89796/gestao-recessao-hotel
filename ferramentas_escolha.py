@@ -25,7 +25,7 @@ def listar_escolhas(lista):
         print(f"    {item + 1}. {lista[item]}".title())
 
 
-def fazer_escolha(lista):
+def fazer_escolha(lista, cancelar=True):
     """
     De uma lista, pregunta *input* ao utilizador e retorna a resposta.
 
@@ -41,14 +41,24 @@ def fazer_escolha(lista):
     """
 
     while True:
+        if not cancelar:
+            mensagem = "Escolha uma opção: "
+        
+        else:
+            mensagem = "Escolha uma opção (cancelar/skip: 0): "
+
         try:
-            escolha = int(input("Escolha uma opção: "))
+            escolha = int(input(mensagem))
 
             if 0 < escolha <= len(lista):
                 break
 
             else:
-                print("Opção não disponivel")
+                if escolha == 0:
+                    return None
+                
+                else:
+                    print("Opção não disponivel")
         
         except ValueError:
             pass
