@@ -31,7 +31,8 @@ while True:
     opcoes = ["Visualizar dados",
               "Atualizar dados",
               "Inserir dados",
-              "Apagar dados"
+              "Apagar dados",
+              "Sair"
               ]
     
     ferramentas_escolha.listar_escolhas(opcoes)
@@ -75,3 +76,6 @@ while True:
 
         elif escolha == opcoes[1]:
             funcoes_sqlite_delete.delete_geral_escolha()
+
+    elif escolha == opcoes[4]:
+        break
