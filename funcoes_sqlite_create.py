@@ -1,9 +1,9 @@
 """
 Módulo com funções de criação de tabelas
-========================================
+----------------------------------------
 
 Este módulo contém funções que são usadas para criar as várias tabelas existentes na base de dados da aplicação.
-As funções retornam a query SQL para ser usada na execução na base de dados.
+Permitem criar a estrutura da base de dados, o fundamento da aplicação.
 """
 
 from ferramentas_BD import executarBD
