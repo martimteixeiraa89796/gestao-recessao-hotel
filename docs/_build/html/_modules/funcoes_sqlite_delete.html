@@ -158,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -263,10 +264,9 @@ document.write(`
   <h1>Código fonte de funcoes_sqlite_delete</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Módulo com funções de remoção de tabelas</span>
-<span class="sd">========================================</span>
+<span class="sd">----------------------------------------</span>
 
 <span class="sd">Este módulo contém funções que são usadas para remover as várias tabelas existentes na base de dados da aplicação.</span>
-<span class="sd">As funções retornam a query SQL para ser usada na execução na base de dados.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ferramentas_BD</span><span class="w"> </span><span class="kn">import</span> <span class="n">executarBD</span><span class="p">,</span> <span class="n">get_campos</span><span class="p">,</span> <span class="n">get_tabelas</span>
@@ -275,6 +275,17 @@ document.write(`
 <div class="viewcode-block" id="limpar_tabela_geral">
 <a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.limpar_tabela_geral">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">limpar_tabela_geral</span><span class="p">(</span><span class="n">tabela</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Elimina todas a linhas de uma tabela.</span>
+
+<span class="sd">    :param tabela: Tabela onde se pretende apagar dados</span>
+<span class="sd">    :type tabela: string</span>
+
+<span class="sd">    Exemplo de execução:</span>
+
+<span class="sd">    &gt;&gt;&gt; limpar_tabela_geral(&quot;Clientes&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        DELETE FROM </span><span class="si">{</span><span class="n">tabela</span><span class="si">}</span><span class="s2">;</span>
 <span class="s2">    &quot;&quot;&quot;</span>
@@ -286,17 +297,56 @@ document.write(`
 <div class="viewcode-block" id="delete_geral">
 <a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.delete_geral">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">delete_geral</span><span class="p">(</span><span class="n">tabela</span><span class="p">,</span> <span class="n">campo_condicao</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Elimina linhas de uma tabela</span>
+
+<span class="sd">    Esta função elimina linhas específica segundo uma dada condição definida pelo utilizador.</span>
+
+<span class="sd">    :param tabela: A tabela onde se pretende apagar linha</span>
+<span class="sd">    :type tabela: string</span>
+
+<span class="sd">    :param campo_condicao: Campo para servir de condição para apagar linha</span>
+<span class="sd">    :type campo_condicao: string</span>
+
+<span class="sd">    :param valor: Valor que o campo de condição deve ter numa linha</span>
+<span class="sd">    :type valor: string, int ou float</span>
+
+<span class="sd">    Exemplo de execução:</span>
+
+<span class="sd">    &gt;&gt;&gt; delete_geral()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        DELETE FROM </span><span class="si">{</span><span class="n">tabela</span><span class="si">}</span><span class="s2"> WHERE </span><span class="si">{</span><span class="n">campo_condicao</span><span class="si">}</span><span class="s2"> = ?;</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 
-    <span class="n">executarBD</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">valor</span><span class="p">))</span></div>
+    <span class="n">executarBD</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">valor</span><span class="p">,))</span></div>
 
 
 
 <div class="viewcode-block" id="limpar_tabela_geral_escolha">
 <a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.limpar_tabela_geral_escolha">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">limpar_tabela_geral_escolha</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Versão interativa de apagar todos os dados de uma tabela</span>
+
+<span class="sd">    Esta função pergunta ao utilizador para escolher uma tabela onde este pretende apagar todos os registos de uma tabela.</span>
+<span class="sd">    Esta função não elimina tabelas, somente os seus dados</span>
+<span class="sd">    </span>
+<span class="sd">    Exemplo de pedido:</span>
+
+<span class="sd">    &gt;&gt;&gt; limpar_tabela_geral_escolha()</span>
+<span class="sd">    #resultado</span>
+<span class="sd">    Escolha tabela para apagar todos os dados.</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. Cliente</span>
+<span class="sd">        2. Hospede</span>
+<span class="sd">        3. Quarto</span>
+<span class="sd">    Escolha uma opção: 4</span>
+<span class="sd">    Opção não disponivel</span>
+<span class="sd">    Escolha uma opção: 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">tabela_lista</span> <span class="o">=</span> <span class="n">get_tabelas</span><span class="p">()</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Escolha tabela para apagar todos os dados.&quot;</span><span class="p">)</span>
@@ -308,9 +358,43 @@ document.write(`
 
 
 
-<div class="viewcode-block" id="update_geral_escolha">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.update_geral_escolha">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">update_geral_escolha</span><span class="p">():</span>
+<div class="viewcode-block" id="delete_geral_escolha">
+<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.delete_geral_escolha">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_geral_escolha</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Forma interativa de apagar linhas de uma tabela.</span>
+
+<span class="sd">    Esta função permite apagar linhas específica de tabelas que o utilizador escolhe.</span>
+
+<span class="sd">    Exemplo de pedido:</span>
+
+<span class="sd">    &gt;&gt;&gt; delete_geral_escolha()</span>
+<span class="sd">    #resultado</span>
+<span class="sd">    Escolha uma tabela onde quer apagar dados.</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. Cliente</span>
+<span class="sd">        2. Hospede</span>
+<span class="sd">        3. Quarto</span>
+<span class="sd">    Escolha uma opção: 4</span>
+<span class="sd">    Opção não disponivel</span>
+<span class="sd">    Escolha uma opção: 1</span>
+<span class="sd">    Escolha um campo de condição.</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. Nome</span>
+<span class="sd">        2. NIF</span>
+<span class="sd">        3. Telefone</span>
+<span class="sd">    Escolha uma opção: 1</span>
+<span class="sd">    Insira valor de condição.</span>
+<span class="sd">    --&gt; João</span>
+<span class="sd">    Escolha formato.</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. Sql Int</span>
+<span class="sd">        2. Sql Decimal</span>
+<span class="sd">        3. Sql String</span>
+<span class="sd">    Escolha formato.</span>
+<span class="sd">    Escolha uma opção: 3</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">tabela_lista</span> <span class="o">=</span> <span class="n">get_tabelas</span><span class="p">()</span>
     
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Escolha uma tabela onde quer apagar dados.&quot;</span><span class="p">)</span>
@@ -326,204 +410,6 @@ document.write(`
     <span class="n">valor</span> <span class="o">=</span> <span class="n">ferramentas_escolha</span><span class="o">.</span><span class="n">sql_escolher_tipo</span><span class="p">()</span>
 
     <span class="n">delete_geral</span><span class="p">(</span><span class="n">tabela</span><span class="p">,</span> <span class="n">campo_condicao</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span></div>
-
-
-    
-<div class="viewcode-block" id="remover_tabela_tipo_cama">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_tipo_cama">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_tipo_cama</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com tipos de cama</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Tipo_Cama</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_tipo_quarto">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_tipo_quarto">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_tipo_quarto</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com tipos de quartos</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Tipo_Quarto</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_Quarto">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Quarto">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Quarto</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com os quartos disponíveis no hotel</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Quarto</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_Cliente">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Cliente">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Cliente</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com dados sobre os clientes</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Cliente</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_Tipo_Reserva">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Tipo_Reserva">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Tipo_Reserva</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com tipo de reserva</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Tipo_Reserva</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-    
-<div class="viewcode-block" id="remover_tabela_Camas">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Camas">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Camas</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remover tabela com relação entre tipos de camas e respetivo quarto</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    drop table if exists tipo_Camas</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_Funcoes">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Funcoes">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Funcoes</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com funções do funcionários</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Funcoes</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_Funcionario">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Funcionario">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Funcionario</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com dados sobre funcionários</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Funcionario</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-    
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_Horario">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Horario">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Horario</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com o horário de cada funcionário</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Horario</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_Reserva">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Reserva">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Reserva</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com dados sobre reservas feitas</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Reserva</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
-
-
-
-<div class="viewcode-block" id="remover_tabela_Hospedes">
-<a class="viewcode-back" href="../funcoes_sqlite_delete.html#funcoes_sqlite_delete.remover_tabela_Hospedes">[documentos]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">remover_tabela_Hospedes</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Remove tabela com dados sobre os hospedes referentes a uma reserva</span>
-
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        drop table if exists Hospedes</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">query</span></div>
 
 </pre></div>
 

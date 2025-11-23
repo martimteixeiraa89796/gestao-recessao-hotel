@@ -158,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -272,10 +273,12 @@ document.write(`
 <a class="viewcode-back" href="../ferramentas_escolha.html#ferramentas_escolha.listar_escolhas">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">listar_escolhas</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Imprime uma listagem de listas.</span>
+<span class="sd">    Imprime uma listagem de itens.</span>
 
 <span class="sd">    Esta função faz uma listagem numérica do que lhe é fornecido.</span>
 <span class="sd">    Isto é feito através da iteração na lista e construção de strings para serem imprimidas.</span>
+
+<span class="sd">    Útil para apresentar escolhas ao utilizador.</span>
 
 <span class="sd">    :param lista: Lista com os objetos para listagem</span>
 <span class="sd">    :type lista: list</span>
@@ -283,6 +286,11 @@ document.write(`
 <span class="sd">    Exemplo de listagem:</span>
 
 <span class="sd">    &gt;&gt;&gt; listar_escolhas([&quot;Azul&quot;, &quot;Vermelho&quot;, &quot;Amarelo&quot;])</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. Azul</span>
+<span class="sd">        2. Vermelho</span>
+<span class="sd">        3. Amarelo</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções disponíveis:&quot;</span><span class="p">)</span>
@@ -300,12 +308,18 @@ document.write(`
 <span class="sd">    Esta função cria um loop onde o utilizador tem de escolher uma opção baseado numa lista que</span>
 <span class="sd">    é fornecida á função. O loop termina se a escolha for válida.</span>
 
+<span class="sd">    Esta função convém ser usada em conjunto com **listar_escolhas**.</span>
+
 <span class="sd">    :return: Opção escolhida pelo utilizador</span>
 <span class="sd">    :rtype: Depende do valor inseridos</span>
 
 <span class="sd">    Exemplo de ambiente de escolha:</span>
 
 <span class="sd">    &gt;&gt;&gt; fazer_escolha([&quot;Banana&quot;, &quot;Maçã&quot;, &quot;Pera&quot;])</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    Escolha uma opção: 4</span>
+<span class="sd">    Opção não disponivel</span>
+<span class="sd">    Escolha uma opção: 1</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -334,12 +348,28 @@ document.write(`
 <span class="sd">    Esta função pede ao utilizador para inserir dados e o formato que o mesmo pretende.</span>
 <span class="sd">    A função faz depois a tradução entre os tipos em Python que são equivalente no sql.</span>
 
+<span class="sd">    Esta função é util quando o utilizador necessita de inserir dados, onde o formato deste não podem ser definidos.</span>
+
 <span class="sd">    :return: Resposta do utilizador traduzida</span>
 <span class="sd">    :rtype: string, int ou float</span>
 
 <span class="sd">    Exemplo de execução:</span>
 
 <span class="sd">    &gt;&gt;&gt; sql_escolher_tipo()</span>
+<span class="sd">    --&gt; João</span>
+<span class="sd">    Escolha formato.</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. Sql Int</span>
+<span class="sd">        2. Sql Decimal</span>
+<span class="sd">        3. Sql String</span>
+<span class="sd">    Escolha uma opção: 2</span>
+<span class="sd">    Formato incompatível.</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. Sql Int</span>
+<span class="sd">        2. Sql Decimal</span>
+<span class="sd">        3. Sql String</span>
+<span class="sd">    Escolha formato.</span>
+<span class="sd">    Escolha uma opção: 3</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -379,6 +409,145 @@ document.write(`
 
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Formato incompatível.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">resposta</span></div>
+
+
+
+<div class="viewcode-block" id="input_string">
+<a class="viewcode-back" href="../ferramentas_escolha.html#ferramentas_escolha.input_string">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">input_string</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pede ao utilizador uma string.</span>
+
+<span class="sd">    Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza uma string.</span>
+<span class="sd">    Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.</span>
+
+<span class="sd">    :return: Resposta do utilizador</span>
+<span class="sd">    :rtype: string</span>
+
+<span class="sd">    Exemplo de pedido:</span>
+
+<span class="sd">    &gt;&gt;&gt; input_string()</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    --&gt; #Utilizador apenas prime ENTER, loop continua</span>
+<span class="sd">    --&gt; Ok</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">resposta</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;--&gt; &quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">resposta</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">resposta</span></div>
+
+
+
+<div class="viewcode-block" id="input_int">
+<a class="viewcode-back" href="../ferramentas_escolha.html#ferramentas_escolha.input_int">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">input_int</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pede ao utilizador um número inteiro.</span>
+
+<span class="sd">    Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um número inteiro.</span>
+<span class="sd">    Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.</span>
+
+<span class="sd">    :return: Resposta do utilizador</span>
+<span class="sd">    :rtype: int</span>
+
+<span class="sd">    Exemplo de pedido:</span>
+
+<span class="sd">    &gt;&gt;&gt; input_int()</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    --&gt; #Utilizador apenas prime ENTER, loop continua</span>
+<span class="sd">    Tem de ser um número!</span>
+<span class="sd">    --&gt; quatro</span>
+<span class="sd">    Tem de ser um número!</span>
+<span class="sd">    --&gt; 4</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resposta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;--&gt; &quot;</span><span class="p">))</span>
+            <span class="k">break</span>
+        
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tem de ser um número!&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">resposta</span></div>
+
+
+
+<div class="viewcode-block" id="input_float">
+<a class="viewcode-back" href="../ferramentas_escolha.html#ferramentas_escolha.input_float">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">input_float</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pede ao utilizador um número decimal.</span>
+
+<span class="sd">    Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um número decimal.</span>
+<span class="sd">    Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.</span>
+
+<span class="sd">    :return: Resposta do utilizador</span>
+<span class="sd">    :rtype: float</span>
+
+<span class="sd">    Exemplo de pedido:</span>
+
+<span class="sd">    &gt;&gt;&gt; input_float()</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    --&gt; #Utilizador apenas prime ENTER, loop continua</span>
+<span class="sd">    Tem de ser um número decimal!</span>
+<span class="sd">    --&gt; quatro ponto noventa e nove</span>
+<span class="sd">    Tem de ser um número decimal!</span>
+<span class="sd">    --&gt; 4.99</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resposta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;--&gt; &quot;</span><span class="p">))</span>
+            <span class="k">break</span>
+        
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tem de ser um número decimal!&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">resposta</span></div>
+
+
+
+<div class="viewcode-block" id="input_bool">
+<a class="viewcode-back" href="../ferramentas_escolha.html#ferramentas_escolha.input_bool">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">input_bool</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pede ao utilizador para escolher entre verdadeiro ou falso.</span>
+
+<span class="sd">    Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um valor de True ou False.</span>
+<span class="sd">    Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.</span>
+
+<span class="sd">    :return: Resposta do utilizador</span>
+<span class="sd">    :rtype: boolean</span>
+
+<span class="sd">    Exemplo de pedido:</span>
+
+<span class="sd">    &gt;&gt;&gt; input_bool()</span>
+<span class="sd">    #Resultado</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. True</span>
+<span class="sd">        2. False</span>
+<span class="sd">    Escolha uma opção: 3</span>
+<span class="sd">    Opção não disponivel</span>
+<span class="sd">    Opções disponíveis:</span>
+<span class="sd">        1. True</span>
+<span class="sd">        2. False</span>
+<span class="sd">    Escolha uma opção: 2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">opcoes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">]</span>
+
+    <span class="n">listar_escolhas</span><span class="p">(</span><span class="n">opcoes</span><span class="p">)</span>
+    <span class="n">resposta</span> <span class="o">=</span> <span class="n">fazer_escolha</span><span class="p">(</span><span class="n">opcoes</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">resposta</span></div>
 

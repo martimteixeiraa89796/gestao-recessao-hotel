@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>funcoes_sqlite_delete module &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
+    <title>verificar_e_atualizar_bd module &#8212; Documentação Aplicação de Gestão de Recessão de Hotel </title>
   
   
   
@@ -41,11 +41,10 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/translations.js?v=beaedd51"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'funcoes_sqlite_delete';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'verificar_e_atualizar_bd';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Pesquisar" href="search.html" />
-    <link rel="next" title="funcoes_sqlite_insert module" href="funcoes_sqlite_insert.html" />
-    <link rel="prev" title="funcoes_sqlite_create module" href="funcoes_sqlite_create.html" />
+    <link rel="prev" title="main module" href="main.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt"/>
   </head>
@@ -154,12 +153,12 @@
 <li class="toctree-l1"><a class="reference internal" href="ferramentas_BD.html">ferramentas_BD module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ferramentas_escolha.html">ferramentas_escolha module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_create.html">funcoes_sqlite_create module</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">funcoes_sqlite_delete module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_delete.html">funcoes_sqlite_delete module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_insert.html">funcoes_sqlite_insert module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -214,7 +213,7 @@
       
       
       
-      <li><a href="_sources/funcoes_sqlite_delete.rst" target="_blank"
+      <li><a href="_sources/verificar_e_atualizar_bd.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Baixar arquivo fonte"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +297,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>funcoes_sqlite_delete module</h1>
+    <h1>verificar_e_atualizar_bd module</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -308,11 +307,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-de-remocao-de-tabelas">Módulo com funções de remoção de tabelas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.delete_geral"><code class="docutils literal notranslate"><span class="pre">delete_geral()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.delete_geral_escolha"><code class="docutils literal notranslate"><span class="pre">delete_geral_escolha()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.limpar_tabela_geral"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.limpar_tabela_geral_escolha"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral_escolha()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-de-verificacao-e-criacao-de-tabelas">Módulo de verificação e criação de tabelas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar_e_atualizar_bd.verificador_tabelas"><code class="docutils literal notranslate"><span class="pre">verificador_tabelas()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -324,99 +320,28 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-funcoes_sqlite_delete">
-<span id="funcoes-sqlite-delete-module"></span><h1>funcoes_sqlite_delete module<a class="headerlink" href="#module-funcoes_sqlite_delete" title="Link to this heading">#</a></h1>
-<section id="modulo-com-funcoes-de-remocao-de-tabelas">
-<h2>Módulo com funções de remoção de tabelas<a class="headerlink" href="#modulo-com-funcoes-de-remocao-de-tabelas" title="Link to this heading">#</a></h2>
-<p>Este módulo contém funções que são usadas para remover as várias tabelas existentes na base de dados da aplicação.</p>
+  <section id="module-verificar_e_atualizar_bd">
+<span id="verificar-e-atualizar-bd-module"></span><h1>verificar_e_atualizar_bd module<a class="headerlink" href="#module-verificar_e_atualizar_bd" title="Link to this heading">#</a></h1>
+<section id="modulo-de-verificacao-e-criacao-de-tabelas">
+<h2>Módulo de verificação e criação de tabelas<a class="headerlink" href="#modulo-de-verificacao-e-criacao-de-tabelas" title="Link to this heading">#</a></h2>
+<p>Este módulo contém a lógica de verificação e criação de tabelas para assegurar de que as tabelas existem.
+É crucial para o funcionamento da aplicação.</p>
 </section>
 <dl class="py function">
-<dt class="sig sig-object py" id="funcoes_sqlite_delete.delete_geral">
-<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">delete_geral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">campo_condicao</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#delete_geral"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.delete_geral" title="Link to this definition">#</a></dt>
-<dd><p>Elimina linhas de uma tabela</p>
-<p>Esta função elimina linhas específica segundo uma dada condição definida pelo utilizador.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tabela</strong> (<em>string</em>) – A tabela onde se pretende apagar linha</p></li>
-<li><p><strong>campo_condicao</strong> (<em>string</em>) – Campo para servir de condição para apagar linha</p></li>
-<li><p><strong>valor</strong> (<em>string</em><em>, </em><em>int ou float</em>) – Valor que o campo de condição deve ter numa linha</p></li>
-</ul>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="verificar_e_atualizar_bd.verificador_tabelas">
+<span class="sig-prename descclassname"><span class="pre">verificar_e_atualizar_bd.</span></span><span class="sig-name descname"><span class="pre">verificador_tabelas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/verificar_e_atualizar_bd.html#verificador_tabelas"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#verificar_e_atualizar_bd.verificador_tabelas" title="Link to this definition">#</a></dt>
+<dd><p>Verifica se as tabelas existem e cria-as.</p>
+<p>Esta função permite verificar se as tabelas da base de dados estão criadas e, caso não estejam, as mesmas são criadas.
+Isto é necessário uma vez que o ficheiro de base de dado é algo à parte do código da aplicação.</p>
 <p>Exemplo de execução:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_geral</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="funcoes_sqlite_delete.delete_geral_escolha">
-<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">delete_geral_escolha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#delete_geral_escolha"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.delete_geral_escolha" title="Link to this definition">#</a></dt>
-<dd><p>Forma interativa de apagar linhas de uma tabela.</p>
-<p>Esta função permite apagar linhas específica de tabelas que o utilizador escolhe.</p>
-<p>Exemplo de pedido:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_geral_escolha</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">verificador_tabelas</span><span class="p">()</span>
 <span class="go">#resultado</span>
-<span class="go">Escolha uma tabela onde quer apagar dados.</span>
-<span class="go">Opções disponíveis:</span>
-<span class="go">    1. Cliente</span>
-<span class="go">    2. Hospede</span>
-<span class="go">    3. Quarto</span>
-<span class="go">Escolha uma opção: 4</span>
-<span class="go">Opção não disponivel</span>
-<span class="go">Escolha uma opção: 1</span>
-<span class="go">Escolha um campo de condição.</span>
-<span class="go">Opções disponíveis:</span>
-<span class="go">    1. Nome</span>
-<span class="go">    2. NIF</span>
-<span class="go">    3. Telefone</span>
-<span class="go">Escolha uma opção: 1</span>
-<span class="go">Insira valor de condição.</span>
-<span class="go">--&gt; João</span>
-<span class="go">Escolha formato.</span>
-<span class="go">Opções disponíveis:</span>
-<span class="go">    1. Sql Int</span>
-<span class="go">    2. Sql Decimal</span>
-<span class="go">    3. Sql String</span>
-<span class="go">Escolha formato.</span>
-<span class="go">Escolha uma opção: 3</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="funcoes_sqlite_delete.limpar_tabela_geral">
-<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">limpar_tabela_geral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#limpar_tabela_geral"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.limpar_tabela_geral" title="Link to this definition">#</a></dt>
-<dd><p>Elimina todas a linhas de uma tabela.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>tabela</strong> (<em>string</em>) – Tabela onde se pretende apagar dados</p>
-</dd>
-</dl>
-<p>Exemplo de execução:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">limpar_tabela_geral</span><span class="p">(</span><span class="s2">&quot;Clientes&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="funcoes_sqlite_delete.limpar_tabela_geral_escolha">
-<span class="sig-prename descclassname"><span class="pre">funcoes_sqlite_delete.</span></span><span class="sig-name descname"><span class="pre">limpar_tabela_geral_escolha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/funcoes_sqlite_delete.html#limpar_tabela_geral_escolha"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#funcoes_sqlite_delete.limpar_tabela_geral_escolha" title="Link to this definition">#</a></dt>
-<dd><p>Versão interativa de apagar todos os dados de uma tabela</p>
-<p>Esta função pergunta ao utilizador para escolher uma tabela onde este pretende apagar todos os registos de uma tabela.
-Esta função não elimina tabelas, somente os seus dados</p>
-<p>Exemplo de pedido:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">limpar_tabela_geral_escolha</span><span class="p">()</span>
-<span class="go">#resultado</span>
-<span class="go">Escolha tabela para apagar todos os dados.</span>
-<span class="go">Opções disponíveis:</span>
-<span class="go">    1. Cliente</span>
-<span class="go">    2. Hospede</span>
-<span class="go">    3. Quarto</span>
-<span class="go">Escolha uma opção: 4</span>
-<span class="go">Opção não disponivel</span>
-<span class="go">Escolha uma opção: 1</span>
+<span class="go">A verificar tabelas...</span>
+<span class="go">Tabela Tb_Tipo_Cama não existe.</span>
+<span class="go">A criar tabela Tb_Tipo_Cama...</span>
+<span class="go">Tabela Tb_Tipo_Quarto não existe.</span>
+<span class="go">A criar tabela Tb_Tipo_Quarto...</span>
+<span class="go">Verificação concluída.</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -435,22 +360,13 @@ Esta função não elimina tabelas, somente os seus dados</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="funcoes_sqlite_create.html"
+       href="main.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">anterior</p>
-        <p class="prev-next-title">funcoes_sqlite_create module</p>
+        <p class="prev-next-title">main module</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="funcoes_sqlite_insert.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">próximo</p>
-        <p class="prev-next-title">funcoes_sqlite_insert module</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -468,11 +384,8 @@ Esta função não elimina tabelas, somente os seus dados</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-com-funcoes-de-remocao-de-tabelas">Módulo com funções de remoção de tabelas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.delete_geral"><code class="docutils literal notranslate"><span class="pre">delete_geral()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.delete_geral_escolha"><code class="docutils literal notranslate"><span class="pre">delete_geral_escolha()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.limpar_tabela_geral"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes_sqlite_delete.limpar_tabela_geral_escolha"><code class="docutils literal notranslate"><span class="pre">limpar_tabela_geral_escolha()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-de-verificacao-e-criacao-de-tabelas">Módulo de verificação e criação de tabelas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar_e_atualizar_bd.verificador_tabelas"><code class="docutils literal notranslate"><span class="pre">verificador_tabelas()</span></code></a></li>
 </ul>
   </nav></div>
 

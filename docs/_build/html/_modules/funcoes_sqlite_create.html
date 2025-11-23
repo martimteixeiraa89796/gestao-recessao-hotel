@@ -158,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -263,10 +264,10 @@ document.write(`
   <h1>Código fonte de funcoes_sqlite_create</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Módulo com funções de criação de tabelas</span>
-<span class="sd">========================================</span>
+<span class="sd">----------------------------------------</span>
 
 <span class="sd">Este módulo contém funções que são usadas para criar as várias tabelas existentes na base de dados da aplicação.</span>
-<span class="sd">As funções retornam a query SQL para ser usada na execução na base de dados.</span>
+<span class="sd">Permitem criar a estrutura da base de dados, o fundamento da aplicação.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ferramentas_BD</span><span class="w"> </span><span class="kn">import</span> <span class="n">executarBD</span>
@@ -277,8 +278,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com tipos de cama</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_tipo_cama()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
@@ -298,8 +300,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com tipos de quartos</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_tipo_quarto()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -319,8 +322,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com os quartos disponíveis no hotel</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Quarto()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
@@ -347,8 +351,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com dados sobre os clientes</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Cliente()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -370,8 +375,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com tipo de reserva</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Tipo_Reserva()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -391,8 +397,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com relação entre tipos de camas e respetivo quarto</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Camas()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -421,8 +428,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com funções do funcionários</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Funcoes()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -442,8 +450,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com dados sobre funcionários</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Funcionario()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -468,16 +477,16 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com o horário de cada funcionário</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Horario()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        CREATE TABLE Tb_Horario(</span>
 <span class="s2">            Num_funcionario INTEGER NOT NULL,</span>
-<span class="s2">            Comeca DATETIME NOT NULL,</span>
-<span class="s2">            Acaba DATETIME NOT NULL,</span>
-<span class="s2">            Folga VARCHAR(15) NOT NULL,</span>
+<span class="s2">            Dia_Semana varchar(30) NOT NULL,</span>
+<span class="s2">            Hora_Trabalho VARCHAR(30) NOT NULL,</span>
 <span class="s2">            CONSTRAINT FK_Tb_Funcionario_Tb_Horario FOREIGN KEY (Num_Funcionario)</span>
 <span class="s2">                REFERENCES Tb_Funcionario (Num_Funcionario)</span>
 <span class="s2">                ON UPDATE CASCADE</span>
@@ -495,8 +504,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com dados sobre reservas feitas</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Reserva()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -527,8 +537,9 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cria tabela com dados sobre os hospedes referentes a uma reserva</span>
 
-<span class="sd">    :return: Código SQL para *query*</span>
-<span class="sd">    :rtype: string</span>
+<span class="sd">    Exemplo de execução</span>
+
+<span class="sd">    &gt;&gt;&gt; criar_tabela_Hospedes()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
