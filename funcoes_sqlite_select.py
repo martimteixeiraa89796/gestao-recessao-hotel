@@ -58,6 +58,10 @@ def select_geral_escolha():
 
 
 def ver_horario():
+    """
+    Mostra o Horario do funcionario
+    O utilizador mostra o numero do funcionario e mostra a informação do dia_semana e Hora_Trabalho
+    """
         
     print("insira o seu numero de fucionario: ")
     Numero = input_int()
@@ -71,7 +75,11 @@ def ver_horario():
 
 
 def ver_quarto_livers():
+    """
+    Mostra o numero de quartos livres
+    Seleciona o numero do quarto ocupado=False
 
+"""
     query = f'''
         select Num_Quarto from Tb_Quarto
         where Ocupado = "False";
@@ -81,7 +89,9 @@ def ver_quarto_livers():
 
 
 def ver_cliente_em_quarto():
-
+    """
+    Mostra o numero do quarto e nome do cliente
+    """
     query = f'''
         select Num_Quarto, Nome_Cliente from Tb_Hospedes
         inner join Tb_Cliente on Tb_Hospedes.NIF = Tb_Cliente.NIF;
@@ -92,7 +102,9 @@ def ver_cliente_em_quarto():
 
 
 def ver_chegada_cliente():
-    
+    """
+    Mostra os clientes que fizeram Check_In entre as datas
+    """
     print("insira a incial data(AAAA-MM-DD HH:MM:SS): ")
     data1 = input_string()
 
@@ -110,6 +122,9 @@ def ver_chegada_cliente():
 
 
 def contar_camas_em_quarto():
+    """
+    Mostra quantas camas exitem em cada quarto
+    """
 
     query = f'''
         select Num_Quarto, count(Num_Cama) as Numero_Camas from Tb_Camas
@@ -121,7 +136,9 @@ def contar_camas_em_quarto():
 
 
 def estadia():
-
+    """
+    Mostra as datas dos clientes com Check_In e Check_Out
+    """
     query = f'''
         select Nome_Cliente, Check_In, Check_Out from Tb_Reserva
         inner join Tb_Hospedes on Tb_Reserva.Num_Reserva = Tb_Hospedes.Num_Reserva
