@@ -22,3 +22,4 @@ Aplicação Gestão de Recessão de Hotel
    funcoes_sqlite_select
    funcoes_sqlite_update
    main
+   verificar_e_atualizar_bd
