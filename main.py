@@ -36,8 +36,8 @@ while True:
               ]
     
     ferramentas_escolha.listar_escolhas(opcoes)
-    escolha = ferramentas_escolha.fazer_escolha(opcoes)
-
+    escolha = ferramentas_escolha.fazer_escolha(opcoes, cancelar=False)
+    
     if escolha == opcoes[0]:
         opcoes = ["Ver Tabelas",
                   "Dados específicos"
@@ -46,45 +46,47 @@ while True:
         ferramentas_escolha.listar_escolhas(opcoes)
         escolha = ferramentas_escolha.fazer_escolha(opcoes)
         
-        if escolha == opcoes[0]:
-            funcoes_sqlite_select.select_geral_escolha()
-            continuar()
-
-        elif escolha == opcoes[1]:
-            opcoes = ["Ver Horario",
-                      "Ver Quartos Livres",
-                      "Ver Clientes Nos Quartos",
-                      "Ver Chegada De Clientes",
-                      "Contar Camas",
-                      "Estadia"
-                      ]
-
-            ferramentas_escolha.listar_escolhas(opcoes)
-            escolha = ferramentas_escolha.fazer_escolha(opcoes) 
-
+        if escolha:
             if escolha == opcoes[0]:
-                funcoes_sqlite_select.ver_horario()
+                funcoes_sqlite_select.select_geral_escolha()
                 continuar()
 
             elif escolha == opcoes[1]:
-                funcoes_sqlite_select.ver_quarto_livers()
-                continuar()
+                opcoes = ["Ver Horario",
+                        "Ver Quartos Livres",
+                        "Ver Clientes Nos Quartos",
+                        "Ver Chegada De Clientes",
+                        "Contar Camas",
+                        "Estadia"
+                        ]
 
-            elif escolha == opcoes[2]:
-                funcoes_sqlite_select.ver_cliente_em_quarto()
-                continuar()
+                ferramentas_escolha.listar_escolhas(opcoes)
+                escolha = ferramentas_escolha.fazer_escolha(opcoes) 
 
-            elif escolha == opcoes[3]:
-                funcoes_sqlite_select.ver_chegada_cliente()
-                continuar()
+                if escolha:
+                    if escolha == opcoes[0]:
+                        funcoes_sqlite_select.ver_horario()
+                        continuar()
 
-            elif escolha == opcoes[4]:
-                funcoes_sqlite_select.contar_camas_em_quarto()
-                continuar()
-            
-            elif escolha == opcoes[5]:
-                funcoes_sqlite_select.estadia()
-                continuar()
+                    elif escolha == opcoes[1]:
+                        funcoes_sqlite_select.ver_quarto_livers()
+                        continuar()
+
+                    elif escolha == opcoes[2]:
+                        funcoes_sqlite_select.ver_cliente_em_quarto()
+                        continuar()
+
+                    elif escolha == opcoes[3]:
+                        funcoes_sqlite_select.ver_chegada_cliente()
+                        continuar()
+
+                    elif escolha == opcoes[4]:
+                        funcoes_sqlite_select.contar_camas_em_quarto()
+                        continuar()
+                    
+                    elif escolha == opcoes[5]:
+                        funcoes_sqlite_select.estadia()
+                        continuar()
 
     elif escolha == opcoes[1]:
         funcoes_sqlite_update.update_geral_escolha()
@@ -102,12 +104,13 @@ while True:
         ferramentas_escolha.listar_escolhas(opcoes)
         escolha = ferramentas_escolha.fazer_escolha(opcoes)
 
-        if escolha == opcoes[0]:
-            funcoes_sqlite_delete.limpar_tabela_geral_escolha()
-            continuar()
+        if escolha:
+            if escolha == opcoes[0]:
+                funcoes_sqlite_delete.limpar_tabela_geral_escolha()
+                continuar()
 
-        elif escolha == opcoes[1]:
-            funcoes_sqlite_delete.delete_geral_escolha()
+            elif escolha == opcoes[1]:
+                funcoes_sqlite_delete.delete_geral_escolha()
 
     elif escolha == opcoes[4]:
         break
