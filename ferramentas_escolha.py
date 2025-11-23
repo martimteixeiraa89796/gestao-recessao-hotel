@@ -144,6 +144,24 @@ def sql_escolher_tipo():
 
 
 def input_string():
+    """
+    Pede ao utilizador uma string.
+
+    Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza uma string.
+    Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.
+
+    :return: Resposta do utilizador
+    :rtype: string
+
+    Exemplo de pedido:
+
+    >>> input_string()
+    #Resultado
+    --> #Utilizador apenas prime ENTER, loop continua
+    --> Ok
+    Ok
+    """
+
     while True:
             resposta = input("--> ")
 
@@ -157,6 +175,27 @@ def input_string():
 
 
 def input_int():
+    """
+    Pede ao utilizador um número inteiro.
+
+    Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um número inteiro.
+    Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.
+
+    :return: Resposta do utilizador
+    :rtype: int
+
+    Exemplo de pedido:
+
+    >>> input_int()
+    #Resultado
+    --> #Utilizador apenas prime ENTER, loop continua
+    Tem de ser um número!
+    --> quatro
+    Tem de ser um número!
+    --> 4
+    4
+    """
+
     while True:
         try:
             resposta = int(input("--> "))
@@ -169,6 +208,27 @@ def input_int():
 
 
 def input_float():
+    """
+    Pede ao utilizador um número decimal.
+
+    Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um número decimal.
+    Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.
+
+    :return: Resposta do utilizador
+    :rtype: float
+
+    Exemplo de pedido:
+
+    >>> input_float()
+    #Resultado
+    --> #Utilizador apenas prime ENTER, loop continua
+    Tem de ser um número decimal!
+    --> quatro ponto noventa e nove
+    Tem de ser um número decimal!
+    --> 4.99
+    4.99
+    """
+    
     while True:
         try:
             resposta = float(input("--> "))
@@ -181,6 +241,31 @@ def input_float():
 
 
 def input_bool():
+    """
+    Pede ao utilizador para escolher entre verdadeiro ou falso.
+
+    Esta função coloca o utilizador dentro de um loop onde é-lhe pedido uma que introduza um valor de True ou False.
+    Esta função também verifica se o que foi introduzido está de acordo com o que se pretende.
+
+    :return: Resposta do utilizador
+    :rtype: boolean
+
+    Exemplo de pedido:
+
+    >>> input_bool()
+    #Resultado
+    Opções disponíveis:
+        1. True
+        2. False
+    Escolha uma opção: 3
+    Opção não disponivel
+    Opções disponíveis:
+        1. True
+        2. False
+    Escolha uma opção: 2
+    False
+    """
+
     opcoes = ["True", "False"]
 
     listar_escolhas(opcoes)
