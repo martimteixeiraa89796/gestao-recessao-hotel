@@ -186,9 +186,8 @@ def criar_tabela_Horario():
     query = """
         CREATE TABLE Tb_Horario(
             Num_funcionario INTEGER NOT NULL,
-            Comeca DATETIME NOT NULL,
-            Acaba DATETIME NOT NULL,
-            Folga VARCHAR(15) NOT NULL,
+            Dia_Semana varchar(30) NOT NULL,
+            Hora_Trabalho VARCHAR(30) NOT NULL,
             CONSTRAINT FK_Tb_Funcionario_Tb_Horario FOREIGN KEY (Num_Funcionario)
                 REFERENCES Tb_Funcionario (Num_Funcionario)
                 ON UPDATE CASCADE
