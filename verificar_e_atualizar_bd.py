@@ -1,8 +1,34 @@
+"""
+Módulo de verificação e criação de tabelas
+------------------------------------------
+
+Este módulo contém a lógica de verificação e criação de tabelas para assegurar de que as tabelas existem.
+É crucial para o funcionamento da aplicação.
+"""
+
 from ferramentas_BD import executarBD
 from funcoes_sqlite_select import select_geral
 import funcoes_sqlite_create
 
 def verificador_tabelas():
+    """
+    Verifica se as tabelas existem e cria-as.
+
+    Esta função permite verificar se as tabelas da base de dados estão criadas e, caso não estejam, as mesmas são criadas.
+    Isto é necessário uma vez que o ficheiro de base de dado é algo à parte do código da aplicação.
+
+    Exemplo de execução:
+
+    >>> verificador_tabelas()
+    #resultado
+    A verificar tabelas...
+    Tabela Tb_Tipo_Cama não existe.
+    A criar tabela Tb_Tipo_Cama...
+    Tabela Tb_Tipo_Quarto não existe.
+    A criar tabela Tb_Tipo_Quarto...
+    Verificação concluída.
+    """
+
     tabelas = ["Tb_Tipo_Cama",
             "Tb_Tipo_Quarto",
             "Tb_Tipo_Reserva",

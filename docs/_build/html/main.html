@@ -44,6 +44,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'main';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Pesquisar" href="search.html" />
+    <link rel="next" title="verificar_e_atualizar_bd module" href="verificar_e_atualizar_bd.html" />
     <link rel="prev" title="funcoes_sqlite_update module" href="funcoes_sqlite_update.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt"/>
@@ -158,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -283,7 +285,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -299,6 +303,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-principal-da-aplicacao">Módulo principal da aplicação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main.continuar"><code class="docutils literal notranslate"><span class="pre">continuar()</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -308,8 +321,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="main-module">
-<h1>main module<a class="headerlink" href="#main-module" title="Link to this heading">#</a></h1>
+  <section id="module-main">
+<span id="main-module"></span><h1>main module<a class="headerlink" href="#module-main" title="Link to this heading">#</a></h1>
+<section id="modulo-principal-da-aplicacao">
+<h2>Módulo principal da aplicação<a class="headerlink" href="#modulo-principal-da-aplicacao" title="Link to this heading">#</a></h2>
+<p>Módulo usado para iniciar a aplicação.
+Este módulo contém a junção de toda a lógica da aplicação.
+Este apresenta uma interface onde o utilizador pode escolher a funcionalidade que a aplicação pode executar.</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="main.continuar">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">continuar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#continuar"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#main.continuar" title="Link to this definition">#</a></dt>
+<dd><p>Mostra mensagem de confirmação.</p>
+<p>Esta função simplesmente abranda a impressão do menu principal para que o utilizador poss ler o que fez.</p>
+<p>Exemplo de execução:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">continuar</span><span class="p">()</span>
+<span class="go">#resultado</span>
+<span class="go">Primma Enter para continuar... </span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 
 
@@ -332,12 +364,37 @@ document.write(`
         <p class="prev-next-title">funcoes_sqlite_update module</p>
       </div>
     </a>
+    <a class="right-next"
+       href="verificar_e_atualizar_bd.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title">verificar_e_atualizar_bd module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-principal-da-aplicacao">Módulo principal da aplicação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main.continuar"><code class="docutils literal notranslate"><span class="pre">continuar()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

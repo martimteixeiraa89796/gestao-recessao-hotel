@@ -159,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_select.html">funcoes_sqlite_select module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcoes_sqlite_update.html">funcoes_sqlite_update module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verificar_e_atualizar_bd.html">verificar_e_atualizar_bd module</a></li>
 </ul>
 
     </div>
@@ -332,13 +333,14 @@ document.write(`
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="ferramentas_BD.executarBD">
-<span class="sig-prename descclassname"><span class="pre">ferramentas_BD.</span></span><span class="sig-name descname"><span class="pre">executarBD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_dados</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imprimir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#executarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.executarBD" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ferramentas_BD.</span></span><span class="sig-name descname"><span class="pre">executarBD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_dados</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imprimir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omitir_sql_erro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ferramentas_BD.html#executarBD"><span class="viewcode-link"><span class="pre">[código</span> <span class="pre">fonte]</span></span></a><a class="headerlink" href="#ferramentas_BD.executarBD" title="Link to this definition">#</a></dt>
 <dd><p>Executa queries na base de dados.</p>
 <p>Esta função cria uma conecção ao ficheiro de base de dados SQLite e, caso não exista, o mesmo é criado.
 Após a ligação, é criado o leitor e o cursor para se poder interagir dentro da base de dados.
 Se houver alterações feitas à base de dados, esta função também as guarda.
 Caso seja feito um select, esta função também consegue imprimir os resultado com a ajuda de uma função adjacente.
 No final das operções, a função desconecta-se da base de dados.</p>
+<p>É uma das funções mais importantes, pois é a única no código que consegue fazer a ponte com a base de dados.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -346,6 +348,7 @@ No final das operções, a função desconecta-se da base de dados.</p>
 <li><p><strong>query_dados</strong> (<em>tuple</em>) – Tuple com variáveis a serem introduzidas na query.</p></li>
 <li><p><strong>header_only</strong> (<em>boolean</em>) – Faz com que a função retorne apenas os headers das tabelas</p></li>
 <li><p><strong>imprimir</strong> (<em>boolean</em>) – Se deve ou não imprimir tabelas</p></li>
+<li><p><strong>omitir_sql_erro</strong> (<em>boolean</em>) – Se é ou não para omitir erros de sql durante a execução da função</p></li>
 </ul>
 </dd>
 <dt class="field-even">Retorno<span class="colon">:</span></dt>
@@ -360,6 +363,10 @@ No final das operções, a função desconecta-se da base de dados.</p>
 </dl>
 <p>Exemplo de execução de querie com impressão de tabela:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">executarBD</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Tabela;&quot;</span><span class="p">,</span> <span class="n">imprimir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">#Resultado</span>
+<span class="go">campo 1 | campo2 | campo3 |</span>
+<span class="go">1       | teste  | 34     |</span>
+<span class="go">2       | test2  | 35     |</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -370,6 +377,7 @@ No final das operções, a função desconecta-se da base de dados.</p>
 <dd><p>Retorna uma lista com campos de uma tabela na base de dados.</p>
 <p>Esta função acede à base de dados e retorna os campos/colunas de uma tabela.
 Isto é feito através da função executarBD e mandá-la retornar apenas os headers das tabelas.</p>
+<p>Esta função é util quando se pretende listar ou trabalhar com os campos de uma tabela.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>tabela</strong> (<em>string</em>) – O nome da tabela que se pretende obter os campos</p>
@@ -394,6 +402,7 @@ Isto é feito através da função executarBD e mandá-la retornar apenas os hea
 <p>Esta função acede à base de dados e retorna os nomes das tabelas na base de dados.
 Isto é feito através do executarBD, com uma <em>query **select**</em> que verifica a tabela master.
 Esta função remove da lista tabelas de sistema.</p>
+<p>Esta função é util quando se pretende listar ou trabalhar com os nomes de tabelas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorno<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Os nomes das tabela na base de dados</p>
@@ -429,6 +438,10 @@ que são depois guardados numa lista, prontos para serem impressos.</p>
 </dl>
 <p>Exemplo com dados retirados de queries:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">imprimir_tabela</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+<span class="go">#Resultado</span>
+<span class="go">campo 1 | campo2 | campo3 | #Header do cursor.desciption</span>
+<span class="go">1       | teste  | 34     | #Dados do cursor.fetchall</span>
+<span class="go">2       | test2  | 35     |</span>
 </pre></div>
 </div>
 <p>Exemplo com dados externos:</p>
@@ -436,6 +449,10 @@ que são depois guardados numa lista, prontos para serem impressos.</p>
 <span class="go">                    [(21, &quot;João&quot;, 999999999),</span>
 <span class="go">                    (23, &quot;Mariana&quot;, 888888888)</span>
 <span class="go">                    ])</span>
+<span class="go">#Resultado</span>
+<span class="go">Idade | Nome    | Contacto  |</span>
+<span class="go">21    | João    | 999999999 |</span>
+<span class="go">23    | Mariana | 888888888 |</span>
 </pre></div>
 </div>
 </dd></dl>
