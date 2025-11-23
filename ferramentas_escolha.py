@@ -41,6 +41,8 @@ def fazer_escolha(lista, cancelar=True):
     """
 
     while True:
+        escolha = None
+        
         if not cancelar:
             mensagem = "Escolha uma opção: "
         
