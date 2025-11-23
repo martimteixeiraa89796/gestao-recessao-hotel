@@ -12,8 +12,9 @@ def criar_tabela_tipo_cama():
     """
     Cria tabela com tipos de cama
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_tipo_cama()
     """
 
     query ="""
@@ -30,8 +31,9 @@ def criar_tabela_tipo_quarto():
     """
     Cria tabela com tipos de quartos
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_tipo_quarto()
     """
 
     query = """
@@ -48,8 +50,9 @@ def criar_tabela_Quarto():
     """
     Cria tabela com os quartos disponíveis no hotel
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Quarto()
     """
 
     query ="""
@@ -73,8 +76,9 @@ def criar_tabela_Cliente():
     """
     Cria tabela com dados sobre os clientes
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Cliente()
     """
 
     query = """
@@ -93,8 +97,9 @@ def criar_tabela_Tipo_Reserva():
     """
     Cria tabela com tipo de reserva
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Tipo_Reserva()
     """
 
     query = """
@@ -111,8 +116,9 @@ def criar_tabela_Camas():
     """
     Cria tabela com relação entre tipos de camas e respetivo quarto
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Camas()
     """
 
     query = """
@@ -138,8 +144,9 @@ def criar_tabela_Funcoes():
     """
     Cria tabela com funções do funcionários
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Funcoes()
     """
 
     query = """
@@ -156,8 +163,9 @@ def criar_tabela_Funcionario():
     """
     Cria tabela com dados sobre funcionários
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Funcionario()
     """
 
     query = """
@@ -179,8 +187,9 @@ def criar_tabela_Horario():
     """
     Cria tabela com o horário de cada funcionário
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Horario()
     """
 
     query = """
@@ -202,8 +211,9 @@ def criar_tabela_Reserva():
     """
     Cria tabela com dados sobre reservas feitas
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Reserva()
     """
 
     query = """
@@ -231,8 +241,9 @@ def criar_tabela_Hospedes():
     """
     Cria tabela com dados sobre os hospedes referentes a uma reserva
 
-    :return: Código SQL para *query*
-    :rtype: string
+    Exemplo de execução
+
+    >>> criar_tabela_Hospedes()
     """
 
     query = """
