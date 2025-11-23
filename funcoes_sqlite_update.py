@@ -1,3 +1,14 @@
+"""
+Modulo com funções de atualização de dados
+==========================================
+
+Este módulo contém funções para atualizar informações nas tabelas da base de dados SQLite utilizada na aplicação
+
+funções Principais:
+-update_geral(): Executa um UPDATE dos campos de uma tabela
+-update_geral_escolha(): menu interativo que permite escolher a tabela no qual permite atualizar
+"""
+
 from ferramentas_BD import executarBD, get_campos, get_tabelas
 import ferramentas_escolha
 
