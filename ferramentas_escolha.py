@@ -51,7 +51,6 @@ def fazer_escolha(lista):
     Escolha uma opção: 4
     Opção não disponivel
     Escolha uma opção: 1
-    Banana
     """
 
     while True:
@@ -99,7 +98,6 @@ def sql_escolher_tipo():
         3. Sql String
     Escolha formato.
     Escolha uma opção: 3
-    João
     """
 
     while True:
@@ -159,7 +157,6 @@ def input_string():
     #Resultado
     --> #Utilizador apenas prime ENTER, loop continua
     --> Ok
-    Ok
     """
 
     while True:
@@ -193,7 +190,6 @@ def input_int():
     --> quatro
     Tem de ser um número!
     --> 4
-    4
     """
 
     while True:
@@ -226,7 +222,6 @@ def input_float():
     --> quatro ponto noventa e nove
     Tem de ser um número decimal!
     --> 4.99
-    4.99
     """
     
     while True:
@@ -263,7 +258,6 @@ def input_bool():
         1. True
         2. False
     Escolha uma opção: 2
-    False
     """
 
     opcoes = ["True", "False"]
