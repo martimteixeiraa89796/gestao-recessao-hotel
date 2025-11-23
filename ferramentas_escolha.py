@@ -132,13 +132,13 @@ def sql_escolher_tipo():
 
 def input_string():
     while True:
-            resposta = input("(cancelar/skip: ...) --> ")
+            resposta = input("(cancelar/skip: .) --> ")
 
             if not resposta:
                 pass
 
             else:
-                if resposta == "...":
+                if resposta == ".":
                     return None
                 
                 else:
