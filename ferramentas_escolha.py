@@ -7,10 +7,12 @@ Este módulo contém funções com tudo o que é necessário para se interagir c
 
 def listar_escolhas(lista):
     """
-    Imprime uma listagem de listas.
+    Imprime uma listagem de itens.
 
     Esta função faz uma listagem numérica do que lhe é fornecido.
     Isto é feito através da iteração na lista e construção de strings para serem imprimidas.
+
+    Útil para apresentar escolhas ao utilizador.
 
     :param lista: Lista com os objetos para listagem
     :type lista: list
@@ -18,6 +20,11 @@ def listar_escolhas(lista):
     Exemplo de listagem:
 
     >>> listar_escolhas(["Azul", "Vermelho", "Amarelo"])
+    #Resultado
+    Opções disponíveis:
+        1. Azul
+        2. Vermelho
+        3. Amarelo
     """
 
     print("Opções disponíveis:")
@@ -32,12 +39,19 @@ def fazer_escolha(lista):
     Esta função cria um loop onde o utilizador tem de escolher uma opção baseado numa lista que
     é fornecida á função. O loop termina se a escolha for válida.
 
+    Esta função convém ser usada em conjunto com **listar_escolhas**.
+
     :return: Opção escolhida pelo utilizador
     :rtype: Depende do valor inseridos
 
     Exemplo de ambiente de escolha:
 
     >>> fazer_escolha(["Banana", "Maçã", "Pera"])
+    #Resultado
+    Escolha uma opção: 4
+    Opção não disponivel
+    Escolha uma opção: 1
+    Banana
     """
 
     while True:
@@ -63,12 +77,29 @@ def sql_escolher_tipo():
     Esta função pede ao utilizador para inserir dados e o formato que o mesmo pretende.
     A função faz depois a tradução entre os tipos em Python que são equivalente no sql.
 
+    Esta função é util quando o utilizador necessita de inserir dados, onde o formato deste não podem ser definidos.
+
     :return: Resposta do utilizador traduzida
     :rtype: string, int ou float
 
     Exemplo de execução:
 
     >>> sql_escolher_tipo()
+    --> João
+    Escolha formato.
+    Opções disponíveis:
+        1. Sql Int
+        2. Sql Decimal
+        3. Sql String
+    Escolha uma opção: 2
+    Formato incompatível.
+    Opções disponíveis:
+        1. Sql Int
+        2. Sql Decimal
+        3. Sql String
+    Escolha formato.
+    Escolha uma opção: 3
+    João
     """
 
     while True:
