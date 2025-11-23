@@ -1,9 +1,8 @@
 """
 Módulo com funções de remoção de tabelas
-========================================
+----------------------------------------
 
 Este módulo contém funções que são usadas para remover as várias tabelas existentes na base de dados da aplicação.
-As funções retornam a query SQL para ser usada na execução na base de dados.
 """
 
 from ferramentas_BD import executarBD, get_campos, get_tabelas
@@ -74,7 +73,6 @@ def limpar_tabela_geral_escolha():
     Escolha uma opção: 4
     Opção não disponivel
     Escolha uma opção: 1
-    Cliente
     """
 
     tabela_lista = get_tabelas()
@@ -105,14 +103,12 @@ def delete_geral_escolha():
     Escolha uma opção: 4
     Opção não disponivel
     Escolha uma opção: 1
-    Cliente
     Escolha um campo de condição.
     Opções disponíveis:
         1. Nome
         2. NIF
         3. Telefone
     Escolha uma opção: 1
-    Nome
     Insira valor de condição.
     --> João
     Escolha formato.
@@ -122,7 +118,6 @@ def delete_geral_escolha():
         3. Sql String
     Escolha formato.
     Escolha uma opção: 3
-    João
     """
 
     tabela_lista = get_tabelas()
