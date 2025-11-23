@@ -83,13 +83,17 @@ def sql_escolher_tipo():
 
     while True:
         while True:
-            resposta = input("--> ")
+            resposta = input("(cancelar/skip: ...) --> ")
 
             if not resposta:
                 pass
 
             else:
-                break
+                if resposta == "...":
+                    return None
+                
+                else:
+                    break
 
         tipo_dado_lista = ["sql int",
                         "sql decimal",
@@ -101,36 +105,44 @@ def sql_escolher_tipo():
 
         escolha = fazer_escolha(tipo_dado_lista)
 
-        try:
-            if escolha == tipo_dado_lista[0]:
-                resposta = int(resposta)
-            
-            elif escolha == tipo_dado_lista[1]:
-                resposta = float(resposta)
-            
-            elif not escolha:
-                continue
-            
-            else:
-                pass
-            
-            break
+        if escolha:
+            try:
+                if escolha == tipo_dado_lista[0]:
+                    resposta = int(resposta)
+                
+                elif escolha == tipo_dado_lista[1]:
+                    resposta = float(resposta)
+                
+                elif not escolha:
+                    continue
+                
+                else:
+                    pass
+                
+                break
 
-        except ValueError:
-                print("Formato incompatível.")
+            except ValueError:
+                    print("Formato incompatível.")
+
+        else:
+            return None
 
     return resposta
 
 
 def input_string():
     while True:
-            resposta = input("--> ")
+            resposta = input("(cancelar/skip: ...) --> ")
 
             if not resposta:
                 pass
 
             else:
-                break
+                if resposta == "...":
+                    return None
+                
+                else:
+                    break
 
     return resposta
 
@@ -138,8 +150,14 @@ def input_string():
 def input_int():
     while True:
         try:
-            resposta = int(input("--> "))
-            break
+            resposta = input_string()
+
+            if resposta:
+                int(resposta)
+                break
+
+            else:
+                return None
         
         except ValueError:
             print("Tem de ser um número!")
@@ -150,8 +168,14 @@ def input_int():
 def input_float():
     while True:
         try:
-            resposta = float(input("--> "))
-            break
+            resposta = input_string()
+
+            if resposta:
+                float(resposta)
+                break
+
+            else:
+                return None
         
         except ValueError:
             print("Tem de ser um número decimal!")
@@ -165,4 +189,8 @@ def input_bool():
     listar_escolhas(opcoes)
     resposta = fazer_escolha(opcoes)
 
-    return resposta
+    if resposta:
+        return resposta
+    
+    else:
+        return None
